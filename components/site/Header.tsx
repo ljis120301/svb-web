@@ -31,10 +31,10 @@ export function Header() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2">
           <Image
-            src="/web-images/logos/svbLogo.svg"
+            src="/web-images/logos/Transparent-LogoNOTEXT.png"
             alt="Sun Valley Broadband logo"
-            width={60}
-            height={60}
+            width={40}
+            height={40}
             priority
           />
           <span className="font-semibold text-primary">Sun Valley Broadband</span>

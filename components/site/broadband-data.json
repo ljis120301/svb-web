@@ -1,0 +1,167 @@
+{
+  "provider": {
+    "name": "Sun Valley Broadband",
+    "logo": "/web-images/logos/svbLogo.svg",
+    "supportPhone": "(928) 555-0123",
+    "supportWebsite": "https://sunvalleybroadband.com/support",
+    "privacyPolicyUrl": "https://sunvalleybroadband.com/privacy",
+    "networkManagementUrl": "https://sunvalleybroadband.com/network-management",
+    "termsOfServiceUrl": "https://sunvalleybroadband.com/terms"
+  },
+  "plans": [
+    {
+      "id": "wireless-bronze",
+      "planName": "Wireless Bronze",
+      "serviceType": "Fixed Wireless",
+      "pricing": {
+        "monthlyPrice": 45,
+        "isIntroductoryRate": false,
+        "introductoryPeriod": null,
+        "priceAfterIntro": null,
+        "contractLength": "Month-to-month",
+        "earlyTerminationFee": 0
+      },
+      "additionalCharges": [
+        { "description": "Equipment Lease", "amount": 5, "type": "monthly" },
+        { "description": "Professional Installation", "amount": 99, "type": "one-time" }
+      ],
+      "performance": {
+        "typicalDownloadSpeed": 10,
+        "typicalUploadSpeed": 3,
+        "typicalLatency": 30,
+        "packetLoss": 0.1
+      },
+      "dataAllowance": {
+        "monthlyDataIncluded": "Unlimited",
+        "additionalDataCharges": "0",
+        "dataUnit": "GB"
+      },
+      "discountsAndBundles": {
+        "acpEligible": true,
+        "bundleOptions": "None",
+        "discountUrl": "https://sunvalleybroadband.com/discounts"
+      },
+      "taxes": "Varies by location",
+      "networkManagement": {
+        "applicationSpecific": false,
+        "subscriberTriggered": false
+      }
+    },
+    {
+      "id": "wireless-silver",
+      "planName": "Wireless Silver",
+      "serviceType": "Fixed Wireless",
+      "pricing": {
+        "monthlyPrice": 55,
+        "isIntroductoryRate": false,
+        "introductoryPeriod": null,
+        "priceAfterIntro": null,
+        "contractLength": "Month-to-month",
+        "earlyTerminationFee": 0
+      },
+      "additionalCharges": [
+        { "description": "Equipment Lease", "amount": 5, "type": "monthly" },
+        { "description": "Professional Installation", "amount": 99, "type": "one-time" }
+      ],
+      "performance": {
+        "typicalDownloadSpeed": 15,
+        "typicalUploadSpeed": 5,
+        "typicalLatency": 28,
+        "packetLoss": 0.1
+      },
+      "dataAllowance": {
+        "monthlyDataIncluded": "Unlimited",
+        "additionalDataCharges": "0",
+        "dataUnit": "GB"
+      },
+      "discountsAndBundles": {
+        "acpEligible": true,
+        "bundleOptions": "None",
+        "discountUrl": "https://sunvalleybroadband.com/discounts"
+      },
+      "taxes": "Varies by location",
+      "networkManagement": {
+        "applicationSpecific": false,
+        "subscriberTriggered": false
+      }
+    },
+    {
+      "id": "wireless-gold",
+      "planName": "Wireless Gold",
+      "serviceType": "Fixed Wireless",
+      "pricing": {
+        "monthlyPrice": 75,
+        "isIntroductoryRate": false,
+        "introductoryPeriod": null,
+        "priceAfterIntro": null,
+        "contractLength": "Month-to-month",
+        "earlyTerminationFee": 0
+      },
+      "additionalCharges": [
+        { "description": "Equipment Lease", "amount": 5, "type": "monthly" },
+        { "description": "Professional Installation", "amount": 99, "type": "one-time" }
+      ],
+      "performance": {
+        "typicalDownloadSpeed": 20,
+        "typicalUploadSpeed": 5,
+        "typicalLatency": 25,
+        "packetLoss": 0.1
+      },
+      "dataAllowance": {
+        "monthlyDataIncluded": "Unlimited",
+        "additionalDataCharges": "0",
+        "dataUnit": "GB"
+      },
+      "discountsAndBundles": {
+        "acpEligible": true,
+        "bundleOptions": "None",
+        "discountUrl": "https://sunvalleybroadband.com/discounts"
+      },
+      "taxes": "Varies by location",
+      "networkManagement": {
+        "applicationSpecific": false,
+        "subscriberTriggered": false
+      }
+    },
+    {
+      "id": "wireless-titanium",
+      "planName": "Wireless Titanium",
+      "serviceType": "Fixed Wireless",
+      "pricing": {
+        "monthlyPrice": 155,
+        "isIntroductoryRate": false,
+        "introductoryPeriod": null,
+        "priceAfterIntro": null,
+        "contractLength": "Month-to-month",
+        "earlyTerminationFee": 0
+      },
+      "additionalCharges": [
+        { "description": "Equipment Lease", "amount": 5, "type": "monthly" },
+        { "description": "Professional Installation", "amount": 99, "type": "one-time" }
+      ],
+      "performance": {
+        "typicalDownloadSpeed": 25,
+        "typicalUploadSpeed": 5,
+        "typicalLatency": 22,
+        "packetLoss": 0.1
+      },
+      "dataAllowance": {
+        "monthlyDataIncluded": "Unlimited",
+        "additionalDataCharges": "0",
+        "dataUnit": "GB"
+      },
+      "discountsAndBundles": {
+        "acpEligible": true,
+        "bundleOptions": "None",
+        "discountUrl": "https://sunvalleybroadband.com/discounts"
+      },
+      "taxes": "Varies by location",
+      "networkManagement": {
+        "applicationSpecific": false,
+        "subscriberTriggered": false
+      }
+    }
+  ]
+}
+
+
