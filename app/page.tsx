@@ -1,103 +1,172 @@
-import Image from "next/image";
+import AceternityHero from "@/components/site/AceternityHero";
+import { FeatureCard } from "@/components/site/FeatureCard";
+import { AppleCarousel, AppleCard } from "@/components/site/AppleCardsCarousel";
+import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
+import { FAQ } from "@/components/site/FAQ";
+import GoogleReviewsMarquee from "@/components/site/GoogleReviewsMarquee";
+import { StoreHours } from "@/components/site/StoreHours";
+import { Separator } from "@/components/ui/separator";
+import { IconHeadset, IconActivityHeartbeat, IconInfinity } from "@tabler/icons-react";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div>
+      <AceternityHero />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      <GoogleReviewsMarquee />
+
+      <section className="mx-auto mt-12 max-w-6xl px-4">
+        <AppleCarousel
+          items={[
+            <AppleCard
+              key="1"
+              index={0}
+              card={{
+                src: "/web-images/familySitting.jpeg",
+                title: "Stream without buffering",
+                category: "Experience",
+                content: (
+                  <p className="text-neutral-700 dark:text-neutral-300">
+                    Ultra-low latency and high bandwidth for 4K streaming and gaming.
+                  </p>
+                ),
+              }}
+            />,
+            <AppleCard
+              key="2"
+              index={1}
+              card={{
+                src: "/web-images/wirelessTower.jpg",
+                title: "Reliable wireless coverage",
+                category: "Coverage",
+                content: (
+                  <p className="text-neutral-700 dark:text-neutral-300">
+                    Flexible installs and great performance across your property.
+                  </p>
+                ),
+              }}
+            />,
+            <AppleCard
+              key="3"
+              index={2}
+              card={{
+                src: "/web-images/worldConnectedLowRes.jpg",
+                title: "Local team, global connectivity",
+                category: "Support",
+                content: (
+                  <p className="text-neutral-700 dark:text-neutral-300">
+                    Proactive monitoring and fast local support when you need it.
+                  </p>
+                ),
+              }}
+            />,
+            <AppleCard
+              key="4"
+              index={3}
+              card={{
+                src: "/web-images/devices-connecting.jpg",
+                title: "Whole-home connectivity",
+                category: "Wi‑Fi",
+                content: (
+                  <p className="text-neutral-700 dark:text-neutral-300">
+                    Seamless Wi‑Fi for all your devices, everywhere at home.
+                  </p>
+                ),
+              }}
+            />,
+            <AppleCard
+              key="5"
+              index={4}
+              card={{
+                src: "/web-images/fiber-connectors.jpg",
+                title: "Fiber performance",
+                category: "Speed",
+                content: (
+                  <p className="text-neutral-700 dark:text-neutral-300">
+                    Multi‑gig fiber options for the fastest uploads and downloads.
+                  </p>
+                ),
+              }}
+            />,
+            <AppleCard
+              key="6"
+              index={5}
+              card={{
+                src: "/web-images/image-10.jpg",
+                title: "Business ready",
+                category: "Business",
+                content: (
+                  <p className="text-neutral-700 dark:text-neutral-300">
+                    Reliable connectivity and SLAs to keep your business online.
+                  </p>
+                ),
+              }}
+            />,
+          ]}
+        />
+        <Separator />
+        <div className="grid gap-6 md:grid-cols-3">
+          <FeatureCard
+            title="Local Support"
+            description="Fast help from technicians in your area."
+            Icon={IconHeadset}
+            badge="Human-first"
+            href="/support"
+            ctaLabel="Get help"
+          />
+          <FeatureCard
+            title="Reliable Uptime"
+            description="Proactive maintenance, minimal downtime."
+            Icon={IconActivityHeartbeat}
+            badge="Monitored"
+            href="/support"
+            ctaLabel="Status"
+          />
+          <FeatureCard
+            title="No Data Caps"
+            description="Stream, game, and work without limits."
+            Icon={IconInfinity}
+            badge="Unlimited"
+            href="/services"
+            ctaLabel="See plans"
+          />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+      <section className="mx-auto mt-16 max-w-6xl px-4">
+        <AnimatedTestimonials
+          autoplay
+          testimonials={[
+            {
+              name: "Y. Rocha",
+              designation: "Residential customer",
+              quote:
+                "Been a customer for years now. The service has been upgraded. And the best part it’s affordable. Great customer service.",
+              src: "/web-images/familySitting.jpeg",
+            },
+            {
+              name: "R. Nicolette",
+              designation: "Residential customer",
+              quote:
+                "Service is very fast and very rarely goes down. When it does they are sometimes working on it before I even know it’s down.",
+              src: "/web-images/devices-connecting.jpg",
+            },
+            {
+              name: "Add your quote",
+              designation: "Customer",
+              quote: "Your testimonial will appear here.",
+              src: "/web-images/worldConnectedLowRes.jpg",
+            },
+            {
+              name: "Add your quote",
+              designation: "Customer",
+              quote: "Your testimonial will appear here.",
+              src: "/web-images/wirelessTower.jpg",
+            },
+          ]}
+        />
+      </section>
+      <StoreHours />
+      <FAQ />
     </div>
   );
 }
