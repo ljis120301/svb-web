@@ -14,6 +14,7 @@ export function ContactForm({ pageKind }: ContactFormProps) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [address, setAddress] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
     "idle"
   );
@@ -27,7 +28,7 @@ export function ContactForm({ pageKind }: ContactFormProps) {
       const res = await fetch("/api/send-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, message, pageKind }),
+        body: JSON.stringify({ name, email, message, pageKind, address: pageKind === "sales" ? address : undefined }),
       });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
@@ -37,6 +38,7 @@ export function ContactForm({ pageKind }: ContactFormProps) {
       setName("");
       setEmail("");
       setMessage("");
+      setAddress("");
     } catch (err: unknown) {
       setStatus("error");
       setError(err instanceof Error ? err.message : "Something went wrong");
@@ -45,6 +47,19 @@ export function ContactForm({ pageKind }: ContactFormProps) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
+      {pageKind === "sales" && (
+        <div className="grid gap-2">
+          <Label htmlFor="address">Service Address</Label>
+          <Input
+            id="address"
+            name="address"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            placeholder="Street, City, State ZIP"
+            required
+          />
+        </div>
+      )}
       <div className="grid gap-2">
         <Label htmlFor="name">Name</Label>
         <Input
