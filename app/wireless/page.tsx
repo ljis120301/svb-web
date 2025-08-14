@@ -27,9 +27,12 @@ export default function WirelessPage() {
         {wirelessPlans.map((p) => (
           <Dialog key={p.name}>
             <DialogTrigger asChild>
-              <Card className={`group relative h-full border-2 ${p.color} cursor-pointer overflow-hidden bg-white transition hover:-translate-y-1 hover:shadow-md dark:bg-neutral-950`}>
+              <Card className={`group relative h-full border-2 ${p.color} cursor-pointer overflow-hidden bg-white transition hover:-translate-y-1 hover:shadow-md dark:bg-neutral-950 pb-14`}>
                 <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-neutral-200 via-neutral-400 to-neutral-200 dark:from-neutral-800 dark:via-neutral-700 dark:to-neutral-800" />
-                <CardHeader className="pb-0">
+                <div className="absolute top-2 right-2 z-10">
+                  <Badge variant="outline" className="text-[10px] font-medium px-1.5 py-0 rounded-sm whitespace-nowrap shrink-0 border-neutral-300 text-neutral-600">{p.businessOnly ? "Business only" : "Residential & business"}</Badge>
+                </div>
+                <CardHeader className="pb-0 pr-24">
                   <CardTitle className="text-xl tracking-tight">{p.name}</CardTitle>
                   <CardDescription className="mt-1 text-[13px]">Fixed Wireless Internet</CardDescription>
                 </CardHeader>
@@ -54,12 +57,7 @@ export default function WirelessPage() {
                     ) : null}
                   </div>
                 </CardContent>
-                <CardFooter className="mt-auto border-t pt-4">
-                  <div className="flex w-full items-center justify-between">
-                    <Badge className="font-bold">{p.businessOnly ? "Business only" : "Residential & business"}</Badge>
-                    <span className="text-xs text-neutral-500 transition group-hover:translate-x-0.5">View FCC facts</span>
-                  </div>
-                </CardFooter>
+                <span className="absolute bottom-3 right-3 text-xs text-neutral-500 whitespace-nowrap shrink-0">View FCC facts</span>
               </Card>
             </DialogTrigger>
             <DialogContent>

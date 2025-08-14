@@ -8,16 +8,25 @@ const faqs = [
   },
   {
     q: "Can I bring my own router?",
-    a: "Yes. We also offer managed Wi‑Fi with professional setup.",
+    a: "Yes. We also offer the option to rent a router from us for a monthly fee of $5 per month.",
   },
   {
     q: "How soon can I get installed?",
-    a: "Most installs are completed within 3–5 business days after site survey.",
+    a: "This will depend on the area you are in, if you are curious please reach out to our sales team and they can assist to lookup your address and provide an estimated time to install.",
   },
   {
-    q: "Do you offer business SLAs?",
-    a: "Yes. Business plans include optional SLAs and static IPs.",
+    q: "Do you offer business plans?",
+    a: "Yes, we work with many businesses all across Yuma County and Imperial. We can provide buisness features like Static IPv4 addresses and in some cases dedicated ethernet lines. For specific buisness needs, or larger scale projects reach out to us by phone or email.",
   },
+  {
+    q: "Was your Company named Beamspeed?",
+    a: "Yes, we were first named Beamspeed, before being rebranded to Sun Valley Broadband as we have expanded our capabilities and services. We are still owned by the exact same people, there was never a change in ownership.",
+  },
+  {
+    q: "Is there a contract?",
+    a: "No, we do not have a contract. You can cancel at any time.",
+  },
+  
 ];
 
 export function FAQ() {

@@ -27,17 +27,17 @@ export function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60 text-[110%]">
+      <div className="mx-auto flex h-[70.4px] max-w-6xl items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2">
           <Image
             src="/web-images/logos/Transparent-LogoNOTEXT.png"
             alt="Sun Valley Broadband logo"
-            width={40}
-            height={40}
+            width={55}
+            height={55}
             priority
           />
-          <span className="font-semibold text-primary">Sun Valley Broadband</span>
+          <span className="font-semibold text-black">Sun Valley Broadband</span>
         </Link>
 
         <nav className="hidden md:flex">

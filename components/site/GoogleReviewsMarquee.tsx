@@ -23,15 +23,32 @@ const googleReviews: ReviewItem[] = [
     title: "Google Review",
   },
   {
-    quote: "Your testimonial will appear here.",
-    name: "Add your quote",
+    quote: "Last year Sun Valley Broadband were installing fiber-optic in my area. Their service did improved. I became a customer. Is been over an year and I am very happy. No problem with buffing watching live shows and playing online video games. Call them to check if you have available service near your area. More options the better.",
+    name: "Ramon G",
     title: "Google Review",
   },
   {
-    quote: "Your testimonial will appear here.",
-    name: "Add your quote",
+    quote: "This service is the absolute best!!!",
+    name: "JoAnn",
     title: "Google Review",
   },
+  {
+    quote: "Very happy with the service and the price!",
+    name: "Elaine V",
+    title: "Google Review",
+  },
+  {
+    quote: "I have been a customer for over 10 years. The service is great and the price is right. I highly recommend them to anyone in the area.",
+    name: "John D",
+    title: "Google Review",
+  },
+  {
+    quote: "Me gusto mucho el servicio ya puedo ver mis películas completas antes no podía con otros servicios gracias",
+    name: "Maria R",
+    title: "Google Review",
+  },
+  
+  
 ];
 
 export function GoogleReviewsMarquee() {

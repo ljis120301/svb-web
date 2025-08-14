@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import fetch from "node-fetch";
 
 export const runtime = "nodejs";
 
@@ -11,6 +12,15 @@ interface Payload {
   message?: string;
   pageKind?: PageKind;
   address?: string;
+  addressStreet?: string;
+  addressUnit?: string;
+  addressCity?: string;
+  addressState?: string;
+  addressPostalCode?: string;
+  accountNumber?: string;
+  hcaptchaToken?: string;
+  hpWebsite?: string;
+  formStartedAt?: number;
 }
 
 function resolveRecipient(pageKind: PageKind | undefined): string {
@@ -22,15 +32,35 @@ function resolveRecipient(pageKind: PageKind | undefined): string {
 
 export async function POST(req: NextRequest) {
   try {
-    const { name, email, message, pageKind, address }: Payload = await req.json();
+    const {
+      name,
+      email,
+      message,
+      pageKind,
+      address,
+      addressStreet,
+      addressUnit,
+      addressCity,
+      addressState,
+      addressPostalCode,
+      accountNumber,
+      hcaptchaToken,
+      hpWebsite,
+      formStartedAt,
+    }: Payload = await req.json();
     console.log("[email] POST /api/send-email - received payload", {
       pageKind,
       namePresent: Boolean(name),
       emailPresent: Boolean(email),
       messageLength: message?.length ?? 0,
       addressPresent: Boolean(address),
+      hasStructuredAddress: Boolean(
+        addressStreet || addressCity || addressState || addressPostalCode
+      ),
+      hasAccountNumber: Boolean(accountNumber),
     });
 
+    // Basic required fields
     if (!name || !email || !message) {
       console.warn("[email] missing required fields", {
         namePresent: Boolean(name),
@@ -43,16 +73,70 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // Timing check (require at least 3s between render and submit, max 30m)
+    const nowMs = Date.now();
+    const startedMs = typeof formStartedAt === "number" ? formStartedAt : 0;
+    if (!startedMs || nowMs - startedMs < 3000 || nowMs - startedMs > 30 * 60 * 1000) {
+      console.warn("[email] suspicious timing", { nowMs, startedMs, delta: nowMs - startedMs });
+      return NextResponse.json({ error: "Suspicious submission timing" }, { status: 400 });
+    }
+
+    // hCaptcha verification (server-side)
+    const hcaptchaSecret = process.env.HCAPTCHA_SECRET;
+    if (!hcaptchaSecret) {
+      console.error("[email] HCAPTCHA_SECRET not set");
+      return NextResponse.json({ error: "Server misconfiguration" }, { status: 500 });
+    }
+    if (!hcaptchaToken) {
+      return NextResponse.json({ error: "Captcha is required" }, { status: 400 });
+    }
+    const clientIp = getClientIp(req);
+    const hcBody = new URLSearchParams({
+      secret: hcaptchaSecret,
+      response: hcaptchaToken,
+      remoteip: clientIp,
+    });
+    const hcRes = await fetch("https://hcaptcha.com/siteverify", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: hcBody.toString(),
+    });
+    const hcJson = (await hcRes.json()) as { success?: boolean; "error-codes"?: string[] };
+    if (!hcJson?.success) {
+      console.warn("[email] hcaptcha failed", { errors: hcJson?.["error-codes"] });
+      return NextResponse.json({ error: "Captcha verification failed" }, { status: 400 });
+    }
+
+    // Honeypot note (do not block if captcha succeeded; log for visibility)
+    if (hpWebsite && hpWebsite.trim().length > 0) {
+      console.warn("[email] honeypot filled but captcha succeeded; allowing", { clientIp, hpWebsiteLen: hpWebsite.length });
+    }
+
+    // Rate limit by IP
+    if (!allowRequestForIp(clientIp)) {
+      console.warn("[email] rate limited", { clientIp });
+      return NextResponse.json({ error: "Too many requests" }, { status: 429 });
+    }
+
     // Require address for sales inquiries
-    if ((pageKind ?? "sales") === "sales" && !address) {
-      console.warn("[email] sales requires address", {
-        pageKind,
-        addressPresent: Boolean(address),
-      });
-      return NextResponse.json(
-        { error: "Address is required for sales inquiries" },
-        { status: 400 }
+    if ((pageKind ?? "sales") === "sales") {
+      const hasSingleAddress = Boolean(address && address.trim().length > 0);
+      const hasStructured = Boolean(
+        (addressStreet && addressStreet.trim()) &&
+        (addressCity && addressCity.trim()) &&
+        (addressState && addressState.trim()) &&
+        (addressPostalCode && addressPostalCode.trim())
       );
+      if (!hasSingleAddress && !hasStructured) {
+        console.warn("[email] sales requires address (single or structured)", {
+          hasSingleAddress,
+          hasStructured,
+        });
+        return NextResponse.json(
+          { error: "Address is required for sales inquiries" },
+          { status: 400 }
+        );
+      }
     }
 
     const smtpHost = process.env.SMTP_HOST;
@@ -101,8 +185,19 @@ export async function POST(req: NextRequest) {
       to,
       replyTo: email,
       subject,
-      text: buildEmailText({ name: name!, email: email!, message: message!, pageKind: pageKind ?? "sales", address }),
-      html: buildEmailHtml({ name: name!, email: email!, message: message!, pageKind: pageKind ?? "sales", address }),
+      text: buildEmailText({
+        name: name!,
+        email: email!,
+        message: message!,
+        pageKind: pageKind ?? "sales",
+        address,
+        addressStreet,
+        addressUnit,
+        addressCity,
+        addressState,
+        addressPostalCode,
+        accountNumber,
+      }),
     });
 
     console.log("[email] sent", {
@@ -125,63 +220,86 @@ export async function POST(req: NextRequest) {
   }
 }
 
-function escapeHtml(input: string): string {
-  return input
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/\"/g, "&quot;")
-    .replace(/'/g, "&#39;");
-}
-
-function buildEmailText(payload: Required<Pick<Payload, "name" | "email" | "message">> & { pageKind: PageKind; address?: string }): string {
+function buildEmailText(payload: Required<Pick<Payload, "name" | "email" | "message">> & {
+  pageKind: PageKind;
+  address?: string;
+  addressStreet?: string;
+  addressUnit?: string;
+  addressCity?: string;
+  addressState?: string;
+  addressPostalCode?: string;
+  accountNumber?: string;
+}): string {
+  const isSales = payload.pageKind === "sales";
   const lines: string[] = [];
-  lines.push(`Type: ${payload.pageKind === "support" ? "Support" : "Sales"}`);
+  const header = `Sun Valley Broadband - ${isSales ? "Sales" : "Support"} Inquiry`;
+  lines.push(header);
+  lines.push("=".repeat(header.length));
   lines.push(`From: ${payload.name} <${payload.email}>`);
-  if (payload.pageKind === "sales" && payload.address) {
-    lines.push(`Address: ${payload.address}`);
+  if (payload.accountNumber && payload.accountNumber.trim()) {
+    lines.push(`Account #: ${payload.accountNumber.trim()}`);
+  }
+  if (isSales) {
+    const hasStructured = Boolean(
+      (payload.addressStreet && payload.addressStreet.trim()) ||
+        (payload.addressCity && payload.addressCity.trim()) ||
+        (payload.addressState && payload.addressState.trim()) ||
+        (payload.addressPostalCode && payload.addressPostalCode.trim())
+    );
+    if (hasStructured) {
+      const line1 = payload.addressStreet ? payload.addressStreet.trim() : "";
+      const line1WithUnit = [line1, payload.addressUnit?.trim()].filter(Boolean).join(" ");
+      const line2Parts = [payload.addressCity?.trim(), payload.addressState?.trim(), payload.addressPostalCode?.trim()].filter(Boolean);
+      const line2 = line2Parts.length ? `${line2Parts[0]}${line2Parts[1] ? ", " + line2Parts[1] : ""}${line2Parts[2] ? " " + line2Parts[2] : ""}` : "";
+      lines.push("Address:");
+      if (line1WithUnit) lines.push(`  ${line1WithUnit}`);
+      if (line2) lines.push(`  ${line2}`);
+    } else if (payload.address && payload.address.trim()) {
+      lines.push(`Address: ${payload.address.trim()}`);
+    }
   }
   lines.push("");
   lines.push("Message:");
+  lines.push("----");
   lines.push(payload.message);
+  lines.push("----");
   return lines.join("\n");
 }
 
-function buildEmailHtml(payload: Required<Pick<Payload, "name" | "email" | "message">> & { pageKind: PageKind; address?: string }): string {
-  const safeName = escapeHtml(payload.name);
-  const safeEmail = escapeHtml(payload.email);
-  const safeMessage = escapeHtml(payload.message).replace(/\n/g, "<br/>");
-  const safeAddress = payload.address ? escapeHtml(payload.address) : undefined;
+// Simple in-memory rate limiter per IP
+const RATE_WINDOW_MS = 10 * 60 * 1000; // 10 minutes
+const RATE_MAX_REQUESTS = 8; // max per window
+const ipToRate: Map<string, { count: number; windowStart: number }> = new Map();
 
-  const rows: string[] = [];
-  rows.push(
-    `<tr><td style="padding:8px 12px;font-weight:600;width:140px;background:#f6f7f9;border-bottom:1px solid #e5e7eb;">Type</td><td style="padding:8px 12px;border-bottom:1px solid #e5e7eb;">${payload.pageKind === "support" ? "Support" : "Sales"}</td></tr>`
-  );
-  rows.push(
-    `<tr><td style="padding:8px 12px;font-weight:600;width:140px;background:#f6f7f9;border-bottom:1px solid #e5e7eb;">From</td><td style="padding:8px 12px;border-bottom:1px solid #e5e7eb;">${safeName} &lt;${safeEmail}&gt;</td></tr>`
-  );
-  if (payload.pageKind === "sales" && safeAddress) {
-    rows.push(
-      `<tr><td style="padding:8px 12px;font-weight:600;width:140px;background:#f6f7f9;border-bottom:1px solid #e5e7eb;">Address</td><td style="padding:8px 12px;border-bottom:1px solid #e5e7eb;">${safeAddress}</td></tr>`
-    );
+function allowRequestForIp(ip: string): boolean {
+  const now = Date.now();
+  const record = ipToRate.get(ip);
+  if (!record) {
+    ipToRate.set(ip, { count: 1, windowStart: now });
+    return true;
   }
+  if (now - record.windowStart > RATE_WINDOW_MS) {
+    ipToRate.set(ip, { count: 1, windowStart: now });
+    return true;
+  }
+  if (record.count >= RATE_MAX_REQUESTS) {
+    return false;
+  }
+  record.count += 1;
+  return true;
+}
 
-  return `
-  <div style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color:#111827;">
-    <div style="padding:16px 0;">
-      <h2 style="margin:0 0 4px 0;font-size:18px;">Sun Valley Broadband</h2>
-      <p style="margin:0;color:#6b7280;">New ${payload.pageKind === "support" ? "Support" : "Sales"} Message</p>
-    </div>
-    <table role="presentation" cellpadding="0" cellspacing="0" style="border-collapse:collapse;width:100%;max-width:640px;background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;overflow:hidden;">
-      <tbody>
-        ${rows.join("")}
-        <tr>
-          <td style="padding:12px 12px 0 12px;font-weight:600;width:140px;background:#f6f7f9;vertical-align:top;">Message</td>
-          <td style="padding:12px 12px 12px 12px;white-space:pre-wrap;">${safeMessage}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>`;
+function getClientIp(req: NextRequest): string {
+  const xfwd = req.headers.get("x-forwarded-for");
+  if (xfwd) {
+    const first = xfwd.split(",")[0]?.trim();
+    if (first) return first;
+  }
+  const realIp = req.headers.get("x-real-ip");
+  if (realIp) return realIp;
+  const cfIp = req.headers.get("cf-connecting-ip");
+  if (cfIp) return cfIp;
+  return "unknown";
 }
 
 

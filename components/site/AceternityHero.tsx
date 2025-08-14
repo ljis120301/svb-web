@@ -4,11 +4,11 @@ import { motion } from "motion/react";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import Image from "next/image";
-import heroImage from "/public/web-images/wirelessTower.jpg";
+import heroImage from "/public/ethernetCables.jpg";
 
 export default function AceternityHero() {
   return (
-    <section className="relative w-full overflow-hidden min-h-[60vh] md:min-h-[70vh]">
+    <section className="relative w-full overflow-hidden min-h-[60vh] md:min-h-[58vh]">
       <Image
         src={heroImage}
         alt="Sun Valley Broadband hero"
@@ -21,7 +21,7 @@ export default function AceternityHero() {
 
       <div className="relative z-10 mx-auto max-w-6xl px-4 py-16 md:py-28">
         <h1 className="relative z-10 mx-auto max-w-4xl text-center text-2xl font-bold text-white md:text-4xl lg:text-6xl">
-          {"Fast, local internet for Yuma — fiber and wireless"
+          {"Fast, local internet for the Yuma area and Imperial Valley"
             .split(" ")
             .map((word, index) => (
               <motion.span
@@ -40,21 +40,20 @@ export default function AceternityHero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.3, delay: 0.8 }}
-          className="relative z-10 mx-auto max-w-xl py-4 text-center text-base font-normal text-neutral-100/90 sm:text-lg"
+          className="relative z-10 mx-auto max-w-xl py-4 text-center text-base font-normal text-neutral-100/90 sm:text-lg md:text-xl"
         >
-          Sun Valley Broadband delivers reliable fiber and wireless with local support.
-          Stream, work, and game without limits.
+          From Brawley to Dateland, we deliver connection where no other provider can.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.3, delay: 1 }}
-          className="relative z-10 mt-6 flex flex-wrap items-center justify-center gap-4"
+          className="relative z-10 mt-6 flex flex-wrap items-center justify-center gap-6"
         >
           <Link
             href="/contact"
-            className={`${buttonVariants({ variant: "default" })} w-60 px-6 py-3 text-base`}
+            className={`${buttonVariants({ variant: "default" })} w-60 px-6 py-3 text-base transform scale-[1.05]`}
           >
             Check availability
           </Link>
@@ -62,7 +61,7 @@ export default function AceternityHero() {
             href="https://billing.beamspeed.net/"
             target="_blank"
             rel="noopener noreferrer"
-            className={`${buttonVariants({ variant: "outline" })} w-60 px-6 py-3 text-base`}
+            className={`${buttonVariants({ variant: "outline" })} w-60 px-6 py-3 text-base transform scale-[1.05]`}
           >
             Pay Bill
           </Link>

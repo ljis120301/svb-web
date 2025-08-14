@@ -143,3 +143,25 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Marquee animation for Google Reviews */
+@keyframes svb-infinite-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: svb-infinite-scroll var(--animation-duration, 40s) linear infinite;
+  animation-direction: var(--animation-direction, normal);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-scroll {
+    animation-duration: 1ms;
+    animation-iteration-count: 1;
+  }
+}
