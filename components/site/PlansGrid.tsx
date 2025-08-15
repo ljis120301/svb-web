@@ -30,7 +30,7 @@ export function PlansGrid({ plans, serviceLabel, showFacts = true, gridClassName
           <Card className={`group relative h-full border-2 ${plan.color} cursor-pointer overflow-hidden bg-white transition hover:-translate-y-1 hover:shadow-md dark:bg-neutral-950 pb-14`}>
             <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-neutral-200 via-neutral-400 to-neutral-200 dark:from-neutral-800 dark:via-neutral-700 dark:to-neutral-800" />
             <div className="absolute top-2 right-2 z-10">
-              <Badge variant="outline" className="text-[10px] font-medium px-1.5 py-0 rounded-sm whitespace-nowrap shrink-0 border-neutral-300 text-neutral-600">{plan.businessOnly ? "Business only" : "Residential & business"}</Badge>
+              <Badge variant="outline" className="text-[10px] font-medium px-1.5 py-0 rounded-sm whitespace-nowrap shrink-0 border-neutral-300 text-neutral-600 bg-accent/90">{plan.businessOnly ? "Business only" : "Residential & business"}</Badge>
             </div>
             <CardHeader className="pb-0 pr-24">
               <CardTitle className="text-xl tracking-tight">{plan.name}</CardTitle>

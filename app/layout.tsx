@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
-
 import { siteFont, brandFont } from "@/lib/fonts";
-
 
 
 export const metadata: Metadata = {

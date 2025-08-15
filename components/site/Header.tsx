@@ -31,7 +31,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60 text-[110%]">
       <div className="mx-auto flex h-[70.4px] max-w-6xl items-center justify-between px-4">
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-0">
           <Image
             src="/web-images/logos/Transparent-LogoNOTEXT.png"
             alt="Sun Valley Broadband logo"
@@ -39,9 +39,14 @@ export function Header() {
             height={55}
             priority
           />
-          <span className={cn("font-semibold text-black font-brand")}>
-            SUN VALLEY BROADBAND
-          </span>
+          <Image
+            src="/cropped-Transparent-Logo-4-2048x682.png"
+            alt="Sun Valley Broadband wordmark"
+            width={250}
+            height={250}
+            priority
+            className="h-[5em] w-[15em] pt-2 -ml-4"
+          />
         </Link>
 
         <nav className="hidden md:flex">
@@ -82,7 +87,7 @@ export function Header() {
 
         <div className="flex items-center gap-2">
           <Link
-            href="https://mail.b.hostedemail.com/"
+            href="https://webmail.beamspeed.net/"
             target="_blank"
             rel="noopener noreferrer"
             className={cn(
