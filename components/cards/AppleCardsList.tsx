@@ -29,7 +29,7 @@ export function AppleCardsList() {
           key="2"
           index={1}
           card={{
-            src: "/web-images/lightbeam.png",
+            src: "/lightbeam.png",
             title: "Reliable wireless with Ubiquiti",
             category: "Coverage",
             content: (

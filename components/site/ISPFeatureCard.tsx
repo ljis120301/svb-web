@@ -20,6 +20,8 @@ export type ISPFeatureCardProps = {
   ctaLabel?: string;
   badge?: string;
   className?: string;
+  target?: "_blank" | "_self" | "_parent" | "_top";
+  rel?: string;
 };
 
 export function ISPFeatureCard({
@@ -32,6 +34,8 @@ export function ISPFeatureCard({
   ctaLabel = "Learn more",
   badge,
   className,
+  target,
+  rel,
 }: ISPFeatureCardProps) {
   return (
     <div className={cn("group h-full", className)}>
@@ -78,7 +82,7 @@ export function ISPFeatureCard({
 
           {href ? (
             <div className="mt-auto pt-6 flex justify-end">
-              <Link href={href} className={cn(buttonVariants({ variant: "outline", size: "sm" }), "px-3 group")}> 
+              <Link href={href} target={target} rel={rel} className={cn(buttonVariants({ variant: "outline", size: "sm" }), "px-3 group")}> 
                 {ctaLabel}
                 <IconArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </Link>

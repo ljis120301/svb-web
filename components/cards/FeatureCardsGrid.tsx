@@ -21,7 +21,9 @@ export function FeatureCardsGrid() {
         description="Setup and migration to modern, secure email platforms with ongoing support."
         Icon={IconMail}
         highlights={["Spam protection", "IMAP/POP3", "Mobile + desktop"]}
-        href="/services"
+        href="https://webmail.beamspeed.net/"
+        target="_blank"
+        rel="noopener noreferrer"
         ctaLabel="Set up email"
       />
       <ISPFeatureCard

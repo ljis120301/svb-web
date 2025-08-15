@@ -20,7 +20,7 @@ export default function WirelessPage() {
       <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-64 bg-[radial-gradient(50%_60%_at_50%_-20%,rgba(59,130,246,0.15),transparent)] dark:bg-[radial-gradient(50%_60%_at_50%_-20%,rgba(59,130,246,0.25),transparent)]" />
 
       <div className="rounded-2xl overflow-hidden shadow-2xl ring-1 ring-black/10">
-        <ProductBanner src="/web-images/wirelessTower.jpg" alt="Wireless tower" title="Wireless Internet you can count on" />
+        <ProductBanner src="/lightbeam3.jpg" alt="Wireless tower" title="Wireless Internet you can count on" />
       </div>
 
       <div className="mt-8 text-center">
@@ -50,7 +50,7 @@ export default function WirelessPage() {
           <div className="rounded-2xl border border-slate-200 p-6 ring-1 ring-black/5 dark:border-neutral-800">
             <div className="flex gap-4">
               <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-md ring-1 ring-neutral-200 dark:ring-neutral-800">
-                <Image src="/web-images/lightbeam.png" alt="Ubiquiti LiteBeam antenna" fill className="object-contain p-1 drop-shadow-lg" />
+                <Image src="/web-images/lightbeamNOBACKGROUND.png" alt="Ubiquiti LiteBeam antenna" fill className="object-cover object-center drop-shadow-lg" />
               </div>
               <div>
                 <h3 className="text-base font-semibold">Ubiquiti LiteBeam — focused wireless signal</h3>
@@ -66,7 +66,7 @@ export default function WirelessPage() {
           <div className="rounded-2xl border border-slate-200 p-6 ring-1 ring-black/5 dark:border-neutral-800">
             <div className="flex gap-4">
               <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-md ring-1 ring-neutral-200 dark:ring-neutral-800">
-                <Image src="/tpLinkRouter.jpg" alt="TP‑Link in‑home Wi‑Fi router" fill className="object-contain p-1 drop-shadow-lg" />
+                <Image src="/tpLinkRouter.png" alt="TP‑Link in‑home Wi‑Fi router" fill className="object-cover object-center drop-shadow-card drop-shadow-lg" />
               </div>
               <div>
                 <h3 className="text-base font-semibold">TP‑Link Wi‑Fi Router — simple whole‑home Wi‑Fi</h3>
@@ -138,7 +138,7 @@ export default function WirelessPage() {
               plans={wirelessPlans}
               serviceLabel="Fixed Wireless Internet"
               showFacts
-              gridClassName="mt-6 grid auto-rows-fr gap-6 sm:grid-cols-2 md:grid-cols-3 sm:gap-8"
+              gridClassName="mt-6 grid auto-rows-fr gap-6 sm:grid-cols-2 md:grid-cols-4 sm:gap-8"
             />
           </div>
         </div>
