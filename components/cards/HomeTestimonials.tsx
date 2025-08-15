@@ -17,19 +17,19 @@ export function HomeTestimonials() {
           designation: "Residential customer",
           quote:
             "Service is very fast and very rarely goes down. When it does they are sometimes working on it before I even know it’s down.",
-          src: "/web-images/devices-connecting.jpg",
+          src: "/people/happygorl.jpg",
         },
         {
-          name: "Jason G.",
+          name: "James G.",
           designation: "Customer",
-          quote: "I think this shit is awesome",
-          src: "/web-images/worldConnectedLowRes.jpg",
+          quote: "I love the service, it's fast and reliable.",
+          src: "/people/happyboi.jpg",
         },
         {
-          name: "Eddie Ochoa",
+          name: "Margaret M.",
           designation: "Customer",
-          quote: "I fucking hate this shit 🤬",
-          src: "/web-images/wirelessTower.jpg",
+          quote: "Blazing fast service, the whole family is happy.",
+          src: "/people/happygorl2.jpg",
         },
       ]}
     />

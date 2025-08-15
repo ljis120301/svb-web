@@ -1,15 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 
-import { Noto_Sans } from "next/font/google";
-
-const notoSans = Noto_Sans({
-  subsets: ["latin"],
-  variable: "--font-noto-sans",
-});
+import { siteFont, brandFont } from "@/lib/fonts";
 
 
 
@@ -26,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${notoSans.variable} antialiased`}>
+      <body className={`${siteFont.variable} ${brandFont.variable} antialiased`}>
         <Header />
         <main className="min-h-[calc(100vh-16rem)]">{children}</main>
         <Footer />

@@ -95,6 +95,9 @@
   --sidebar-accent-foreground: #1A1A1A;
   --sidebar-border: #E5E5E5;
   --sidebar-ring: var(--svb-poly-blue);
+  /* Font variables injected by next/font */
+  --font-site: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-brand: serif;
 }
 
 .dark {
@@ -141,7 +144,13 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-site);
   }
+}
+
+/* Utility to style the brand mark text */
+.font-brand {
+  font-family: var(--font-brand);
 }
 
 /* Marquee animation for Google Reviews */

@@ -160,6 +160,158 @@
         "applicationSpecific": false,
         "subscriberTriggered": false
       }
+    },
+    {
+      "id": "fiber-bronze",
+      "planName": "Fiber Bronze",
+      "serviceType": "Fiber",
+      "pricing": {
+        "monthlyPrice": 30,
+        "isIntroductoryRate": false,
+        "introductoryPeriod": null,
+        "priceAfterIntro": null,
+        "contractLength": "Month-to-month",
+        "earlyTerminationFee": 0
+      },
+      "additionalCharges": [
+        { "description": "ONT Lease", "amount": 0, "type": "monthly" },
+        { "description": "Professional Installation", "amount": 99, "type": "one-time" }
+      ],
+      "performance": {
+        "typicalDownloadSpeed": 50,
+        "typicalUploadSpeed": 10,
+        "typicalLatency": 5,
+        "packetLoss": 0.05
+      },
+      "dataAllowance": {
+        "monthlyDataIncluded": "Unlimited",
+        "additionalDataCharges": "0",
+        "dataUnit": "GB"
+      },
+      "discountsAndBundles": {
+        "acpEligible": true,
+        "bundleOptions": "None",
+        "discountUrl": "https://sunvalleybroadband.com/discounts"
+      },
+      "taxes": "Varies by location",
+      "networkManagement": {
+        "applicationSpecific": false,
+        "subscriberTriggered": false
+      }
+    },
+    {
+      "id": "fiber-gold",
+      "planName": "Fiber Gold",
+      "serviceType": "Fiber",
+      "pricing": {
+        "monthlyPrice": 50,
+        "isIntroductoryRate": false,
+        "introductoryPeriod": null,
+        "priceAfterIntro": null,
+        "contractLength": "Month-to-month",
+        "earlyTerminationFee": 0
+      },
+      "additionalCharges": [
+        { "description": "ONT Lease", "amount": 0, "type": "monthly" },
+        { "description": "Professional Installation", "amount": 99, "type": "one-time" }
+      ],
+      "performance": {
+        "typicalDownloadSpeed": 100,
+        "typicalUploadSpeed": 20,
+        "typicalLatency": 4,
+        "packetLoss": 0.05
+      },
+      "dataAllowance": {
+        "monthlyDataIncluded": "Unlimited",
+        "additionalDataCharges": "0",
+        "dataUnit": "GB"
+      },
+      "discountsAndBundles": {
+        "acpEligible": true,
+        "bundleOptions": "None",
+        "discountUrl": "https://sunvalleybroadband.com/discounts"
+      },
+      "taxes": "Varies by location",
+      "networkManagement": {
+        "applicationSpecific": false,
+        "subscriberTriggered": false
+      }
+    },
+    {
+      "id": "fiber-titanium",
+      "planName": "Fiber Titanium",
+      "serviceType": "Fiber",
+      "pricing": {
+        "monthlyPrice": 100,
+        "isIntroductoryRate": false,
+        "introductoryPeriod": null,
+        "priceAfterIntro": null,
+        "contractLength": "Month-to-month",
+        "earlyTerminationFee": 0
+      },
+      "additionalCharges": [
+        { "description": "ONT Lease", "amount": 0, "type": "monthly" },
+        { "description": "Professional Installation", "amount": 99, "type": "one-time" }
+      ],
+      "performance": {
+        "typicalDownloadSpeed": 500,
+        "typicalUploadSpeed": 50,
+        "typicalLatency": 3,
+        "packetLoss": 0.05
+      },
+      "dataAllowance": {
+        "monthlyDataIncluded": "Unlimited",
+        "additionalDataCharges": "0",
+        "dataUnit": "GB"
+      },
+      "discountsAndBundles": {
+        "acpEligible": true,
+        "bundleOptions": "None",
+        "discountUrl": "https://sunvalleybroadband.com/discounts"
+      },
+      "taxes": "Varies by location",
+      "networkManagement": {
+        "applicationSpecific": false,
+        "subscriberTriggered": false
+      }
+    },
+    {
+      "id": "fiber-gig",
+      "planName": "Fiber Gig",
+      "serviceType": "Fiber",
+      "pricing": {
+        "monthlyPrice": 200,
+        "isIntroductoryRate": false,
+        "introductoryPeriod": null,
+        "priceAfterIntro": null,
+        "contractLength": "Month-to-month",
+        "earlyTerminationFee": 0
+      },
+      "additionalCharges": [
+        { "description": "ONT Lease", "amount": 0, "type": "monthly" },
+        { "description": "Professional Installation", "amount": 99, "type": "one-time" }
+      ],
+      "performance": {
+        "typicalDownloadSpeed": 1000,
+        "typicalUploadSpeed": 100,
+        "typicalLatency": 2,
+        "packetLoss": 0.05
+      },
+      "dataAllowance": {
+        "monthlyDataIncluded": "Unlimited",
+        "additionalDataCharges": "0",
+        "dataUnit": "GB"
+      },
+      "discountsAndBundles": {
+        "acpEligible": true,
+        "bundleOptions": "None",
+        "discountUrl": "https://sunvalleybroadband.com/discounts"
+      },
+      "taxes": "Varies by location",
+      "networkManagement": {
+        "applicationSpecific": false,
+        "subscriberTriggered": false
+      }
     }
   ]
 }

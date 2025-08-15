@@ -112,6 +112,11 @@ export async function POST(req: NextRequest) {
       console.warn("[email] honeypot filled but captcha succeeded; allowing", { clientIp, hpWebsiteLen: hpWebsite.length });
     }
 
+    // Minimal submission metadata
+    const submittedAtIso = new Date().toISOString();
+    const submitDurationMs = nowMs - startedMs;
+    const userAgent = req.headers.get("user-agent") || undefined;
+
     // Rate limit by IP
     if (!allowRequestForIp(clientIp)) {
       console.warn("[email] rate limited", { clientIp });
@@ -142,15 +147,14 @@ export async function POST(req: NextRequest) {
     const smtpHost = process.env.SMTP_HOST;
     const smtpPort = Number(process.env.SMTP_PORT || 587);
     const smtpSecure = Boolean(process.env.SMTP_SECURE === "true");
-    const smtpUser = process.env.SMTP_USER;
-    const hasSmtpPass = Boolean(process.env.SMTP_PASS);
-    const obfuscate = (v?: string) => (v ? v.replace(/.(?=.{3})/g, "*") : v);
+  const smtpUser = process.env.SMTP_USER;
+  const hasSmtpPass = Boolean(process.env.SMTP_PASS);
 
     console.log("[email] SMTP config", {
       host: smtpHost,
       port: smtpPort,
       secure: smtpSecure,
-      user: obfuscate(smtpUser),
+    user: smtpUser,
       hasPass: hasSmtpPass,
     });
 
@@ -185,6 +189,12 @@ export async function POST(req: NextRequest) {
       to,
       replyTo: email,
       subject,
+      headers: {
+        "X-SVB-Submitted-At": submittedAtIso,
+        "X-SVB-Client-IP": clientIp,
+        "X-SVB-Page": (pageKind ?? "sales"),
+        "X-SVB-Submit-Duration-Ms": String(submitDurationMs),
+      },
       text: buildEmailText({
         name: name!,
         email: email!,
@@ -197,6 +207,10 @@ export async function POST(req: NextRequest) {
         addressState,
         addressPostalCode,
         accountNumber,
+        submittedAtIso,
+        clientIp,
+        userAgent,
+        submitDurationMs,
       }),
     });
 
@@ -229,6 +243,10 @@ function buildEmailText(payload: Required<Pick<Payload, "name" | "email" | "mess
   addressState?: string;
   addressPostalCode?: string;
   accountNumber?: string;
+  submittedAtIso?: string;
+  clientIp?: string;
+  userAgent?: string;
+  submitDurationMs?: number;
 }): string {
   const isSales = payload.pageKind === "sales";
   const lines: string[] = [];
@@ -236,6 +254,9 @@ function buildEmailText(payload: Required<Pick<Payload, "name" | "email" | "mess
   lines.push(header);
   lines.push("=".repeat(header.length));
   lines.push(`From: ${payload.name} <${payload.email}>`);
+  if (payload.submittedAtIso) lines.push(`Submitted: ${payload.submittedAtIso}`);
+  if (payload.clientIp && payload.clientIp !== "unknown") lines.push(`Client IP: ${payload.clientIp}`);
+  if (typeof payload.submitDurationMs === "number") lines.push(`Fill Time: ${payload.submitDurationMs} ms`);
   if (payload.accountNumber && payload.accountNumber.trim()) {
     lines.push(`Account #: ${payload.accountNumber.trim()}`);
   }

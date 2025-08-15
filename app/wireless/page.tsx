@@ -1,18 +1,15 @@
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogTrigger, DialogHeader, DialogTitle, DialogClose } from "@/components/ui/dialog";
-import BroadbandFactsLabel from "@/components/site/FCCbroadbandLabels";
 import { EligibilityCta } from "@/components/site/EligibilityCta";
 import { ProductBanner } from "@/components/site/Banners";
-import { Badge } from "@/components/ui/badge";
+import { PlansGrid } from "@/components/site/PlansGrid";
 
 export const metadata = { title: "Wireless Internet | Sun Valley Broadband" };
 
 export default function WirelessPage() {
   const wirelessPlans = [
-    { name: "Bronze", price: 45, download: 10, upload: 3, color: "border-amber-500", planId: "wireless-bronze" },
-    { name: "Silver", price: 55, download: 15, upload: 5, color: "border-gray-300", planId: "wireless-silver" },
-    { name: "Gold", price: 75, download: 20, upload: 5, color: "border-yellow-400", planId: "wireless-gold" },
-    { name: "Titanium", price: 155, download: 25, upload: 5, color: "border-slate-400", businessOnly: true, description: "Ideal for small businesses and offices", planId: "wireless-titanium" },
+    { name: "Bronze", price: 39.95, download: 10, upload: 3, color: "border-amber-500", planId: "wireless-bronze" },
+    { name: "Silver", price: 49.95, download: 15, upload: 3, color: "border-gray-300", planId: "wireless-silver" },
+    { name: "Gold", price: 69.95, download: 25, upload: 5, color: "border-yellow-400", planId: "wireless-gold" },
+    { name: "Titanium", price: 89.95, download: 30, upload: 5, color: "border-slate-400", businessOnly: true, description: "Ideal for small businesses and offices", planId: "wireless-titanium" },
   ];
 
   return (
@@ -23,57 +20,7 @@ export default function WirelessPage() {
         Flexible installation and reliable performance across your property.
       </p>
 
-      <div className="mt-8 grid auto-rows-fr gap-6 sm:grid-cols-2 md:grid-cols-4">
-        {wirelessPlans.map((p) => (
-          <Dialog key={p.name}>
-            <DialogTrigger asChild>
-              <Card className={`group relative h-full border-2 ${p.color} cursor-pointer overflow-hidden bg-white transition hover:-translate-y-1 hover:shadow-md dark:bg-neutral-950 pb-14`}>
-                <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-neutral-200 via-neutral-400 to-neutral-200 dark:from-neutral-800 dark:via-neutral-700 dark:to-neutral-800" />
-                <div className="absolute top-2 right-2 z-10">
-                  <Badge variant="outline" className="text-[10px] font-medium px-1.5 py-0 rounded-sm whitespace-nowrap shrink-0 border-neutral-300 text-neutral-600">{p.businessOnly ? "Business only" : "Residential & business"}</Badge>
-                </div>
-                <CardHeader className="pb-0 pr-24">
-                  <CardTitle className="text-xl tracking-tight">{p.name}</CardTitle>
-                  <CardDescription className="mt-1 text-[13px]">Fixed Wireless Internet</CardDescription>
-                </CardHeader>
-                <CardContent className="pt-4">
-                  <div className="flex flex-col items-center">
-                    <div className="flex items-end gap-1">
-                      <span className="text-4xl font-extrabold leading-none">${""}{p.price}</span>
-                      <span className="pb-1 text-sm text-neutral-500">/mo</span>
-                    </div>
-                    <div className="mt-4 flex w-full items-center justify-center gap-2">
-                      <div className="rounded-md bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-700 ring-1 ring-neutral-200 dark:bg-neutral-900 dark:text-neutral-300 dark:ring-neutral-800">
-                        {p.download} Mbps down
-                      </div>
-                      <div className="rounded-md bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-700 ring-1 ring-neutral-200 dark:bg-neutral-900 dark:text-neutral-300 dark:ring-neutral-800">
-                        {p.upload} Mbps up
-                      </div>
-                    </div>
-                    {p.description ? (
-                      <p className="mt-4 text-center text-sm text-neutral-600 dark:text-neutral-400">
-                        {p.description}
-                      </p>
-                    ) : null}
-                  </div>
-                </CardContent>
-                <span className="absolute bottom-3 right-3 text-xs text-neutral-500 whitespace-nowrap shrink-0">View FCC facts</span>
-              </Card>
-            </DialogTrigger>
-            <DialogContent>
-              <DialogHeader>
-                <DialogTitle>FCC Broadband Facts — {p.name}</DialogTitle>
-              </DialogHeader>
-              <div className="max-h-[70vh] overflow-auto flex items-start justify-center">
-                <BroadbandFactsLabel planId={p.planId} />
-              </div>
-              <div className="flex justify-end">
-                <DialogClose>Close</DialogClose>
-              </div>
-            </DialogContent>
-          </Dialog>
-        ))}
-      </div>
+      <PlansGrid plans={wirelessPlans} serviceLabel="Fixed Wireless Internet" showFacts gridClassName="mt-8 grid auto-rows-fr gap-6 sm:grid-cols-2 md:grid-cols-4" />
 
       <EligibilityCta className="mt-12" />
     </div>

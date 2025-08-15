@@ -13,6 +13,8 @@ import {
 import { usePathname } from "next/navigation";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { IconMail } from "@tabler/icons-react";
+
 
 const navItems = [
   { href: "/", label: "Home" },
@@ -37,7 +39,9 @@ export function Header() {
             height={55}
             priority
           />
-          <span className="font-semibold text-black">Sun Valley Broadband</span>
+          <span className={cn("font-semibold text-black font-brand")}>
+            SUN VALLEY BROADBAND
+          </span>
         </Link>
 
         <nav className="hidden md:flex">
@@ -77,6 +81,18 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <Link
+            href="https://mail.b.hostedemail.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cn(
+              buttonVariants({ variant: "default" }),
+              "bg-accent text-black hover:bg-accent/80"
+            )}
+          >
+            <IconMail className="w-4 h-4" />
+            Email
+          </Link>
           <Link href="/contact" className={buttonVariants({ variant: "default" })}>
             Get started
           </Link>
