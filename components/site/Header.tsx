@@ -30,7 +30,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60 text-[110%]">
-      <div className="mx-auto flex h-[80px] max-w-6xl items-center justify-between px-4">
+      <div className="mx-auto flex h-[80px] max-w-7xl items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-0">
           <BrandLogo />
         </Link>

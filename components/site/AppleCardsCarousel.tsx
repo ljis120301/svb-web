@@ -227,7 +227,11 @@ export const AppleCard = ({
             {card.title}
           </motion.p>
         </div>
-        <BlurImage src={card.src} alt={card.title} className="absolute inset-0 z-10 object-cover" />
+        <BlurImage
+          src={card.src}
+          alt={card.title}
+          className="absolute inset-0 z-10 object-cover"
+        />
       </motion.button>
     </>
   );
@@ -239,9 +243,10 @@ export function BlurImage({ src, className, alt }: { src: string; className?: st
       src={src}
       alt={alt ?? "Image"}
       fill
-      sizes="(max-width: 768px) 224px, 384px"
+      sizes="(max-width: 640px) 70vw, (max-width: 1024px) 640px, 1024px"
       className={cn("object-cover", className)}
       priority={false}
+      quality={90}
     />
   );
 }
