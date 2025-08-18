@@ -71,14 +71,48 @@ interface BroadbandData {
   plans: Plan[];
 }
 
-interface BroadbandFactsLabelProps {
+interface PagePlanData {
+  name?: string;
+  price?: number;
+  download?: number;
+  upload?: number;
   planId?: string;
 }
 
-export default function BroadbandFactsLabel({ planId = 'standard-100' }: BroadbandFactsLabelProps) {
+interface BroadbandFactsLabelProps {
+  planId?: string;
+  planFromPage?: PagePlanData;
+  serviceLabel?: string;
+}
+
+export default function BroadbandFactsLabel({ planId = 'standard-100', planFromPage, serviceLabel }: BroadbandFactsLabelProps) {
   const typedBroadbandData = broadbandData as BroadbandData;
-  const plan = typedBroadbandData.plans.find(p => p.id === planId) || typedBroadbandData.plans[1];
+  const resolvedPlanId = planFromPage?.planId ?? planId;
+  const jsonPlan = typedBroadbandData.plans.find(p => p.id === resolvedPlanId) || typedBroadbandData.plans[1];
   const provider = typedBroadbandData.provider;
+
+  const normalizedServiceType = (() => {
+    if (serviceLabel) {
+      const label = serviceLabel.toLowerCase();
+      if (label.includes('wireless')) return 'Fixed Wireless';
+      if (label.includes('fiber')) return 'Fiber';
+    }
+    return jsonPlan.serviceType;
+  })();
+
+  const plan: Plan = {
+    ...jsonPlan,
+    serviceType: normalizedServiceType,
+    pricing: {
+      ...jsonPlan.pricing,
+      monthlyPrice: planFromPage?.price ?? jsonPlan.pricing.monthlyPrice,
+    },
+    performance: {
+      ...jsonPlan.performance,
+      typicalDownloadSpeed: planFromPage?.download ?? jsonPlan.performance.typicalDownloadSpeed,
+      typicalUploadSpeed: planFromPage?.upload ?? jsonPlan.performance.typicalUploadSpeed,
+    },
+  };
 
   return (
     <article className="text-sm leading-tight border-2 border-black p-2 mb-2 bg-white min-w-[250px] max-w-[380px] text-black mx-auto" style={{fontFamily: 'Helvetica, Arial, sans-serif'}}>

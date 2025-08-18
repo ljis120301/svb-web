@@ -4,6 +4,7 @@ import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import { motion, AnimatePresence } from "motion/react";
 
 import { useEffect, useMemo, useState } from "react";
+import Image from "next/image";
 
 type Testimonial = {
   quote: string;
@@ -91,14 +92,17 @@ export const AnimatedTestimonials = ({
                   }}
                   className="absolute inset-0 origin-bottom"
                 >
-                  <img
-                    src={testimonial.src}
-                    alt={testimonial.name}
-                    width={500}
-                    height={500}
-                    draggable={false}
-                    className="h-full w-full rounded-3xl object-cover object-center"
-                  />
+                  <div className="absolute inset-0">
+                    <Image
+                      src={testimonial.src}
+                      alt={testimonial.name}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      draggable={false}
+                      className="rounded-3xl object-cover object-center"
+                      priority={false}
+                    />
+                  </div>
                 </motion.div>
               ))}
             </AnimatePresence>

@@ -62,6 +62,8 @@ export function GoogleReviewsMarquee() {
             width={28}
             height={28}
             className="h-7 w-7 select-none"
+            loading="lazy"
+            decoding="async"
           />
           <h2 className="text-center text-2xl font-semibold text-gray-900 dark:text-gray-100">
             Google reviews

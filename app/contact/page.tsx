@@ -2,6 +2,9 @@ import { ContactForm } from "@/components/site/ContactForm";
 
 export const metadata = {
   title: "Contact Sales | Sun Valley Broadband",
+  description:
+    "Request Sun Valley Broadband service in Yuma, AZ or ask a question. Our local sales team will get back to you.",
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {

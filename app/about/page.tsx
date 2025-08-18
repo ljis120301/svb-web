@@ -1,5 +1,8 @@
 export const metadata = {
-  title: "About | Sun Valley Broadband",
+  title: "About Sun Valley Broadband (Yuma, AZ)",
+  description:
+    "Learn about Sun Valley Broadband, a local ISP in Yuma, Arizona providing fiber and fixed wireless internet with friendly, local support.",
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {

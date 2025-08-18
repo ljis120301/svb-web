@@ -3,7 +3,10 @@ import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Services | Sun Valley Broadband",
+  title: "Internet Services in Yuma, AZ",
+  description:
+    "Explore Sun Valley Broadband services: Fiber Internet, Fixed Wireless, and Cable TV for homes and businesses in Yuma, Arizona.",
+  alternates: { canonical: "/services" },
 };
 
 export default function ServicesPage() {

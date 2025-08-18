@@ -4,7 +4,12 @@ import { PlansGrid } from "@/components/site/PlansGrid";
 import { Gauge, Infinity, Headphones, ShieldCheck, BadgeCheck, Router } from "lucide-react";
 import Image from "next/image";
 
-export const metadata = { title: "Wireless Internet | Sun Valley Broadband" };
+export const metadata = {
+  title: "Fixed Wireless Internet in Yuma, AZ",
+  description:
+    "Fast, dependable fixed wireless internet across Yuma, AZ from Sun Valley Broadband. Professional install and local support.",
+  alternates: { canonical: "/wireless" },
+};
 
 export default function WirelessPage() {
   const wirelessPlans = [
@@ -50,7 +55,7 @@ export default function WirelessPage() {
           <div className="rounded-2xl border border-slate-200 p-6 ring-1 ring-black/5 dark:border-neutral-800">
             <div className="flex gap-4">
               <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-md ring-1 ring-neutral-200 dark:ring-neutral-800">
-                <Image src="/web-images/lightbeamNOBACKGROUND.png" alt="Ubiquiti LiteBeam antenna" fill className="object-cover object-center drop-shadow-lg" />
+                <Image src="/web-images/lightbeamNOBACKGROUND.png" alt="Ubiquiti LiteBeam antenna" fill sizes="80px" className="object-cover object-center drop-shadow-lg" />
               </div>
               <div>
                 <h3 className="text-base font-semibold">Ubiquiti LiteBeam — focused wireless signal</h3>
@@ -66,7 +71,7 @@ export default function WirelessPage() {
           <div className="rounded-2xl border border-slate-200 p-6 ring-1 ring-black/5 dark:border-neutral-800">
             <div className="flex gap-4">
               <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-md ring-1 ring-neutral-200 dark:ring-neutral-800">
-                <Image src="/tpLinkRouter.png" alt="TP‑Link in‑home Wi‑Fi router" fill className="object-cover object-center drop-shadow-card drop-shadow-lg" />
+                <Image src="/tpLinkRouter.png" alt="TP‑Link in‑home Wi‑Fi router" fill sizes="80px" className="object-cover object-center drop-shadow-card drop-shadow-lg" />
               </div>
               <div>
                 <h3 className="text-base font-semibold">TP‑Link Wi‑Fi Router — simple whole‑home Wi‑Fi</h3>

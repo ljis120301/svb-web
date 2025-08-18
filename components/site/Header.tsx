@@ -1,6 +1,4 @@
 "use client";
-
-import Image from "next/image";
 import Link from "next/link";
 import {
   NavigationMenu,
@@ -14,6 +12,8 @@ import { usePathname } from "next/navigation";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { IconMail } from "@tabler/icons-react";
+import { IconPhone } from "@tabler/icons-react";
+import { BrandLogo } from "@/components/site/BrandLogo";
 
 
 const navItems = [
@@ -30,23 +30,9 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60 text-[110%]">
-      <div className="mx-auto flex h-[70.4px] max-w-6xl items-center justify-between px-4">
+      <div className="mx-auto flex h-[80px] max-w-6xl items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-0">
-          <Image
-            src="/web-images/logos/Transparent-LogoNOTEXT.png"
-            alt="Sun Valley Broadband logo"
-            width={55}
-            height={55}
-            priority
-          />
-          <Image
-            src="/cropped-Transparent-Logo-4-2048x682.png"
-            alt="Sun Valley Broadband wordmark"
-            width={250}
-            height={250}
-            priority
-            className="h-[5em] w-[15em] pt-2 -ml-4"
-          />
+          <BrandLogo />
         </Link>
 
         <nav className="hidden md:flex">
@@ -86,6 +72,14 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <a
+            href="tel:+19283430300"
+            aria-label="Call (928) 343-0300"
+            className={buttonVariants({ variant: "outline" })}
+          >
+            <IconPhone className="w-4 h-4" />
+            (928) 343-0300
+          </a>
           <Link
             href="https://webmail.beamspeed.net/"
             target="_blank"

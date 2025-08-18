@@ -2,6 +2,9 @@ import { ContactForm } from "@/components/site/ContactForm";
 
 export const metadata = {
   title: "Technical Support | Sun Valley Broadband",
+  description:
+    "Get help fast from our local support team in Yuma, AZ. Submit a ticket and we will reach out.",
+  alternates: { canonical: "/support" },
 };
 
 export default function SupportPage() {

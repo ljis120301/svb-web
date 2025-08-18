@@ -19,7 +19,7 @@ export function AppleCardsList() {
                 <br />
                 <a className="">With modern Streaming Platform taking up more bandwidth than ever, we provide a perfect streaming experience.</a>
                 <a className="flex justify-center pt-6">
-                  <Image src="/speedtest.svg" alt="Speedtest" width={500} height={500} className="rounded-lg" />
+                  <Image src="/speedtest.svg" alt="Speedtest" width={500} height={500} className="rounded-lg" style={{ height: "auto" }} />
                 </a>
               </p>
             ),
@@ -50,11 +50,12 @@ export function AppleCardsList() {
   <br />
   <br />
   <Image
-    src="/web-images/lightbeam.png"
+    src="/lightbeam.png"
     alt="LightBeam"
     width={500}
     height={500}
     className="rounded-lg"
+    style={{ height: "auto" }}
   />
   <br />
   <br />
@@ -104,6 +105,7 @@ export function AppleCardsList() {
     width={500}
     height={500}
     className="rounded-lg"
+    style={{ height: "auto" }}
   />
   <br />
   <br />

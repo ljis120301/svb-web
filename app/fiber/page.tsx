@@ -4,7 +4,12 @@ import { PlansGrid } from "@/components/site/PlansGrid";
 import { Gauge, Infinity, Headphones, ShieldCheck, BadgeCheck, Router } from "lucide-react";
 import Image from "next/image";
 
-export const metadata = { title: "Fiber Internet | Sun Valley Broadband" };
+export const metadata = {
+  title: "Fiber Internet in Yuma, AZ",
+  description:
+    "Blazing-fast fiber internet from Sun Valley Broadband in Yuma, AZ. Low latency, local support, and no data caps.",
+  alternates: { canonical: "/fiber" },
+};
 
 export default function FiberPage() {
   const fiberPlans = [
@@ -55,7 +60,7 @@ export default function FiberPage() {
           <div className="rounded-2xl border border-slate-200 p-6 ring-1 ring-black/5 dark:border-neutral-800">
             <div className="flex gap-4">
               <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-md ring-1 ring-neutral-200 dark:ring-neutral-800">
-                <Image src="/UF-LOCO.png" alt="Ubiquiti UFiber Loco modem" fill className="object-contain p-1 drop-shadow-lg" />
+                <Image src="/UF-LOCO.png" alt="Ubiquiti UFiber Loco modem" fill sizes="80px" className="object-contain p-1 drop-shadow-lg" />
               </div>
               <div>
                 <h3 className="text-base font-semibold">UFiber Loco — keep your own Wi‑Fi</h3>
@@ -72,7 +77,7 @@ export default function FiberPage() {
           <div className="rounded-2xl border border-slate-200 p-6 ring-1 ring-black/5 dark:border-neutral-800">
             <div className="flex gap-4">
               <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-md ring-1 ring-neutral-200 dark:ring-neutral-800">
-                <Image src="/UFiberwifi6.png" alt="Ubiquiti UFiber Wi‑Fi 6 all‑in‑one" fill className="object-contain p-1 drop-shadow-lg" />
+                <Image src="/UFiberwifi6.png" alt="Ubiquiti UFiber Wi‑Fi 6 all‑in‑one" fill sizes="80px" className="object-contain p-1 drop-shadow-lg" />
               </div>
               <div>
                 <h3 className="text-base font-semibold">UFiber Wi‑Fi 6 — one box for everything</h3>

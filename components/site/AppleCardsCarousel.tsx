@@ -15,6 +15,7 @@ import {
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "motion/react";
 import { useOutsideClick } from "@/hooks/use-outside-click";
+import Image from "next/image";
 
 export interface AppleCarouselProps {
   items: React.ReactElement[];
@@ -49,6 +50,12 @@ export const AppleCarousel = ({ items, initialScroll = 0 }: AppleCarouselProps) 
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialScroll]);
+
+  useEffect(() => {
+    const onResize = () => checkScrollability();
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
   const checkScrollability = () => {
     if (carouselRef.current) {
@@ -91,7 +98,11 @@ export const AppleCarousel = ({ items, initialScroll = 0 }: AppleCarouselProps) 
           ref={carouselRef}
           onScroll={checkScrollability}
         >
-          <div className={cn("absolute right-0 z-[10] h-auto w-[5%] overflow-hidden bg-gradient-to-l")}></div>
+          <div
+            className={cn(
+              "pointer-events-none absolute right-0 top-0 z-[10] h-full w-12 bg-gradient-to-l from-background to-transparent",
+            )}
+          />
           <div className={cn("mx-auto max-w-7xl", "flex flex-row justify-start gap-4 pl-4")}> 
             {items.map((item, index) => (
               <motion.div
@@ -111,6 +122,7 @@ export const AppleCarousel = ({ items, initialScroll = 0 }: AppleCarouselProps) 
             className="relative z-40 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 disabled:opacity-50 dark:bg-neutral-800"
             onClick={scrollLeft}
             disabled={!canScrollLeft}
+            aria-label="Scroll left"
           >
             <IconArrowNarrowLeft className="h-6 w-6 text-gray-500" />
           </button>
@@ -118,6 +130,7 @@ export const AppleCarousel = ({ items, initialScroll = 0 }: AppleCarouselProps) 
             className="relative z-40 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 disabled:opacity-50 dark:bg-neutral-800"
             onClick={scrollRight}
             disabled={!canScrollRight}
+            aria-label="Scroll right"
           >
             <IconArrowNarrowRight className="h-6 w-6 text-gray-500" />
           </button>
@@ -138,7 +151,7 @@ export const AppleCard = ({
 }) => {
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  const { onCardClose, currentIndex } = useContext(AppleCarouselContext);
+  const { onCardClose } = useContext(AppleCarouselContext);
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
@@ -167,7 +180,7 @@ export const AppleCard = ({
     <>
       <AnimatePresence>
         {open && (
-          <div className="fixed inset-0 z-50 h-screen overflow-auto">
+          <div className="fixed inset-0 z-[100] h-screen overflow-auto">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -180,11 +193,12 @@ export const AppleCard = ({
               exit={{ opacity: 0 }}
               ref={containerRef}
               layoutId={layout ? `card-${card.title}` : undefined}
-              className="relative z-[60] mx-auto my-10 h-fit max-w-5xl rounded-3xl bg-white p-4 font-sans md:p-10 dark:bg-neutral-900"
+              className="relative z-[110] mx-auto my-10 h-fit max-w-5xl rounded-3xl bg-white p-4 font-sans md:p-10 dark:bg-neutral-900"
             >
               <button
                 className="sticky top-4 right-0 ml-auto flex h-8 w-8 items-center justify-center rounded-full bg-black dark:bg-white"
                 onClick={handleClose}
+                aria-label="Close"
               >
                 <IconX className="h-6 w-6 text-neutral-100 dark:text-neutral-900" />
               </button>
@@ -220,15 +234,14 @@ export const AppleCard = ({
 };
 
 export function BlurImage({ src, className, alt }: { src: string; className?: string; alt?: string }) {
-  const [isLoading, setLoading] = useState(false);
   return (
-    <img
-      className={cn("h-full w-full transition duration-300", className)}
-      onLoad={() => setLoading(false)}
+    <Image
       src={src}
-      loading="lazy"
-      decoding="async"
       alt={alt ?? "Image"}
+      fill
+      sizes="(max-width: 768px) 224px, 384px"
+      className={cn("object-cover", className)}
+      priority={false}
     />
   );
 }

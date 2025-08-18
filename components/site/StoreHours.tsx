@@ -17,7 +17,7 @@ export function StoreHours() {
               alt="Sun Valley Broadband logo"
               width={28}
               height={28}
-              priority
+              sizes="28px"
             />
             <CardTitle className="text-xl">Sun Valley Broadband Office</CardTitle>
           </div>

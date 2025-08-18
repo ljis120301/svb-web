@@ -101,6 +101,7 @@ export const InfiniteMovingCards = ({
                     width={20}
                     height={20}
                     loading="lazy"
+                    decoding="async"
                   />
                   <span className="text-xs font-semibold text-[#1a73e8] dark:text-[#8ab4f8]">
                     Google
@@ -135,7 +136,7 @@ export const InfiniteMovingCards = ({
                   </div>
                 </div>
                 <div className="flex items-center gap-1 text-xs text-neutral-500 dark:text-neutral-400">
-                  <img src="/icons8-google-16.svg" alt="Google" className="h-4 w-4" width={16} height={16} />
+                  <img src="/icons8-google-16.svg" alt="Google" className="h-4 w-4" width={16} height={16} loading="lazy" decoding="async" />
                   <span>Review on Google</span>
                 </div>
               </div>
