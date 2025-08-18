@@ -19,7 +19,7 @@ export default function FiberPage() {
       <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-64 bg-[radial-gradient(50%_60%_at_50%_-20%,rgba(59,130,246,0.15),transparent)] dark:bg-[radial-gradient(50%_60%_at_50%_-20%,rgba(59,130,246,0.25),transparent)]" />
 
       <div className="rounded-2xl overflow-hidden shadow-2xl ring-1 ring-black/10">
-      <ProductBanner src="/web-images/familySitting.jpeg" alt="Family streaming" title="Fiber Internet you can trust" />
+      <ProductBanner src="/tv.jpg" alt="Family streaming" title="Fiber Internet you can trust" />
       </div>
 
       <div className="mt-8 text-center">
