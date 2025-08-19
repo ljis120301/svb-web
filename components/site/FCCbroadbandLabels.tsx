@@ -29,10 +29,11 @@ interface DiscountsAndBundles {
   discountUrl: string;
 }
 
-interface NetworkManagement {
-  applicationSpecific: boolean;
-  subscriberTriggered: boolean;
+interface InstallationFees {
+  wireless: number;
+  fiber: number;
 }
+
 
 interface Pricing {
   monthlyPrice: number;
@@ -53,7 +54,6 @@ interface Plan {
   dataAllowance: DataAllowance;
   discountsAndBundles: DiscountsAndBundles;
   taxes: string;
-  networkManagement: NetworkManagement;
 }
 
 interface Provider {
@@ -69,6 +69,7 @@ interface Provider {
 interface BroadbandData {
   provider: Provider;
   plans: Plan[];
+  installationFees: InstallationFees;
 }
 
 interface PagePlanData {
@@ -112,7 +113,13 @@ export default function BroadbandFactsLabel({ planId = 'standard-100', planFromP
       typicalDownloadSpeed: planFromPage?.download ?? jsonPlan.performance.typicalDownloadSpeed,
       typicalUploadSpeed: planFromPage?.upload ?? jsonPlan.performance.typicalUploadSpeed,
     },
+    additionalCharges: jsonPlan.additionalCharges,
   };
+
+  const resolvedInstallationFee =
+    normalizedServiceType === 'Fixed Wireless'
+      ? typedBroadbandData.installationFees.wireless
+      : typedBroadbandData.installationFees.fiber;
 
   return (
     <article className="text-sm leading-tight border-2 border-black p-2 mb-2 bg-white min-w-[250px] max-w-[380px] text-black mx-auto" style={{fontFamily: 'Helvetica, Arial, sans-serif'}}>
@@ -151,11 +158,7 @@ export default function BroadbandFactsLabel({ planId = 'standard-100', planFromP
           Length of contract: <span className="float-none font-bold text-black">{plan.pricing.contractLength}</span>
         </p>
         
-        <p className="mt-1.5 m-0 text-black text-xs">
-          Link to Terms of Contract: <a href={provider.termsOfServiceUrl} target="_blank" className="text-[#007bff] float-none" title={provider.termsOfServiceUrl}>
-            {provider.termsOfServiceUrl}
-          </a>
-        </p>
+        
       </section>
 
       {/* Additional Charges & Terms */}
@@ -183,16 +186,7 @@ export default function BroadbandFactsLabel({ planId = 'standard-100', planFromP
             </h5>
           ))}
 
-        <h5 className="font-normal text-xs pl-4 m-0 mb-1 text-black">One-Time Purchase Fees</h5>
         
-        {plan.additionalCharges
-          .filter(charge => charge.type === 'one-time')
-          .map((charge, index) => (
-            <h5 key={index} className="font-normal text-xs pl-4 m-0 flex justify-between text-black mb-1">
-              {charge.description}
-              <span className="float-right font-bold text-black pr-6">${charge.amount.toFixed(2)}</span>
-            </h5>
-          ))}
 
         <h5 className="font-normal text-xs pl-4 m-0 flex justify-between text-black mb-1">
           Early Termination Fee 
@@ -207,18 +201,7 @@ export default function BroadbandFactsLabel({ planId = 'standard-100', planFromP
         </h5>
       </section>
 
-      {/* Discounts & Bundles */}
-      <section className="border-b-2 border-black pb-1 mb-2">
-        <h4 className="font-black text-xs mb-0.5 text-black leading-tight">Discounts & Bundles</h4>
-        <p className="pl-4 mt-0.5 m-0 text-black">
-          Visit the link below for available billing discounts and pricing options for broadband service bundled with other services like video, phone, and wireless service, and use of your own equipment.
-        </p>
-        <p className="pl-4 mt-0.5 m-0 text-black">
-          <a href={plan.discountsAndBundles.discountUrl} target="_blank" className="text-[#007bff] float-none" title={plan.discountsAndBundles.discountUrl}>
-            {plan.discountsAndBundles.discountUrl}
-          </a>
-        </p>
-      </section>
+      
 
       {/* Speeds Provided with Plan */}
       <section className="border-b-2 border-black pb-1 mb-2">
@@ -246,29 +229,11 @@ export default function BroadbandFactsLabel({ planId = 'standard-100', planFromP
         </h5>
         <h5 className="font-normal text-xs pl-4 m-0 flex justify-between text-black mb-1">
           Charges for Additional Data Usage 
-          <span className="float-right font-bold text-black pr-6">{plan.dataAllowance.additionalDataCharges}</span>
+          <span className="float-right font-bold text-black pr-6">${plan.dataAllowance.additionalDataCharges}</span>
         </h5>
       </section>
 
-      {/* Policies */}
-      <section className="border-b-2 border-black pb-1 mb-2">
-        <p className="font-black text-xs mb-0.5 text-black leading-tight ">
-          Network Management Policy
-        </p>
-        <p className="pl-4 m-0 text-black text-xs">
-          <a href={provider.networkManagementUrl} target="_blank" className="text-[#007bff]" title={provider.networkManagementUrl}>
-            {provider.networkManagementUrl}
-          </a>
-        </p>
-        <p className="font-black text-xs mb-0.5 text-black leading-tight">
-          Privacy Policy
-        </p>
-        <p className="pl-4 m-0 text-black text-xs">
-          <a href={provider.privacyPolicyUrl} target="_blank" className="text-[#007bff]" title={provider.privacyPolicyUrl}>
-            {provider.privacyPolicyUrl}
-          </a>
-        </p>
-      </section>
+      
 
       {/* Customer Support */}
       <section className="border-b-2 border-black pb-1 mb-2">

@@ -10,7 +10,7 @@ export function HomeTestimonials() {
           designation: "Residential customer",
           quote:
             "Been a customer for years now. The service has been upgraded. And the best part it’s affordable. Great customer service.",
-          src: "/web-images/familySitting.jpeg",
+          src: "/stylish-happy-african-american-male-wears-casual-clothes-points-camera-with-fore-fingers.jpg",
         },
         {
           name: "R. Nicolette",

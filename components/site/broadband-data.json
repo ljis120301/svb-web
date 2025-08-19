@@ -2,11 +2,15 @@
   "provider": {
     "name": "Sun Valley Broadband",
     "logo": "/web-images/logos/svbLogo.svg",
-    "supportPhone": "(928) 555-0123",
+    "supportPhone": "(928) 343-0300",
     "supportWebsite": "https://sunvalleybroadband.com/support",
     "privacyPolicyUrl": "https://sunvalleybroadband.com/privacy",
     "networkManagementUrl": "https://sunvalleybroadband.com/network-management",
     "termsOfServiceUrl": "https://sunvalleybroadband.com/terms"
+  },
+  "installationFees": {
+    "wireless": 40,
+    "fiber": 99
   },
   "plans": [
     {
@@ -22,13 +26,12 @@
         "earlyTerminationFee": 0
       },
       "additionalCharges": [
-        { "description": "Equipment Lease", "amount": 5, "type": "monthly" },
-        { "description": "Professional Installation", "amount": 99, "type": "one-time" }
+        { "description": "Equipment Lease (optional)", "amount": 5, "type": "monthly" }
       ],
       "performance": {
         "typicalDownloadSpeed": 10,
         "typicalUploadSpeed": 3,
-        "typicalLatency": 30,
+        "typicalLatency": 45,
         "packetLoss": 0.1
       },
       "dataAllowance": {
@@ -60,13 +63,12 @@
         "earlyTerminationFee": 0
       },
       "additionalCharges": [
-        { "description": "Equipment Lease", "amount": 5, "type": "monthly" },
-        { "description": "Professional Installation", "amount": 99, "type": "one-time" }
+        { "description": "Equipment Lease", "amount": 5, "type": "monthly" }
       ],
       "performance": {
         "typicalDownloadSpeed": 15,
         "typicalUploadSpeed": 5,
-        "typicalLatency": 28,
+        "typicalLatency": 45,
         "packetLoss": 0.1
       },
       "dataAllowance": {
@@ -98,13 +100,12 @@
         "earlyTerminationFee": 0
       },
       "additionalCharges": [
-        { "description": "Equipment Lease", "amount": 5, "type": "monthly" },
-        { "description": "Professional Installation", "amount": 99, "type": "one-time" }
+        { "description": "Equipment Lease", "amount": 5, "type": "monthly" }
       ],
       "performance": {
         "typicalDownloadSpeed": 20,
         "typicalUploadSpeed": 5,
-        "typicalLatency": 25,
+        "typicalLatency": 45,
         "packetLoss": 0.1
       },
       "dataAllowance": {
@@ -136,13 +137,12 @@
         "earlyTerminationFee": 0
       },
       "additionalCharges": [
-        { "description": "Equipment Lease", "amount": 5, "type": "monthly" },
-        { "description": "Professional Installation", "amount": 99, "type": "one-time" }
+        { "description": "Equipment Lease", "amount": 5, "type": "monthly" }
       ],
       "performance": {
         "typicalDownloadSpeed": 25,
         "typicalUploadSpeed": 5,
-        "typicalLatency": 22,
+        "typicalLatency": 45,
         "packetLoss": 0.1
       },
       "dataAllowance": {
@@ -174,13 +174,12 @@
         "earlyTerminationFee": 0
       },
       "additionalCharges": [
-        { "description": "ONT Lease", "amount": 0, "type": "monthly" },
-        { "description": "Professional Installation", "amount": 99, "type": "one-time" }
+        { "description": "ONT Lease", "amount": 0, "type": "monthly" }
       ],
       "performance": {
         "typicalDownloadSpeed": 50,
         "typicalUploadSpeed": 10,
-        "typicalLatency": 5,
+        "typicalLatency": 30,
         "packetLoss": 0.05
       },
       "dataAllowance": {
@@ -212,13 +211,12 @@
         "earlyTerminationFee": 0
       },
       "additionalCharges": [
-        { "description": "ONT Lease", "amount": 0, "type": "monthly" },
-        { "description": "Professional Installation", "amount": 99, "type": "one-time" }
+        { "description": "ONT Lease", "amount": 0, "type": "monthly" }
       ],
       "performance": {
         "typicalDownloadSpeed": 100,
         "typicalUploadSpeed": 20,
-        "typicalLatency": 4,
+        "typicalLatency": 30,
         "packetLoss": 0.05
       },
       "dataAllowance": {
@@ -250,13 +248,12 @@
         "earlyTerminationFee": 0
       },
       "additionalCharges": [
-        { "description": "ONT Lease", "amount": 0, "type": "monthly" },
-        { "description": "Professional Installation", "amount": 99, "type": "one-time" }
+        { "description": "ONT Lease", "amount": 0, "type": "monthly" }
       ],
       "performance": {
         "typicalDownloadSpeed": 500,
         "typicalUploadSpeed": 50,
-        "typicalLatency": 3,
+        "typicalLatency": 30,
         "packetLoss": 0.05
       },
       "dataAllowance": {
@@ -288,13 +285,12 @@
         "earlyTerminationFee": 0
       },
       "additionalCharges": [
-        { "description": "ONT Lease", "amount": 0, "type": "monthly" },
-        { "description": "Professional Installation", "amount": 99, "type": "one-time" }
+        { "description": "ONT Lease", "amount": 0, "type": "monthly" }
       ],
       "performance": {
         "typicalDownloadSpeed": 1000,
         "typicalUploadSpeed": 100,
-        "typicalLatency": 2,
+        "typicalLatency": 30,
         "packetLoss": 0.05
       },
       "dataAllowance": {

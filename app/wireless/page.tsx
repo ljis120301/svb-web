@@ -5,7 +5,7 @@ import { Gauge, Infinity, Headphones, ShieldCheck, BadgeCheck, Router } from "lu
 import Image from "next/image";
 
 export const metadata = {
-  title: "Fixed Wireless Internet in Yuma, AZ",
+  title: "Fixed Wireless Internet in Yuma, Wellton, Brawley, Winterhaven, and Holtville",
   description:
     "Fast, dependable fixed wireless internet across Yuma, AZ from Sun Valley Broadband. Professional install and local support.",
   alternates: { canonical: "/wireless" },
@@ -30,7 +30,7 @@ export default function WirelessPage() {
 
       <div className="mt-8 text-center">
         <span className="inline-flex items-center rounded-full border border-slate-200 bg-accent/70 px-3 py-1 text-xs font-medium text-slate-600 shadow-sm backdrop-blur ">
-          Available across Yuma, AZ
+          Available across Yuma, Wellton, Brawley, Winterhaven, and Holtville
         </span>
         <h1 className="mt-4 bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 bg-clip-text text-3xl font-bold tracking-tight text-transparent dark:from-white dark:via-slate-200 dark:to-slate-50">
           Wireless Internet

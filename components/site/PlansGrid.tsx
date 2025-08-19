@@ -20,9 +20,11 @@ type PlansGridProps = {
   serviceLabel: string;
   showFacts?: boolean;
   gridClassName?: string;
+  descriptionMinHeightPx?: number;
 };
 
-export function PlansGrid({ plans, serviceLabel, showFacts = true, gridClassName }: PlansGridProps) {
+export function PlansGrid({ plans, serviceLabel, showFacts = true, gridClassName, descriptionMinHeightPx }: PlansGridProps) {
+  const hasAnyDescription = plans.some((p) => Boolean(p.description));
   return (
     <div className={gridClassName ?? "mt-8 grid auto-rows-fr gap-6 sm:grid-cols-2 md:grid-cols-4"}>
       {plans.map((plan) => {
@@ -38,8 +40,10 @@ export function PlansGrid({ plans, serviceLabel, showFacts = true, gridClassName
               </Badge>
             </div>
             <CardHeader className="pb-0 pr-24">
-              <CardTitle className="text-xl tracking-tight">{plan.name}</CardTitle>
-              <CardDescription className="mt-1 text-[13px]">{serviceLabel}</CardDescription>
+              <div className="min-h-[64px]">
+                <CardTitle className="text-xl tracking-tight">{plan.name}</CardTitle>
+                <CardDescription className="mt-1 text-[13px] truncate">{serviceLabel}</CardDescription>
+              </div>
             </CardHeader>
             <CardContent className="pt-4">
               <div className="flex flex-col items-center">
@@ -65,7 +69,11 @@ export function PlansGrid({ plans, serviceLabel, showFacts = true, gridClassName
                   <p className="mt-4 text-center text-sm text-neutral-600 dark:text-neutral-400">
                     {plan.description}
                   </p>
-                ) : null}
+                ) : (
+                  descriptionMinHeightPx !== undefined
+                    ? (descriptionMinHeightPx > 0 ? <div className="mt-4" style={{ height: descriptionMinHeightPx }} /> : null)
+                    : (hasAnyDescription ? <div className="mt-4 h-5" /> : null)
+                )}
               </div>
             </CardContent>
             {showFacts && plan.planId ? (

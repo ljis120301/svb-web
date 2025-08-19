@@ -29,7 +29,7 @@ export default function FiberPage() {
 
       <div className="mt-8 text-center">
         <span className="inline-flex items-center rounded-full border border-slate-200 bg-accent/70 px-3 py-1 text-xs font-medium text-slate-600 shadow-sm backdrop-blur ">
-          Now serving Yuma, AZ
+          Now serving Yuma, Imperial, and Wellton
         </span>
         <h1 className="mt-4 bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 bg-clip-text text-3xl font-bold tracking-tight text-transparent dark:from-white dark:via-slate-200 dark:to-slate-50">
           Fiber Internet
@@ -148,9 +148,10 @@ export default function FiberPage() {
           <div className="flex justify-center items-center">
             <PlansGrid
               plans={fiberPlans}
-              serviceLabel="Fiber Internet"
+              serviceLabel="Fiber Opticalins Internet"
               showFacts
-              gridClassName="mt-6 grid auto-rows-fr gap-6 sm:grid-cols-2 md:grid-cols-3 sm:gap-8"
+              gridClassName="mt-6 grid auto-rows-fr gap-6 sm:grid-cols-2 md:grid-cols-4 sm:gap-8"
+              descriptionMinHeightPx={56}
             />
           </div>
         </div>
