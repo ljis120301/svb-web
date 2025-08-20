@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import Image from "next/image";
-import heroImage from "/public/ethernetCables.jpg";
+import heroImage from "/public/ethernetCables.webp";
 
 export default function AceternityHero() {
   return (

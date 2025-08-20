@@ -29,7 +29,7 @@ export function AppleCardsList() {
           key="2"
           index={1}
           card={{
-            src: "/lightbeam.png",
+            src: "/lightbeam.webp",
             title: "Reliable wireless with Ubiquiti",
             category: "Coverage",
             content: (
@@ -50,7 +50,7 @@ export function AppleCardsList() {
   <br />
   <br />
   <Image
-    src="/lightbeam.png"
+    src="/lightbeam.webp"
     alt="LightBeam"
     width={500}
     height={500}
@@ -79,7 +79,7 @@ export function AppleCardsList() {
         key="6"
         index={5}
         card={{
-          src: "/web-images/buisness.jpg",
+          src: "/web-images/buisness.webp",
           title: "Business ready",
           category: "Business",
           content: (
@@ -100,7 +100,7 @@ export function AppleCardsList() {
   <br />
   <br />
   <Image
-    src="/web-images/buisness.jpg"
+    src="/web-images/buisness.webp"
     alt="Doing Business in Yuma"
     width={500}
     height={500}
@@ -129,7 +129,7 @@ export function AppleCardsList() {
           key="3"
           index={2}
           card={{
-            src: "/web-images/image-10.jpg",
+            src: "/web-images/image-10.webp",
             title: "Local team, global connectivity",
             category: "Support",
             content: (

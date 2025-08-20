@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     siteName: "Sun Valley Broadband",
     images: [
       {
-        url: "/web-images/logos/Transparent-Logo-4-1-2.png",
+        url: "/web-images/logos/Transparent-Logo-4-1-2.webp",
         width: 1024,
         height: 379,
         alt: "Sun Valley Broadband logo",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     title: "Sun Valley Broadband | Internet Service Provider in Yuma, AZ",
     description:
       "Fast, affordable home and business internet in Yuma, AZ. Fiber and fixed wireless plans with local support.",
-    images: ["/web-images/logos/Transparent-Logo-4-1-2.png"],
+    images: ["/web-images/logos/Transparent-Logo-4-1-2.webp"],
   },
   formatDetection: {
     telephone: true,

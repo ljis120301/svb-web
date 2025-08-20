@@ -24,7 +24,7 @@ export default function FiberPage() {
       <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-64 bg-[radial-gradient(50%_60%_at_50%_-20%,rgba(59,130,246,0.15),transparent)] dark:bg-[radial-gradient(50%_60%_at_50%_-20%,rgba(59,130,246,0.25),transparent)]" />
 
       <div className="rounded-2xl overflow-hidden shadow-2xl ring-1 ring-black/10">
-      <ProductBanner src="/tv.jpg" alt="Family streaming" title="Fiber Internet you can trust" />
+      <ProductBanner src="/tv.webp" alt="Family streaming" title="Fiber Internet you can trust" />
       </div>
 
       <div className="mt-8 text-center">
@@ -60,7 +60,7 @@ export default function FiberPage() {
           <div className="rounded-2xl border border-slate-200 p-6 ring-1 ring-black/5 dark:border-neutral-800">
             <div className="flex gap-4">
               <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-md ring-1 ring-neutral-200 dark:ring-neutral-800">
-                <Image src="/UF-LOCO.png" alt="Ubiquiti UFiber Loco modem" fill sizes="80px" className="object-contain p-1 drop-shadow-lg" />
+                <Image src="/UF-LOCO.webp" alt="Ubiquiti UFiber Loco modem" fill sizes="80px" className="object-contain p-1 drop-shadow-lg" />
               </div>
               <div>
                 <h3 className="text-base font-semibold">UFiber Loco — keep your own Wi‑Fi</h3>
@@ -77,7 +77,7 @@ export default function FiberPage() {
           <div className="rounded-2xl border border-slate-200 p-6 ring-1 ring-black/5 dark:border-neutral-800">
             <div className="flex gap-4">
               <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-md ring-1 ring-neutral-200 dark:ring-neutral-800">
-                <Image src="/UFiberwifi6.png" alt="Ubiquiti UFiber Wi‑Fi 6 all‑in‑one" fill sizes="80px" className="object-contain p-1 drop-shadow-lg" />
+                <Image src="/UFiberwifi6.webp" alt="Ubiquiti UFiber Wi‑Fi 6 all‑in‑one" fill sizes="80px" className="object-contain p-1 drop-shadow-lg" />
               </div>
               <div>
                 <h3 className="text-base font-semibold">UFiber Wi‑Fi 6 — one box for everything</h3>
@@ -150,7 +150,7 @@ export default function FiberPage() {
               plans={fiberPlans}
               serviceLabel="Fiber Opticalins Internet"
               showFacts
-              gridClassName="mt-6 grid auto-rows-fr gap-6 sm:grid-cols-2 md:grid-cols-4 sm:gap-8"
+              gridClassName="mt-6 grid auto-rows-fr gap-6 sm:grid-cols-2 md:grid-cols-3 sm:gap-8"
               descriptionMinHeightPx={56}
             />
           </div>

@@ -18,7 +18,7 @@ export default function CablePage() {
       <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-64 bg-[radial-gradient(50%_60%_at_50%_-20%,rgba(59,130,246,0.15),transparent)] dark:bg-[radial-gradient(50%_60%_at_50%_-20%,rgba(59,130,246,0.25),transparent)]" />
 
       <div className="rounded-2xl overflow-hidden shadow-2xl ring-1 ring-black/10">
-        <ProductBanner src="/personOnLabtop.jpg" alt="Family using cable internet" title="Cable Internet for RV Parks" />
+        <ProductBanner src="/personOnLabtop.webp" alt="Family using cable internet" title="Cable Internet for RV Parks" />
       </div>
 
       <div className="mt-8 text-center">
@@ -79,7 +79,7 @@ export default function CablePage() {
           <div className="rounded-2xl border border-slate-200 p-6 ring-1 ring-black/5 dark:border-neutral-800">
             <div className="flex gap-4">
               <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-md ring-1 ring-neutral-200 dark:ring-neutral-800">
-                <Image src="/netgear.png" alt="Netgear CG3000D v2 cable modem router" fill sizes="96px" className="object-contain p-1 drop-shadow-lg" />
+                <Image src="/netgear.webp" alt="Netgear CG3000D v2 cable modem router" fill sizes="96px" className="object-contain p-1 drop-shadow-lg" />
               </div>
               <div>
                 <h3 className="text-base font-semibold">What it offers</h3>

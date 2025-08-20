@@ -7,7 +7,7 @@ export function BrandLogo() {
     <>
       <div className="relative h-[48px] w-[48px]">
         <Image
-          src="/web-images/logos/Transparent-LogoNOTEXT.png"
+          src="/web-images/logos/Transparent-LogoNOTEXT.webp"
           alt="Sun Valley Broadband logo"
           fill
           sizes="36px"
@@ -17,7 +17,7 @@ export function BrandLogo() {
       </div>
       <div className="relative h-[80px] w-[250px]  -ml-6 -mt-[-10px]">
         <Image
-          src="/cropped-Transparent-Logo-4-2048x682.png"
+          src="/cropped-Transparent-Logo-4-2048x682.webp"
           alt="Sun Valley Broadband wordmark"
           fill
           priority={false}

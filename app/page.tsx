@@ -41,7 +41,7 @@ export default function Home() {
             "@type": "LocalBusiness",
             name: "Sun Valley Broadband",
             url: "https://sunvalleybroadband.com/",
-            image: "https://sunvalleybroadband.com/web-images/logos/Transparent-Logo-4-1-2.png",
+            image: "https://sunvalleybroadband.com/web-images/logos/Transparent-Logo-4-1-2.webp",
             telephone: "+1-928-343-0300",
             address: {
               "@type": "PostalAddress",
