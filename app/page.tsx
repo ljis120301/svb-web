@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import { Separator } from "@/components/ui/separator";
 import type { Metadata } from "next";
 import Script from "next/script";
+import { StickyBanner } from "@/components/ui/sticky-banner";
 
 export const metadata: Metadata = {
   title: "Internet Service Provider in Yuma, AZ",
@@ -10,6 +11,8 @@ export const metadata: Metadata = {
     "Sun Valley Broadband provides fast, reliable fiber and fixed wireless internet in Yuma, Arizona with local support and no data caps.",
   alternates: { canonical: "/" },
 };
+
+
 
 const AppleCardsList = dynamic(
   () => import("@/components/cards/AppleCardsList").then((m) => m.AppleCardsList),

@@ -9,7 +9,7 @@ export function AppleCardsList() {
           key="1"
           index={0}
           card={{
-            src: "/web-images/familySitting.jpeg",
+            src: "/web-images/familySitting.webp",
             title: "Stream without buffering",
             category: "Experience",
             content: (

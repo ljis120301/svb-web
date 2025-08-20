@@ -1,3 +1,5 @@
+import { Timeline } from "@/components/ui/timeline";
+
 export const metadata = {
   title: "About Sun Valley Broadband (Yuma, AZ)",
   description:
@@ -6,33 +8,38 @@ export const metadata = {
 };
 
 export default function AboutPage() {
+  const timelineData = [
+    {
+      title: "Founded and Early Days",
+      content:
+        "First began providing radio communication equipment to Farmers who needed to stay in real time communication before cell phones were widely introduced. Then, Gila Electronics began providing Dial Up Internet throughout the late 90’s into the early 2000’s to the Yuma area.",
+    },
+    {
+      title: "From Dial Up to Wireless",
+      content:
+        "We began offering LTE based service as well as Antenna based service through Micrtotik SXT. We moved on from LTE and began being among the first in Yuma County to begin providing 5Ghz Wireless home internet services. We utilized Ubiquiti’s excellent line of Wireless products to deploy a Point to Multi Point WISP all throughout Yuma County. This was a major leap forward in our abilities to provide stable high speed internet to the masses",
+    },
+    {
+      title: "Fiber and Beyond",
+      content:
+        "From there, we still felt the rising need to push our speeds even faster, we saw the rising trend of fiber optic and began working with the City to coordinate permits to run fiber into areas no other company would touch. We worked to run incredibly high speed fiber lines into the Counties and Imperial in places no other ISP can provide service to. ",
+    },
+    {
+      title: "What's Next?",
+      content:
+        "We are moving on today expanding our fiber optic infastucture forward at an an immense pace, we have partnered with the FCC to be among the first to utilize the 60Ghz spectrum for our wireless infastructure. We have also looked into new systems currently in beta test from Tarana, a promising company able to provide even higher bandwidth. Tarana offers a more stable connection compared to Ubiquiti wirelsss. Eventually we hope to see mass deployment as our beta test as thus far been a tremendous sucesss. ",
+    },
+  ];
   return (
-    <div className="mx-auto max-w-3xl px-4 py-12">
-      <h1 className="text-3xl font-bold">Who We Are</h1>
-      <p className="mt-2 text-neutral-600 dark:text-neutral-400">
-        Sun Valley Broadband is a leading provider of internet solutions for
-        residential and business customers in Yuma, AZ.
-      </p>
-      <p className="mt-4 text-neutral-600 dark:text-neutral-400">
-        With years of experience, we’re known for lightning-fast connections and
-        superior customer service. Our local team keeps you connected and
-        supported.
-      </p>
-      <h3 className="text-2xl font-bold pt-4">Why Choose Sun Valley Broadband?</h3>
-      <p className="mt-2 text-neutral-600 dark:text-neutral-400">
-       We are a locally owned company, which means that you as a customer are our number one priority, and when you call us, you will speak to a real person.
-      </p>
-      <p className="mt-4 text-neutral-600 dark:text-neutral-400">
-        We run fiber to the areas that the other providers don't. We have a wide range of plan available in the counties where other providers are not available. 
-      </p>
-      <h1 className="text-2xl font-bold pt-4">Our History:</h1>
-      <p className="mt-2 text-neutral-600 dark:text-neutral-400">
-        Sun Valley Broadband was originally named Beamspeed, in recent years we have rebranded to Sun Valley Broadband. We are owned by the same owner as Gila Electronics. 
-      </p>
-      <p className="mt-4 text-neutral-600 dark:text-neutral-400">
-        Gila Electronics has been serving the Yuma area since 1998. We have been in business for over 25 years, and we are still going strong. What started as radio communications to farmers has gown into Direct to Home Fiber optic Internet.
-      </p>
-    </div>
+    <>
+
+      
+      <Timeline
+        data={timelineData as any}
+        title="Our Journey"
+        description="A brief look at our milestones and growth over the years."
+      />
+    </>
   );
 }
 
