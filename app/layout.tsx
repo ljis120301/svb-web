@@ -3,7 +3,7 @@ import "./globals.css";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { siteFont, brandFont } from "@/lib/fonts";
-import { StickyBannerDemo } from "@/components/site/StickyOldBanner";
+import { RootBannerSlot } from "@/components/site/RootBannerSlot";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://sunvalleybroadband.com"),
@@ -90,8 +90,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${siteFont.variable} ${brandFont.variable} antialiased`}>
-        <div className="sticky top-0 z-50"><StickyBannerDemo /></div>
-        <div className="sticky top-0 z-50"><Header /></div>
+        <RootBannerSlot />
+        <Header />
         <main className="min-h-[calc(100vh-16rem)]">{children}</main>
         <Footer />
       </body>

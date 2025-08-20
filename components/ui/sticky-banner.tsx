@@ -1,5 +1,5 @@
 "use client";
-import React, { SVGProps, useState } from "react";
+import React, { SVGProps, useEffect, useState } from "react";
 import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import { cn } from "@/lib/utils";
 
@@ -7,16 +7,31 @@ export const StickyBanner = ({
   className,
   children,
   hideOnScroll = false,
+  storageKey = "svb-sticky-banner-dismissed",
+  dismissible = true,
 }: {
   className?: string;
   children: React.ReactNode;
   hideOnScroll?: boolean;
+  storageKey?: string;
+  dismissible?: boolean;
 }) => {
+  const [dismissed, setDismissed] = useState(false);
   const [open, setOpen] = useState(true);
   const { scrollY } = useScroll();
 
+  useEffect(() => {
+    try {
+      const stored = typeof window !== "undefined" ? window.localStorage.getItem(storageKey) : null;
+      if (stored === "1") {
+        setDismissed(true);
+        setOpen(false);
+      }
+    } catch {}
+  }, [storageKey]);
+
   useMotionValueEvent(scrollY, "change", (latest) => {
-    console.log(latest);
+    if (dismissed) return;
     if (hideOnScroll && latest > 40) {
       setOpen(false);
     } else {
@@ -24,10 +39,13 @@ export const StickyBanner = ({
     }
   });
 
+  // If dismissed or currently closed (e.g., due to scroll), don't render at all.
+  if (dismissed || !open) return null;
+
   return (
     <motion.div
       className={cn(
-        "sticky inset-x-0 top-0 z-40 flex min-h-14 w-full items-center justify-center bg-transparent px-4 py-1",
+        "sticky inset-x-0 top-0 z-[60] flex min-h-14 w-full items-center justify-center bg-transparent px-4 py-1",
         className,
       )}
       initial={{
@@ -35,8 +53,8 @@ export const StickyBanner = ({
         opacity: 0,
       }}
       animate={{
-        y: open ? 0 : -100,
-        opacity: open ? 1 : 0,
+        y: 0,
+        opacity: 1,
       }}
       transition={{
         duration: 0.3,
@@ -45,18 +63,29 @@ export const StickyBanner = ({
     >
       {children}
 
-      <motion.button
-        initial={{
-          scale: 0,
-        }}
-        animate={{
-          scale: 1,
-        }}
-        className="absolute top-1/2 right-2 -translate-y-1/2 cursor-pointer"
-        onClick={() => setOpen(!open)}
-      >
-        <CloseIcon className="h-5 w-5 text-white" />
-      </motion.button>
+      {dismissible && (
+        <motion.button
+          initial={{
+            scale: 0,
+          }}
+          animate={{
+            scale: 1,
+          }}
+          aria-label="Dismiss banner"
+          className="absolute top-1/2 right-2 -translate-y-1/2 cursor-pointer"
+          onClick={() => {
+            setDismissed(true);
+            setOpen(false);
+            try {
+              if (typeof window !== "undefined") {
+                window.localStorage.setItem(storageKey, "1");
+              }
+            } catch {}
+          }}
+        >
+          <CloseIcon className="h-5 w-5 text-white" />
+        </motion.button>
+      )}
     </motion.div>
   );
 };
