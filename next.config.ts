@@ -14,6 +14,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // Removed PostHog rewrites and trailing slash exceptions
 };
 
 export default nextConfig;

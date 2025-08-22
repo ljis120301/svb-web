@@ -2,7 +2,6 @@ import AceternityHero from "@/components/site/AceternityHero";
 import dynamic from "next/dynamic";
 import { Separator } from "@/components/ui/separator";
 import type { Metadata } from "next";
-import Script from "next/script";
 import { StickyBanner } from "@/components/ui/sticky-banner";
 
 export const metadata: Metadata = {
@@ -37,47 +36,6 @@ const FAQ = dynamic(
 export default function Home() {
   return (
     <div>
-      <Script id="org-jsonld" type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            name: "Sun Valley Broadband",
-            url: "https://sunvalleybroadband.com/",
-            image: "https://sunvalleybroadband.com/web-images/logos/Transparent-Logo-4-1-2.webp",
-            telephone: "+1-928-343-0300",
-            address: {
-              "@type": "PostalAddress",
-              streetAddress: "2481 E Palo Verde St",
-              addressLocality: "Yuma",
-              addressRegion: "AZ",
-              postalCode: "85365",
-              addressCountry: "US"
-            },
-            geo: {
-              "@type": "GeoCoordinates",
-              latitude: 32.6927,
-              longitude: -114.6277
-            },
-            areaServed: [
-              { "@type": "City", name: "Yuma" },
-              { "@type": "AdministrativeArea", name: "Yuma County" },
-              { "@type": "AdministrativeArea", name: "Imperial County" }
-            ],
-            sameAs: [
-            ],
-            openingHoursSpecification: [
-              { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday"], opens: "08:00", closes: "16:00" },
-              { "@type": "OpeningHoursSpecification", dayOfWeek: ["Saturday","Sunday"], opens: "00:00", closes: "00:00" }
-            ],
-            makesOffer: [
-              { "@type": "Offer", name: "Fiber Internet" },
-              { "@type": "Offer", name: "Fixed Wireless Internet" },
-              { "@type": "Offer", name: "Cable TV" }
-            ]
-          })
-        }}
-      />
       <AceternityHero />
       <section className="mx-auto mt-12 max-w-6xl px-4">
         <AppleCardsList />

@@ -10,6 +10,28 @@ export const metadata = {
 export default function SupportPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-12">
+      <script type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://sunvalleybroadband.com/"
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Support",
+                item: "https://sunvalleybroadband.com/support"
+              }
+            ]
+          })
+        }}
+      />
       <h1 className="text-3xl font-bold">Technical Support</h1>
       <p className="mt-2 text-neutral-600 dark:text-neutral-400">
         Having issues? Tell us what’s going on and our support team will reach

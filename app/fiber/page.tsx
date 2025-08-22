@@ -3,6 +3,7 @@ import { ProductBanner } from "@/components/site/Banners";
 import { PlansGrid } from "@/components/site/PlansGrid";
 import { Gauge, Infinity, Headphones, ShieldCheck, BadgeCheck, Router } from "lucide-react";
 import Image from "next/image";
+import Script from "next/script";
 
 export const metadata = {
   title: "Fiber Internet in Yuma, AZ",
@@ -20,6 +21,57 @@ export default function FiberPage() {
 
   return (
     <div className="relative mx-auto max-w-6xl px-4 py-12">
+      <script type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://sunvalleybroadband.com/"
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Fiber",
+                item: "https://sunvalleybroadband.com/fiber"
+              }
+            ]
+          })
+        }}
+      />
+      <Script id="fiber-pricing-jsonld" type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: "Fiber Internet",
+            provider: {
+              "@type": "LocalBusiness",
+              name: "Sun Valley Broadband",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "2481 E Palo Verde St",
+                addressLocality: "Yuma",
+                addressRegion: "AZ",
+                postalCode: "85365",
+                addressCountry: "US"
+              },
+              telephone: "+1-928-343-0300",
+              url: "https://sunvalleybroadband.com/"
+            },
+            areaServed: [{ "@type": "City", name: "Yuma" }],
+            offers: [
+              { "@type": "Offer", name: "Bronze", priceCurrency: "USD", price: 29.99, category: "Residential", description: "50/10 Mbps" },
+              { "@type": "Offer", name: "Gold", priceCurrency: "USD", price: 49.99, category: "Residential", description: "100/40 Mbps" },
+              { "@type": "Offer", name: "Titanium", priceCurrency: "USD", price: 99.99, category: "Residential", description: "500/50 Mbps" }
+            ]
+          })
+        }}
+      />
       <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b" />
       <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-64 bg-[radial-gradient(50%_60%_at_50%_-20%,rgba(59,130,246,0.15),transparent)] dark:bg-[radial-gradient(50%_60%_at_50%_-20%,rgba(59,130,246,0.25),transparent)]" />
 

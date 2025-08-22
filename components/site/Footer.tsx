@@ -8,7 +8,10 @@ const BUSINESS_PHONE_TEL = "+19283430300";
 
 export function Footer() {
   return (
-    <footer className="mt-24 border-t border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950">
+    <footer className="mt-24 border-t border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950" itemScope itemType="https://schema.org/LocalBusiness">
+      <meta itemProp="name" content="Sun Valley Broadband" />
+      <meta itemProp="telephone" content={BUSINESS_PHONE_TEL} />
+      <link itemProp="url" href="https://sunvalleybroadband.com/" />
       <div className="mx-auto max-w-6xl px-4 py-10">
         <div className="grid gap-6 md:grid-cols-2">
           <div>
@@ -26,8 +29,11 @@ export function Footer() {
               </div>
             </div>
             <h3 className="mt-4 text-lg font-semibold">Visit Us</h3>
-            <a href="https://www.google.com/maps/dir//2481+E+Palo+Verde+St,+Yuma,+AZ+85365/@32.6764549,-114.6734482,31395m/data=!3m1!1e3!4m8!4m7!1m0!1m5!1m1!1s0x80d65f8d8a4a71b1:0x373b4a6388f17ed5!2m2!1d-114.5910293!2d32.6765512?entry=ttu&g_ep=EgoyMDI1MDgxMy4wIKXMDSoASAFQAw%3D%3D" className="mt-1 text-sm text-neutral-600 dark:text-neutral-400 hover:underline hover:underline-offset-2 hover:opacity-90">
-              2481 E Palo Verde St <br /> Yuma, AZ 85365
+            <a href="https://www.google.com/maps/dir//2481+E+Palo+Verde+St,+Yuma,+AZ+85365/@32.6764549,-114.6734482,31395m/data=!3m1!1e3!4m8!4m7!1m0!1m5!1m1!1s0x80d65f8d8a4a71b1:0x373b4a6388f17ed5!2m2!1d-114.5910293!2d32.6765512?entry=ttu&g_ep=EgoyMDI1MDgxMy4wIKXMDSoASAFQAw%3D%3D" className="mt-1 text-sm text-neutral-600 dark:text-neutral-400 hover:underline hover:underline-offset-2 hover:opacity-90" itemProp="hasMap">
+              <span itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
+                <span itemProp="streetAddress">2481 E Palo Verde St</span> <br />
+                <span itemProp="addressLocality">Yuma</span>, <span itemProp="addressRegion">AZ</span> <span itemProp="postalCode">85365</span>
+              </span>
             </a>
             
             <p className="mt-4 text-lg font-semibold">Call us at:</p>
@@ -35,8 +41,7 @@ export function Footer() {
             <a
               href={`tel:${BUSINESS_PHONE_TEL}`}
               className="mt-1 text-sm  text-neutral-600 dark:text-neutral-400 hover:underline hover:underline-offset-2 hover:opacity-90 "
-              aria-label={`Call ${BUSINESS_PHONE_DISPLAY}`}>
-               
+              aria-label={`Call ${BUSINESS_PHONE_DISPLAY}`} itemProp="telephone">
                 {BUSINESS_PHONE_DISPLAY}
             </a>
           </div>
@@ -44,31 +49,31 @@ export function Footer() {
             <div className="w-full overflow-hidden rounded-md border border-neutral-200 text-xs dark:border-neutral-800 md:h-[300px]">
               <div className="bg-neutral-50 px-3 py-2 font-medium dark:bg-neutral-900">Hours</div>
               <div className="divide-y divide-neutral-200 dark:divide-neutral-800">
-                <div className="flex items-center justify-between px-3 py-2">
+                <div className="flex items-center justify-between px-3 py-2" itemProp="openingHours" content="Mo 08:00-16:00">
                   <span className="text-neutral-500">Monday</span>
                   <span className="font-medium">8:00am – 4:00pm</span>
                 </div>
-                <div className="flex items-center justify-between px-3 py-2">
+                <div className="flex items-center justify-between px-3 py-2" itemProp="openingHours" content="Tu 08:00-16:00">
                   <span className="text-neutral-500">Tuesday</span>
                   <span className="font-medium">8:00am – 4:00pm</span>
                 </div>
-                <div className="flex items-center justify-between px-3 py-2">
+                <div className="flex items-center justify-between px-3 py-2" itemProp="openingHours" content="We 08:00-16:00">
                   <span className="text-neutral-500">Wednesday</span>
                   <span className="font-medium">8:00am – 4:00pm</span>
                 </div>
-                <div className="flex items-center justify-between px-3 py-2">
+                <div className="flex items-center justify-between px-3 py-2" itemProp="openingHours" content="Th 08:00-16:00">
                   <span className="text-neutral-500">Thursday</span>
                   <span className="font-medium">8:00am – 4:00pm</span>
                 </div>
-                <div className="flex items-center justify-between px-3 py-2">
+                <div className="flex items-center justify-between px-3 py-2" itemProp="openingHours" content="Fr 08:00-16:00">
                   <span className="text-neutral-500">Friday</span>
                   <span className="font-medium">8:00am – 4:00pm</span>
                 </div>
-                <div className="flex items-center justify-between bg-neutral-50 px-3 py-2 dark:bg-neutral-900">
+                <div className="flex items-center justify-between bg-neutral-50 px-3 py-2 dark:bg-neutral-900" itemProp="openingHours" content="Sa 00:00-00:00">
                   <span className="text-neutral-500">Saturday</span>
                   <span className="font-medium">Closed</span>
                 </div>
-                <div className="flex items-center justify-between bg-neutral-50 px-3 py-2 dark:bg-neutral-900">
+                <div className="flex items-center justify-between bg-neutral-50 px-3 py-2 dark:bg-neutral-900" itemProp="openingHours" content="Su 00:00-00:00">
                   <span className="text-neutral-500">Sunday</span>
                   <span className="font-medium">Closed</span>
                 </div>

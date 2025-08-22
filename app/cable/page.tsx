@@ -2,6 +2,7 @@ import { EligibilityCta } from "@/components/site/EligibilityCta";
 import { ProductBanner } from "@/components/site/Banners";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import Image from "next/image";
+import Script from "next/script";
 import { BadgeCheck, ShieldCheck, Router } from "lucide-react";
 
 export const metadata = {
@@ -14,6 +15,28 @@ export const metadata = {
 export default function CablePage() {
   return (
     <div className="relative mx-auto max-w-6xl px-4 py-12">
+      <Script id="cable-breadcrumb-jsonld" type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://sunvalleybroadband.com/"
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Cable",
+                item: "https://sunvalleybroadband.com/cable"
+              }
+            ]
+          })
+        }}
+      />
       <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b" />
       <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-64 bg-[radial-gradient(50%_60%_at_50%_-20%,rgba(59,130,246,0.15),transparent)] dark:bg-[radial-gradient(50%_60%_at_50%_-20%,rgba(59,130,246,0.25),transparent)]" />
 

@@ -3,6 +3,7 @@ import { ProductBanner } from "@/components/site/Banners";
 import { PlansGrid } from "@/components/site/PlansGrid";
 import { Gauge, Infinity, Headphones, ShieldCheck, BadgeCheck, Router } from "lucide-react";
 import Image from "next/image";
+import Script from "next/script";
 
 export const metadata = {
   title: "Fixed Wireless Internet in Yuma, Wellton, Brawley, Winterhaven, and Holtville",
@@ -21,6 +22,64 @@ export default function WirelessPage() {
 
   return (
     <div className="relative mx-auto max-w-6xl px-4 py-12">
+      <script type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://sunvalleybroadband.com/"
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Wireless",
+                item: "https://sunvalleybroadband.com/wireless"
+              }
+            ]
+          })
+        }}
+      />
+      <Script id="wireless-pricing-jsonld" type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: "Fixed Wireless Internet",
+            provider: {
+              "@type": "LocalBusiness",
+              name: "Sun Valley Broadband",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "2481 E Palo Verde St",
+                addressLocality: "Yuma",
+                addressRegion: "AZ",
+                postalCode: "85365",
+                addressCountry: "US"
+              },
+              telephone: "+1-928-343-0300",
+              url: "https://sunvalleybroadband.com/"
+            },
+            areaServed: [
+              { "@type": "City", name: "Yuma" },
+              { "@type": "City", name: "Wellton" },
+              { "@type": "City", name: "Brawley" },
+              { "@type": "City", name: "Winterhaven" },
+              { "@type": "City", name: "Holtville" }
+            ],
+            offers: [
+              { "@type": "Offer", name: "Bronze", priceCurrency: "USD", price: 39.95, category: "Residential", description: "10/3 Mbps" },
+              { "@type": "Offer", name: "Silver", priceCurrency: "USD", price: 49.95, category: "Residential", description: "15/3 Mbps" },
+              { "@type": "Offer", name: "Gold", priceCurrency: "USD", price: 69.95, category: "Residential", description: "25/5 Mbps" },
+              { "@type": "Offer", name: "Titanium", priceCurrency: "USD", price: 89.95, category: "Business", description: "30/5 Mbps" }
+            ]
+          })
+        }}
+      />
       <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b" />
       <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-64 bg-[radial-gradient(50%_60%_at_50%_-20%,rgba(59,130,246,0.15),transparent)] dark:bg-[radial-gradient(50%_60%_at_50%_-20%,rgba(59,130,246,0.25),transparent)]" />
 

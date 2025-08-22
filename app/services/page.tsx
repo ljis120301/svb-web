@@ -26,6 +26,28 @@ export default function ServicesPage() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12">
+      <script type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://sunvalleybroadband.com/"
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Services",
+                item: "https://sunvalleybroadband.com/services"
+              }
+            ]
+          })
+        }}
+      />
       <h1 className="text-3xl font-bold">Our Services</h1>
       <p className="mt-2 max-w-2xl text-neutral-600 dark:text-neutral-400">
         Get a fast, affordable, and reliable connection to your online world with

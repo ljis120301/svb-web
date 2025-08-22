@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
+import Script from "next/script";
 import "./globals.css";
+import { GA4Pageview } from "./ga-pageview";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { siteFont, brandFont } from "@/lib/fonts";
 import { RootBannerSlot } from "@/components/site/RootBannerSlot";
+// Removed PostHog provider/pageview
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://sunvalleybroadband.com"),
@@ -65,7 +69,12 @@ export const metadata: Metadata = {
     follow: true,
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/apple-touch-icon.png", rel: "apple-touch-icon", sizes: "180x180" },
+    ],
   },
   category: "technology",
   other: {
@@ -90,6 +99,72 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${siteFont.variable} ${brandFont.variable} antialiased`}>
+        <Script id="org-jsonld" type="application/ld+json" strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              name: "Sun Valley Broadband",
+              url: "https://sunvalleybroadband.com/",
+              image: "https://sunvalleybroadband.com/web-images/logos/Transparent-Logo-4-1-2.webp",
+              logo: "https://sunvalleybroadband.com/web-images/logos/Transparent-Logo-4-1-2.webp",
+              telephone: "+1-928-343-0300",
+              sameAs: [
+                "https://www.facebook.com/SunValleyBroadband",
+                "https://www.instagram.com/sun_valley_broadband/",
+              ],
+              hasMap: "https://www.google.com/maps/dir//2481+E+Palo+Verde+St,+Yuma,+AZ+85365",
+              priceRange: "$$",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "2481 E Palo Verde St",
+                addressLocality: "Yuma",
+                addressRegion: "AZ",
+                postalCode: "85365",
+                addressCountry: "US"
+              },
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: 32.6927,
+                longitude: -114.6277
+              },
+              areaServed: [
+                { "@type": "City", name: "Yuma" },
+                { "@type": "AdministrativeArea", name: "Yuma County" },
+                { "@type": "AdministrativeArea", name: "Imperial County" }
+              ],
+              openingHoursSpecification: [
+                { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday"], opens: "08:00", closes: "16:00" },
+                { "@type": "OpeningHoursSpecification", dayOfWeek: ["Saturday","Sunday"], opens: "00:00", closes: "00:00" }
+              ],
+              contactPoint: [{
+                "@type": "ContactPoint",
+                contactType: "customer service",
+                telephone: "+1-928-343-0300",
+                areaServed: "US-AZ",
+                availableLanguage: ["English"]
+              }],
+            }),
+          }}
+        />
+        {/* Google tag (gtag.js) */}
+        <Script
+          id="ga4-src"
+          src="https://www.googletagmanager.com/gtag/js?id=G-Y9V4KG1VL6"
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-inline" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            // Disable automatic page_view to prevent duplicates in SPA
+            gtag('config', 'G-Y9V4KG1VL6', { send_page_view: false });
+          `}
+        </Script>
+        <Suspense fallback={null}>
+          <GA4Pageview />
+        </Suspense>
         <RootBannerSlot />
         <Header />
         <main className="min-h-[calc(100vh-16rem)]">{children}</main>
