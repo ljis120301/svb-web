@@ -21,7 +21,52 @@ function getEnv(name: string): string | undefined {
   const fromEnv = process.env[name];
   if (fromEnv !== undefined && fromEnv !== "") return fromEnv;
   const fromSecret = readSecretFile(name);
-  return fromSecret;
+  if (fromSecret !== undefined && fromSecret !== "") return fromSecret;
+  const fromBundled = readBundledEnvSecret(name);
+  return fromBundled;
+}
+
+// Support a single bundled secret file at /run/secrets/env that contains
+// dotenv-style KEY=VALUE lines. This matches a common Swarm pattern where
+// the entire .env is stored as one secret named "env".
+let bundledEnvCache: Record<string, string> | null = null;
+function readBundledEnvSecret(key: string): string | undefined {
+  try {
+    if (bundledEnvCache === null) {
+      const path = "/run/secrets/env";
+      if (!fs.existsSync(path)) {
+        bundledEnvCache = {};
+      } else {
+        const raw = fs.readFileSync(path, "utf8");
+        bundledEnvCache = parseDotenv(raw);
+      }
+    }
+    const val = bundledEnvCache[key];
+    return val === undefined || val === "" ? undefined : val;
+  } catch {
+    return undefined;
+  }
+}
+
+function parseDotenv(input: string): Record<string, string> {
+  const result: Record<string, string> = {};
+  const lines = input.split(/\r?\n/);
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith("#")) continue;
+    const eq = trimmed.indexOf("=");
+    if (eq === -1) continue;
+    const k = trimmed.slice(0, eq).trim();
+    let v = trimmed.slice(eq + 1).trim();
+    if (
+      (v.startsWith("\"") && v.endsWith("\"")) ||
+      (v.startsWith("'") && v.endsWith("'"))
+    ) {
+      v = v.slice(1, -1);
+    }
+    result[k] = v;
+  }
+  return result;
 }
 
 export const env = {
