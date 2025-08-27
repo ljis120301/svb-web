@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import fetch from "node-fetch";
+import { env } from "@/lib/env";
 
 export const runtime = "nodejs";
 
@@ -25,9 +26,9 @@ interface Payload {
 
 function resolveRecipient(pageKind: PageKind | undefined): string {
   if (pageKind === "support") {
-    return process.env.SUPPORT_EMAIL || "support@sunvalleybroadband";
+    return env.SUPPORT_EMAIL || "support@sunvalleybroadband";
   }
-  return process.env.SALES_EMAIL || "sales@sunvalleybroadband.com";
+  return env.SALES_EMAIL || "sales@sunvalleybroadband.com";
 }
 
 export async function POST(req: NextRequest) {
@@ -82,7 +83,7 @@ export async function POST(req: NextRequest) {
     }
 
     // hCaptcha verification (server-side)
-    const hcaptchaSecret = process.env.HCAPTCHA_SECRET;
+    const hcaptchaSecret = env.HCAPTCHA_SECRET;
     if (!hcaptchaSecret) {
       console.error("[email] HCAPTCHA_SECRET not set");
       return NextResponse.json({ error: "Server misconfiguration" }, { status: 500 });
@@ -144,11 +145,11 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    const smtpHost = process.env.SMTP_HOST;
-    const smtpPort = Number(process.env.SMTP_PORT || 587);
-    const smtpSecure = Boolean(process.env.SMTP_SECURE === "true");
-  const smtpUser = process.env.SMTP_USER;
-  const hasSmtpPass = Boolean(process.env.SMTP_PASS);
+    const smtpHost = env.SMTP_HOST;
+    const smtpPort = Number(env.SMTP_PORT || 587);
+    const smtpSecure = Boolean(env.SMTP_SECURE === "true");
+    const smtpUser = env.SMTP_USER;
+    const hasSmtpPass = Boolean(env.SMTP_PASS);
 
     console.log("[email] SMTP config", {
       host: smtpHost,
@@ -164,12 +165,12 @@ export async function POST(req: NextRequest) {
       secure: smtpSecure,
       auth: {
         user: smtpUser,
-        pass: process.env.SMTP_PASS,
+        pass: env.SMTP_PASS,
       },
     });
 
     const to = resolveRecipient(pageKind);
-    const from = process.env.EMAIL_FROM || "support@sunvalleybroadband.com";
+    const from = env.EMAIL_FROM || "support@sunvalleybroadband.com";
     const subject = `[SVB ${pageKind === "support" ? "Support" : "Sales"}] Message from ${name}`;
 
     if (!to || !to.includes("@")) {

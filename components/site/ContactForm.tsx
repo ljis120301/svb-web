@@ -34,6 +34,7 @@ export function ContactForm({ pageKind }: ContactFormProps) {
   const [submitted, setSubmitted] = useState(false);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [touched, setTouched] = useState<Record<string, boolean>>({});
+  const [siteKey, setSiteKey] = useState<string | null>(null);
 
   function validateEmail(value: string): string | "" {
     if (!value.trim()) return "Please enter an email address";
@@ -80,6 +81,23 @@ export function ContactForm({ pageKind }: ContactFormProps) {
     } catch {
       setCanPickContacts(false);
     }
+  }, []);
+
+  useEffect(() => {
+    let isMounted = true;
+    fetch("/api/public-config")
+      .then((r) => r.json())
+      .then((data) => {
+        if (!isMounted) return;
+        setSiteKey(data?.hcaptchaSiteKey ?? null);
+      })
+      .catch(() => {
+        if (!isMounted) return;
+        setSiteKey(null);
+      });
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   async function handleContactAutofill() {
@@ -416,14 +434,18 @@ export function ContactForm({ pageKind }: ContactFormProps) {
         {status === "sending" ? "Sending..." : "Send"}
       </Button>
       <div className="mt-2">
-        <HCaptcha
-          ref={captchaRef as any}
-          sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITEKEY as string}
-          onVerify={(token) => {
-            setCaptchaToken(token);
-            setFieldErrors((prev) => ({ ...prev, captcha: "" }));
-          }}
-        />
+        {siteKey ? (
+          <HCaptcha
+            ref={captchaRef as any}
+            sitekey={siteKey}
+            onVerify={(token) => {
+              setCaptchaToken(token);
+              setFieldErrors((prev) => ({ ...prev, captcha: "" }));
+            }}
+          />
+        ) : (
+          <p className="text-sm text-neutral-600">Loading captcha…</p>
+        )}
         {(submitted || !!fieldErrors.captcha) && fieldErrors.captcha && (
           <p className="text-sm text-red-600 mt-1">{fieldErrors.captcha}</p>
         )}
