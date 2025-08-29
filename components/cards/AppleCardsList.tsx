@@ -71,7 +71,6 @@ export function AppleCardsList() {
     In short, the Ubiquiti LightBeam is more than just a piece of equipment—it is a crucial part of how we deliver on our promise to provide fast, reliable, and accessible internet to every corner of our service area. Through careful planning, expert installation, and the use of industry-leading technology, we ensure that every customer can count on a strong connection whenever they need it.
   </a>
 </p>
-
             ),
           }}
         />, 
@@ -85,17 +84,17 @@ export function AppleCardsList() {
           content: (
 <p className="text-neutral-700 dark:text-neutral-300">
   <a>
-    Doing business in Yuma, Arizona, means working within a unique blend of agricultural heritage, growing technology needs, and strong community values. As a locally owned company founded in 1983, we have been part of this region’s economic growth for more than four decades. Our origins trace back to assisting local farmers with the management and maintenance of their radio communications equipment—an essential service for coordinating large-scale farming operations in the desert climate. This early focus on dependable communications laid the groundwork for the technical expertise we still apply today.
+    Businesses in Yuma and across the county depend on reliable internet to stay competitive, serve customers, and grow. That’s where we come in. We work closely with hundreds of businesses—ranging from small local shops to major companies like Amazon—to deliver the connectivity they need to succeed. Our approach is simple: provide fast, dependable service and support that businesses can trust.
   </a>
   <br />
   <br />
   <a>
-    In our early years, our commitment to quality and reliability earned us contracts with Motorola, allowing us to provide advanced communication solutions to both private businesses and public agencies in the Yuma area. This work strengthened our relationships with local industries and established our reputation for delivering professional, dependable service. By the 1990s, we recognized the growing importance of the internet, and we transitioned into offering dial-up internet access, helping homes and businesses in Yuma take their first steps into the online world.
+    One of the most important projects we are proud to lead is bringing fiber optic internet to the Cocopah Indian Tribe. Fiber infrastructure is critical for long-term economic development, and this work ensures that the community has access to modern, future-ready connectivity. Projects like this reflect our commitment to strengthening not just individual businesses, but the region as a whole.
   </a>
   <br />
   <br />
   <a>
-    The 2000s brought new challenges and opportunities with the rise of mobile connectivity. We introduced LTE-based remote internet services, giving rural customers and outlying communities reliable access to the web where traditional wired options were not available. In the 2010s, we upgraded our wireless network to Ubiquiti-based infrastructure, greatly increasing speeds, capacity, and reliability for our customers. These improvements allowed us to serve not only residential customers, but also growing numbers of local businesses and organizations that needed dependable, high-speed connectivity.
+    Small businesses are the backbone of Yuma’s economy, and we love working alongside them. From restaurants and retail shops to farms and local offices, we understand that every business needs internet that simply works—day in and day out. That same reliability also supports larger organizations that depend on us for high-capacity connections and consistent performance.
   </a>
   <br />
   <br />
@@ -110,17 +109,14 @@ export function AppleCardsList() {
   <br />
   <br />
   <a>
-    Entering the 2020s, we expanded once again—this time into fiber optic services. Our team secured major contracts with both the Federal Communications Commission (FCC) and local government agencies to install and operate fiber networks throughout Yuma County. These projects have been instrumental in improving the region’s digital infrastructure, enabling faster speeds, lower latency, and greater reliability for residents, businesses, and public institutions alike.
+    Today, thousands of people and businesses across Yuma County rely on our network. Whether it’s processing transactions, managing logistics, or staying connected with customers, reliable internet is at the core of how modern businesses operate—and that’s exactly what we deliver.
   </a>
   <br />
   <a>
-    As a locally owned and operated business, our success has always been tied to the success of the Yuma community. We take pride in hiring local talent, partnering with area organizations, and contributing to the economic growth of the region. Our long history in Yuma has given us a deep understanding of the challenges and opportunities unique to this market, allowing us to provide technology solutions that are both innovative and practical.
-  </a>
-  <br />
-  <a>
-    Today, we remain committed to delivering high-quality internet and communication services while maintaining the customer-first approach that has guided us since 1983. From our agricultural roots to our role as a fiber network provider, we continue to invest in Yuma’s future—one connection at a time.
+    Our mission is straightforward: to be the trusted internet partner for businesses of every size. By investing in projects like fiber for the Cocopah Tribe, supporting local entrepreneurs, and meeting the demands of major corporations, we’re helping build a stronger, more connected future for Yuma County—one business at a time.
   </a>
 </p>
+
 
           ),
         }}

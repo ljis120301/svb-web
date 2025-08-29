@@ -8,7 +8,7 @@ const faqs = [
   },
   {
     q: "Can I bring my own router?",
-    a: "Yes. We also offer the option to rent a router from us for a monthly fee of $5 per month.",
+    a: "Yes, any standard non-cable router will work. However keep in mind we do not support bringing routers owned from other providers, or any Doxis cable routers. We also offer the option to rent a router from us for a monthly fee of $5 per month.",
   },
   {
     q: "How soon can I get installed?",
