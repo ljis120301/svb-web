@@ -34,15 +34,15 @@ export function FAQ() {
     <section className="mx-auto mt-20 w-full max-w-6xl px-4">
       <div className="mb-8 text-center">
         <Badge className="mb-3">Good to know</Badge>
-        <h2 className="text-balance text-3xl font-bold sm:text-4xl">Frequently asked questions</h2>
+        <h2 className="text-balance text-2xl font-bold sm:text-3xl">Frequently asked questions</h2>
       </div>
       <div className="grid gap-4 md:grid-cols-2">
         {faqs.map((f) => (
           <Card key={f.q}>
             <CardHeader>
-              <CardTitle className="text-lg">{f.q}</CardTitle>
+              <CardTitle className="text-base">{f.q}</CardTitle>
             </CardHeader>
-            <CardContent className="text-neutral-700 dark:text-neutral-300">{f.a}</CardContent>
+            <CardContent className="text-sm text-neutral-700 dark:text-neutral-300">{f.a}</CardContent>
           </Card>
         ))}
       </div>
