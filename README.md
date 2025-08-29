@@ -18,4 +18,19 @@ cd svb-web/
 sudo docker build -t ljis120301/svb-web:latest .
 
 sudo docker run ljis120301/svb-web:latest
+```
+
+## Goals 
+
+- remove mention of providing Cable or Wireless service. Sun Valley Broadband provides Fiber optic internet, and Beamspeed provides wireless and cable interent. 
+
+- Additional articles. 
+
+- Format articles
+
+- higher resolution main hero Image
+
+- dark mode? 
+
+- 
 

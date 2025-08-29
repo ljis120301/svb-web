@@ -4,6 +4,8 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import Image from "next/image";
 import Script from "next/script";
 import { BadgeCheck, ShieldCheck, Router } from "lucide-react";
+import Link from "next/link";
+import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator, BreadcrumbPage } from "@/components/ui/breadcrumb";
 
 export const metadata = {
   title: "Cable Internet in Yuma, AZ (Select RV Parks)",
@@ -15,6 +17,17 @@ export const metadata = {
 export default function CablePage() {
   return (
     <div className="relative mx-auto max-w-6xl px-4 py-12">
+      <Breadcrumb className="mb-4">
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink asChild><Link href="/">Home</Link></BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbPage>Cable</BreadcrumbPage>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
       <Script id="cable-breadcrumb-jsonld" type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({

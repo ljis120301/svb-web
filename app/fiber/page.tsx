@@ -4,6 +4,8 @@ import { PlansGrid } from "@/components/site/PlansGrid";
 import { Gauge, Infinity, Headphones, ShieldCheck, BadgeCheck, Router } from "lucide-react";
 import Image from "next/image";
 import Script from "next/script";
+import Link from "next/link";
+import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator, BreadcrumbPage } from "@/components/ui/breadcrumb";
 
 export const metadata = {
   title: "Fiber Internet in Yuma, AZ",
@@ -21,6 +23,17 @@ export default function FiberPage() {
 
   return (
     <div className="relative mx-auto max-w-6xl px-4 py-12">
+      <Breadcrumb className="mb-4">
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink asChild><Link href="/">Home</Link></BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbPage>Fiber</BreadcrumbPage>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
       <script type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({

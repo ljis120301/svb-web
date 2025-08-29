@@ -1,4 +1,6 @@
 import { Timeline } from "@/components/ui/timeline";
+import Link from "next/link";
+import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator, BreadcrumbPage } from "@/components/ui/breadcrumb";
 
 export const metadata = {
   title: "About Sun Valley Broadband in Yuma, AZ",
@@ -54,7 +56,17 @@ export default function AboutPage() {
           })
         }}
       />
-
+      <Breadcrumb className="mx-auto max-w-6xl px-4 mb-4 mt-4">
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink asChild><Link href="/">Home</Link></BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbPage>About</BreadcrumbPage>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
       
       <Timeline
         data={timelineData as any}

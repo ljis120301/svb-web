@@ -54,7 +54,7 @@ export default function AceternityHero() {
         >
           <Link
             href="/contact"
-            className={`${buttonVariants({ variant: "default" })} w-60 px-6 py-3 text-base transform scale-[1.05]`}
+            className={`${buttonVariants({ variant: "default" })} w-60 px-6 py-3 text-base transform scale-[1.05]  hover:scale-[1.08]`}
           >
             Check availability
           </Link>
@@ -62,7 +62,7 @@ export default function AceternityHero() {
             href="https://billing.beamspeed.net/"
             target="_blank"
             rel="noopener noreferrer"
-            className={`${buttonVariants({ variant: "outline" })} w-60 px-6 py-3 text-base transform scale-[1.05]`}
+            className={`${buttonVariants({ variant: "outline" })} w-60 px-6 py-3 text-base transform scale-[1.05] hover:scale-[1.08]`}
           >
             Pay Bill
           </Link>
