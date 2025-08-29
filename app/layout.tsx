@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     template: "%s | Sun Valley Broadband",
   },
   description:
-    "Sun Valley Broadband is a local Internet Service Provider in Yuma, Arizona offering fast, reliable fiber and fixed wireless internet with no data caps and friendly local support.",
+    "Sun Valley Broadband in Yuma, AZ delivers fast, reliable fiber and fixed wireless internet with no data caps and responsive local support for homes and businesses.",
   keywords: [
     "Sun Valley Broadband",
     "Internet Service Provider",
@@ -82,6 +82,7 @@ export const metadata: Metadata = {
     "geo.placename": "Yuma",
     "geo.position": "32.6927;-114.6277",
     ICBM: "32.6927, -114.6277",
+    "contact:email": "support@sunvalleybroadband.com",
   },
 };
 
@@ -109,6 +110,7 @@ export default function RootLayout({
               image: "https://sunvalleybroadband.com/web-images/logos/Transparent-Logo-4-1-2.webp",
               logo: "https://sunvalleybroadband.com/web-images/logos/Transparent-Logo-4-1-2.webp",
               telephone: "+1-928-343-0300",
+              email: "support@sunvalleybroadband.com",
               sameAs: [
                 "https://www.facebook.com/SunValleyBroadband",
                 "https://www.instagram.com/sun_valley_broadband/",
@@ -141,16 +143,34 @@ export default function RootLayout({
                 "@type": "ContactPoint",
                 contactType: "customer service",
                 telephone: "+1-928-343-0300",
+                email: "support@sunvalleybroadband.com",
                 areaServed: "US-AZ",
                 availableLanguage: ["English"]
               }],
+              
             }),
+          }}
+        />
+        <Script id="website-jsonld" type="application/ld+json" strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "Sun Valley Broadband",
+              url: "https://sunvalleybroadband.com/",
+              potentialAction: {
+                "@type": "SearchAction",
+                target: "https://sunvalleybroadband.com/?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+              },
+              inLanguage: "en-US"
+            })
           }}
         />
         {/* Google tag (gtag.js) */}
         <Script
           id="ga4-src"
-          src="https://www.googletagmanager.com/gtag/js?id=G-Y9V4KG1VL6"
+          src="https://www.googletagmanager.com/gtag/js?id=G-LVPSHQM46D"
           strategy="afterInteractive"
         />
         <Script id="ga4-inline" strategy="afterInteractive">
@@ -159,7 +179,7 @@ export default function RootLayout({
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             // Disable automatic page_view to prevent duplicates in SPA
-            gtag('config', 'G-Y9V4KG1VL6', { send_page_view: false });
+            gtag('config', 'G-LVPSHQM46D', { send_page_view: false });
           `}
         </Script>
         <Suspense fallback={null}>

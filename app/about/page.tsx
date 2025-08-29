@@ -1,7 +1,7 @@
 import { Timeline } from "@/components/ui/timeline";
 
 export const metadata = {
-  title: "About Sun Valley Broadband (Yuma, AZ)",
+  title: "About Sun Valley Broadband in Yuma, AZ",
   description:
     "Learn about Sun Valley Broadband, a local ISP in Yuma, Arizona providing fiber and fixed wireless internet with friendly, local support.",
   alternates: { canonical: "/about" },
