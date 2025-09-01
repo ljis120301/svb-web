@@ -22,7 +22,7 @@ export default function AceternityHero() {
 
       <div className="relative z-10 mx-auto max-w-6xl px-4 py-16 md:py-28">
         <h1 className="relative z-10 mx-auto max-w-4xl text-center text-2xl font-bold text-white md:text-4xl lg:text-6xl">
-          {"Fast, local internet for the Yuma area and Imperial Valley"
+          {"Fiber internet for Yuma and Imperial Valley"
             .split(" ")
             .map((word, index) => (
               <motion.span
@@ -43,7 +43,7 @@ export default function AceternityHero() {
           transition={{ duration: 0.3, delay: 0.8 }}
           className="relative z-10 mx-auto max-w-xl py-4 text-center text-base font-normal text-neutral-100/90 sm:text-lg md:text-xl"
         >
-          From Brawley to Dateland, we deliver connection where no other provider can.
+          Fast uploads, low latency, and rock‑solid reliability. Check your address for fiber.
         </motion.p>
 
         <motion.div

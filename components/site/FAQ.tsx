@@ -19,8 +19,8 @@ const faqs = [
     a: "Yes, we work with many businesses all across Yuma County and Imperial. We can provide buisness features like Static IPv4 addresses and in some cases dedicated ethernet lines. For specific buisness needs, or larger scale projects reach out to us by phone or email.",
   },
   {
-    q: "Was your Company named Beamspeed?",
-    a: "Yes, we were first named Beamspeed, before being rebranded to Sun Valley Broadband as we have expanded our capabilities and services. We are still owned by the exact same people, there was never a change in ownership.",
+    q: "What technology do you prioritize?",
+    a: "We are a fiber‑first ISP. Legacy wireless is available only where fiber is not yet built.",
   },
   {
     q: "Is there a contract?",

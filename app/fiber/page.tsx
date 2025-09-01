@@ -1,7 +1,7 @@
 import { EligibilityCta } from "@/components/site/EligibilityCta";
 import { ProductBanner } from "@/components/site/Banners";
 import { PlansGrid } from "@/components/site/PlansGrid";
-import { Gauge, Infinity, Headphones, ShieldCheck, BadgeCheck, Router } from "lucide-react";
+import { IconGauge, IconInfinity, IconHeadset, IconShieldCheck, IconBadgeCheck, IconRouter } from "@tabler/icons-react";
 import Image from "next/image";
 import Script from "next/script";
 import Link from "next/link";
@@ -96,18 +96,9 @@ export default function FiberPage() {
         <span className="inline-flex items-center rounded-full border border-slate-200 bg-accent/70 px-3 py-1 text-xs font-medium text-slate-600 shadow-sm backdrop-blur ">
           Now serving Yuma, Imperial, and Wellton
         </span>
-        <h1 className="mt-4 bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 bg-clip-text text-3xl font-bold tracking-tight text-transparent dark:from-white dark:via-slate-200 dark:to-slate-50">
-          Fiber Internet
-        </h1>
-        <p className="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-gray-700 transition-colors duration-300 dark:text-gray-200 md:text-lg">
-          At <span className="font-semibold">Sun Valley Broadband</span>, we’re bringing
-          <span className="font-semibold"> next-generation fiber optic internet</span> right here to Yuma, Arizona.
-  Say goodbye to buffering, slow uploads, and unreliable connections — our fiber service delivers 
-          <span className="font-semibold"> lightning-fast speeds</span> with dependable performance, so you can stream in 4K, game without lag,
-  and work from home seamlessly. Whether you’re looking for our affordable <span className="font-semibold">Bronze</span> plan, 
-          the balanced performance of <span className="font-semibold">Gold</span>, or the
-          ultra-powerful <span className="text-slate-700 dark:text-slate-300 font-semibold">Titanium</span> tier, you’ll enjoy
-          <span className="font-semibold"> local support</span> from people who live and work in your community. Experience the difference of true fiber — because Yuma deserves internet built for the future.
+        <h1 className="mt-4 text-3xl font-bold tracking-tight">Fiber Internet</h1>
+        <p className="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-gray-700 transition-colors duration-300 dark:text-gray-200">
+          Next‑generation fiber optic internet with low latency, fast uploads, and reliable performance for streaming, work, and gaming.
         </p>
       </div>
 
@@ -125,15 +116,15 @@ export default function FiberPage() {
           <div className="rounded-2xl border border-slate-200 p-6 ring-1 ring-black/5 dark:border-neutral-800">
             <div className="flex gap-4">
               <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-md ring-1 ring-neutral-200 dark:ring-neutral-800">
-                <Image src="/UF-LOCO.webp" alt="Ubiquiti UFiber Loco modem" fill sizes="80px" className="object-contain p-1 drop-shadow-lg" />
+                <Image src="/UF-LOCO.webp" alt="Fiber modem" fill sizes="80px" className="object-contain p-1 drop-shadow-lg" />
               </div>
               <div>
-                <h3 className="text-base font-semibold">UFiber Loco — keep your own Wi‑Fi</h3>
+                <h3 className="text-base font-semibold">Modem — keep your own Wi‑Fi</h3>
                 <p className="mt-1 text-sm text-neutral-700 dark:text-neutral-300">A small fiber modem that lets your favorite router or mesh system do the Wi‑Fi.</p>
                 <ul className="mt-2 space-y-1 text-sm text-neutral-700 dark:text-neutral-300">
-                  <li className="flex items-center gap-2"><BadgeCheck className="h-4 w-4 text-green-600" /> Plugs into your existing router</li>
-                  <li className="flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-green-600" /> Reliable fiber connection, tiny footprint</li>
-                  <li className="flex items-center gap-2"><Router className="h-4 w-4 text-green-600" /> Ideal if you already own a good Wi‑Fi setup</li>
+                  <li className="flex items-center gap-2"><IconBadgeCheck className="h-4 w-4 text-green-600" /> Plugs into your existing router</li>
+                  <li className="flex items-center gap-2"><IconShieldCheck className="h-4 w-4 text-green-600" /> Reliable fiber connection, small footprint</li>
+                  <li className="flex items-center gap-2"><IconRouter className="h-4 w-4 text-green-600" /> Ideal if you already own a good Wi‑Fi setup</li>
                 </ul>
                 <p className="mt-2 text-xs text-neutral-500">Modem‑only. Pair with any router you prefer.</p>
               </div>
@@ -142,22 +133,22 @@ export default function FiberPage() {
           <div className="rounded-2xl border border-slate-200 p-6 ring-1 ring-black/5 dark:border-neutral-800">
             <div className="flex gap-4">
               <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-md ring-1 ring-neutral-200 dark:ring-neutral-800">
-                <Image src="/UFiberwifi6.webp" alt="Ubiquiti UFiber Wi‑Fi 6 all‑in‑one" fill sizes="80px" className="object-contain p-1 drop-shadow-lg" />
+                <Image src="/UFiberwifi6.webp" alt="Wi‑Fi 6 all‑in‑one" fill sizes="80px" className="object-contain p-1 drop-shadow-lg" />
               </div>
               <div>
-                <h3 className="text-base font-semibold">UFiber Wi‑Fi 6 — one box for everything</h3>
+                <h3 className="text-base font-semibold">Wi‑Fi 6 — one box for everything</h3>
                 <p className="mt-1 text-sm text-neutral-700 dark:text-neutral-300">Fiber modem + fast Wi‑Fi 6 router + 4‑port switch. Fewer cables, cleaner setup, strong whole‑home coverage.</p>
                 <ul className="mt-2 space-y-1 text-sm text-neutral-700 dark:text-neutral-300">
-                  <li className="flex items-center gap-2"><BadgeCheck className="h-4 w-4 text-green-600" /> Wi‑Fi 6 for modern devices</li>
-                  <li className="flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-green-600" /> Simple setup, fewer boxes to manage</li>
-                  <li className="flex items-center gap-2"><Router className="h-4 w-4 text-green-600" /> 4 Gigabit ports for TVs, consoles, and work PCs</li>
+                  <li className="flex items-center gap-2"><IconBadgeCheck className="h-4 w-4 text-green-600" /> Wi‑Fi 6 for modern devices</li>
+                  <li className="flex items-center gap-2"><IconShieldCheck className="h-4 w-4 text-green-600" /> Simple setup, fewer boxes to manage</li>
+                  <li className="flex items-center gap-2"><IconRouter className="h-4 w-4 text-green-600" /> 4 Gigabit ports for TVs, consoles, and work PCs</li>
                 </ul>
                 <p className="mt-2 text-xs text-neutral-500">All‑in‑one. Great if you want the easiest choice.</p>
               </div>
             </div>
           </div>
         </div>
-        <p className="mt-3 text-xs text-neutral-500">Select UFiber Loco (modem‑only) or UFiber Wi‑Fi 6 (modem + router + switch). We’ll help you pick the best fit during checkout. No specific prices shown here.</p>
+        <p className="mt-3 text-xs text-neutral-500">Select a modem (bridge) or a Wi‑Fi 6 gateway (modem + router + switch). We’ll help you pick during checkout.</p>
       </section>
 
       <section className="mx-auto mt-8 max-w-6xl">
@@ -213,7 +204,7 @@ export default function FiberPage() {
           <div className="flex justify-center items-center">
             <PlansGrid
               plans={fiberPlans}
-              serviceLabel="Fiber Opticalins Internet"
+              serviceLabel="Fiber Internet"
               showFacts
               gridClassName="mt-6 grid auto-rows-fr gap-6 sm:grid-cols-2 md:grid-cols-3 sm:gap-8"
               descriptionMinHeightPx={56}
@@ -227,20 +218,20 @@ export default function FiberPage() {
           <div className="rounded-2xl border border-slate-200 bg-transparent p-6 shadow-sm ring-1 ring-black/5 dark:border-neutral-800">
             <h3 className="text-sm font-semibold text-slate-900 dark:text-slate-100">Included with every plan</h3>
             <ul className="mt-3 grid grid-cols-1 gap-2 text-sm text-neutral-700 dark:text-neutral-300 sm:grid-cols-2">
-              <li className="flex items-center gap-2"><BadgeCheck className="h-4 w-4 text-green-600" /> Transparent pricing</li>
-              <li className="flex items-center gap-2"><Infinity className="h-4 w-4 text-green-600" /> No data caps</li>
-              <li className="flex items-center gap-2"><Headphones className="h-4 w-4 text-green-600" /> Local support</li>
-              <li className="flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-green-600" /> Secure, reliable network</li>
+              <li className="flex items-center gap-2"><IconBadgeCheck className="h-4 w-4 text-green-600" /> Transparent pricing</li>
+              <li className="flex items-center gap-2"><IconInfinity className="h-4 w-4 text-green-600" /> No data caps</li>
+              <li className="flex items-center gap-2"><IconHeadset className="h-4 w-4 text-green-600" /> Local support</li>
+              <li className="flex items-center gap-2"><IconShieldCheck className="h-4 w-4 text-green-600" /> Secure, reliable network</li>
             </ul>
           </div>
           <div className="rounded-2xl border border-slate-200 bg-transparent p-6 shadow-sm ring-1 ring-black/5 dark:border-neutral-800">
             <h3 className="text-sm font-semibold text-slate-900 dark:text-slate-100">Which should I choose?</h3>
             <ul className="mt-3 space-y-2 text-sm text-neutral-700 dark:text-neutral-300">
-              <li className="flex items-start gap-2"><BadgeCheck className="mt-0.5 h-4 w-4 text-green-600" />
-                <span><strong>UFiber Loco</strong>: best if you already own a router or mesh and want a small, reliable fiber modem.</span>
+              <li className="flex items-start gap-2">
+                <span><strong>Modem</strong>: best if you already own a router or mesh.</span>
               </li>
-              <li className="flex items-start gap-2"><BadgeCheck className="mt-0.5 h-4 w-4 text-green-600" />
-                <span><strong>UFiber Wi‑Fi 6</strong>: best if you want one device that handles fiber, fast Wi‑Fi, and multiple wired devices.</span>
+              <li className="flex items-start gap-2">
+                <span><strong>Wi‑Fi 6 gateway</strong>: best if you want one device that handles fiber, fast Wi‑Fi, and multiple wired devices.</span>
               </li>
             </ul>
             <p className="mt-3 text-xs text-neutral-500">We’ll recommend the right option during signup; pricing is provided at order.</p>

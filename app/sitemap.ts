@@ -13,7 +13,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/contact',
     '/fiber',
     '/wireless',
-    '/cable',
   ];
 
   const staticEntries = routes.map((path) => ({

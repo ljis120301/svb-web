@@ -1,38 +1,36 @@
 import { ISPFeatureCard } from "@/components/site/ISPFeatureCard";
-import { IconServer, IconMail, IconHeadset, IconShieldLock } from "@tabler/icons-react";
+import { IconBolt, IconShieldLock, IconHeadset } from "@tabler/icons-react";
 
 export function FeatureCardsGrid() {
   return (
     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-stretch">
       <ISPFeatureCard
         className="h-full"
-        title="Privacy Focused"
-        subtitle="We don't track you, we don't log your data."
-        description="We don't sell your data, we don't share your data with anyone." 
+        title="Fiber‑first performance"
+        subtitle="Fast uploads and low latency"
+        description="Symmetric speeds and consistent performance designed for work, streaming, and gaming."
+        Icon={IconBolt}
+        highlights={["Low latency", "Fast uploads", "Consistent speeds"]}
+        href="/fiber"
+        ctaLabel="See fiber"
+      />
+      <ISPFeatureCard
+        className="h-full"
+        title="Privacy focused"
+        subtitle="We respect your privacy"
+        description="Clear, transparent practices and secure networking defaults."
         Icon={IconShieldLock}
-        highlights={["No logs", "No tracking", "No data collection", "No data sharing"]}
-        href="/services"
-        ctaLabel="Explore options"
+        highlights={["No throttling", "No caps", "Secure defaults"]}
+        href="/support"
+        ctaLabel="Learn more"
       />
       <ISPFeatureCard
         className="h-full"
-        title="Business Email"
-        subtitle="Professional email on your domain"
-        description="Setup and migration to modern, secure email platforms with ongoing support."
-        Icon={IconMail}
-        highlights={["Spam protection", "IMAP/POP3", "Mobile + desktop"]}
-        href="https://webmail.beamspeed.net/"
-        target="_blank"
-        rel="noopener noreferrer"
-        ctaLabel="Set up email"
-      />
-      <ISPFeatureCard
-        className="h-full"
-        title="Walk‑In Tech Support"
-        subtitle="Friendly local technicians"
-        description="Bring your device or network issues — we’ll help in person, right away."
+        title="Local support"
+        subtitle="Friendly technicians"
+        description="Talk to people who live and work here. We’re available when you need help."
         Icon={IconHeadset}
-        highlights={["Router Setup", "Device Swaps", "Network troubleshooting"]}
+        highlights={["Router setup", "Device swaps", "Troubleshooting"]}
         href="/support"
         ctaLabel="Visit support"
       />

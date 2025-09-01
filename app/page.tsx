@@ -5,9 +5,9 @@ import type { Metadata } from "next";
 import { StickyBanner } from "@/components/ui/sticky-banner";
 
 export const metadata: Metadata = {
-  title: "Sun Valley Broadband — Internet in Yuma, AZ",
+  title: "Sun Valley Broadband — Fiber Internet in Yuma, AZ",
   description:
-    "Sun Valley Broadband provides fast, reliable fiber and fixed wireless internet in Yuma, Arizona with local support and no data caps.",
+    "Fiber‑first internet with fast uploads, low latency, and local support. Legacy wireless available only where fiber isn’t yet.",
   alternates: { canonical: "/" },
 };
 

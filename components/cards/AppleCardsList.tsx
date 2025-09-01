@@ -10,14 +10,14 @@ export function AppleCardsList() {
           index={0}
           card={{
             src: "/web-images/familySitting.webp",
-            title: "Stream without buffering",
-            category: "Experience",
+            title: "Fiber built for 4K & gaming",
+            category: "Fiber‑first",
             content: (
               <p className="text-neutral-700 dark:text-neutral-300">
-                <a>Ultra-low latency and high bandwidth for 4K streaming and gaming.</a>
+                <a>Low latency and high bandwidth for 4K streaming and gaming.</a>
                 <br />
                 <br />
-                <a className="">With modern Streaming Platform taking up more bandwidth than ever, we provide a perfect streaming experience.</a>
+                <a className="">With modern platforms using more bandwidth than ever, fiber keeps everything smooth.</a>
                 <a className="flex justify-center pt-6">
                   <Image src="/speedtest.svg" alt="Speedtest" width={500} height={500} className="rounded-lg" style={{ height: "auto" }} />
                 </a>
@@ -25,76 +25,28 @@ export function AppleCardsList() {
             ),
           }}
         />, 
-        <AppleCard
-          key="2"
-          index={1}
-          card={{
-            src: "/lightbeam.webp",
-            title: "Reliable wireless with Ubiquiti",
-            category: "Coverage",
-            content: (
-<p className="text-neutral-700 dark:text-neutral-300">
-  <a>
-    At our company, we deploy the Ubiquiti LightBeam as a key component of our wireless internet infrastructure. This highly engineered device is specifically designed to provide stable, high-performance connectivity over long distances, making it ideal for delivering broadband service to rural and suburban areas where wired infrastructure is limited or unavailable. The LightBeam’s focused beam technology ensures that bandwidth is delivered efficiently, reducing signal loss and maintaining consistent speeds for end-users. Whether serving a single home or an entire business complex, this equipment allows us to meet customer demands for reliability and speed.
-  </a>
-  <br />
-  <br />
-  <a>
-    Our technicians undergo rigorous training to install, align, and configure Ubiquiti LightBeam devices with precision. Every installation begins with a detailed site survey, during which our team assesses the environment, identifies potential sources of interference, and determines the optimal mounting and alignment angles. We take into account factors such as line-of-sight, antenna height, and terrain conditions to ensure maximum performance. The installation process doesn’t end when the hardware is mounted—our technicians run multiple diagnostic tests to confirm that the link is stable, latency is minimal, and throughput meets or exceeds expectations.
-  </a>
-  <br />
-  <br />
-  <a>
-    The Ubiquiti LightBeam excels in challenging operating environments, thanks to its high-gain antenna design and advanced noise filtering capabilities. In regions where wireless signals are often disrupted by competing transmissions or physical obstructions, the LightBeam’s narrow beamwidth and adaptive modulation technology ensure a strong, clear connection. This makes it a trusted solution for delivering internet to both densely populated urban zones and remote rural communities. Many of our customers experience faster, more reliable connections with the LightBeam compared to older or less specialized wireless equipment.
-  </a>
-  <br />
-  <br />
-  <Image
-    src="/lightbeam.webp"
-    alt="LightBeam"
-    width={500}
-    height={500}
-    className="rounded-lg"
-    style={{ height: "auto" }}
-  />
-  <br />
-  <br />
-  <a>
-    Beyond the LightBeam, our network leverages the full range of Ubiquiti’s ISP-grade products. These include high-capacity point-to-point backhaul radios, fiber-fed distribution points, and customer premises equipment, all working together to create a robust, scalable infrastructure. In the Yuma area, this technology powers everything from residential internet connections to enterprise-grade links for government, education, and healthcare facilities. Because Ubiquiti products are known for their durability, low maintenance requirements, and industry-leading performance, they allow us to maintain a high standard of service while keeping operational costs efficient.
-  </a>
-  <br />
-  <a>
-    Our commitment to using Ubiquiti technology is not just about speed—it’s about building a network that can grow with the community’s needs. As internet demand continues to rise, both in terms of speed and reliability, we are confident that our Ubiquiti-powered infrastructure will be able to adapt. By combining cutting-edge hardware with our team’s technical expertise, we can offer a service that is both dependable and future-ready. This dedication to quality and performance is why we have become a trusted provider for households, businesses, and organizations across the region.
-  </a>
-  <br />
-  <a>
-    In short, the Ubiquiti LightBeam is more than just a piece of equipment—it is a crucial part of how we deliver on our promise to provide fast, reliable, and accessible internet to every corner of our service area. Through careful planning, expert installation, and the use of industry-leading technology, we ensure that every customer can count on a strong connection whenever they need it.
-  </a>
-</p>
-            ),
-          }}
-        />, 
+        
         <AppleCard
         key="6"
         index={5}
         card={{
           src: "/web-images/buisness.webp",
-          title: "Business ready",
+          title: "Business ready on fiber",
           category: "Business",
           content: (
 <p className="text-neutral-700 dark:text-neutral-300">
   <a>
-    Businesses in Yuma and across the county depend on reliable internet to stay competitive, serve customers, and grow. That’s where we come in. We work closely with hundreds of businesses—ranging from small local shops to major companies like Amazon—to deliver the connectivity they need to succeed. Our approach is simple: provide fast, dependable service and support that businesses can trust.
+    Businesses depend on reliable internet to stay competitive. We deliver fast, dependable fiber connectivity with responsive local support.
   </a>
   <br />
   <br />
   <a>
-    One of the most important projects we are proud to lead is bringing fiber optic internet to the Cocopah Indian Tribe. Fiber infrastructure is critical for long-term economic development, and this work ensures that the community has access to modern, future-ready connectivity. Projects like this reflect our commitment to strengthening not just individual businesses, but the region as a whole.
+    Fiber infrastructure is critical for long‑term growth, enabling cloud apps, voice, and backup with ease.
   </a>
   <br />
   <br />
   <a>
-    Small businesses are the backbone of Yuma’s economy, and we love working alongside them. From restaurants and retail shops to farms and local offices, we understand that every business needs internet that simply works—day in and day out. That same reliability also supports larger organizations that depend on us for high-capacity connections and consistent performance.
+    From local shops to larger organizations, we provide consistent performance and the right options for static IP and more.
   </a>
   <br />
   <br />
@@ -109,11 +61,11 @@ export function AppleCardsList() {
   <br />
   <br />
   <a>
-    Today, thousands of people and businesses across Yuma County rely on our network. Whether it’s processing transactions, managing logistics, or staying connected with customers, reliable internet is at the core of how modern businesses operate—and that’s exactly what we deliver.
+    Reliable internet is at the core of how modern businesses operate — and that’s exactly what we deliver.
   </a>
   <br />
   <a>
-    Our mission is straightforward: to be the trusted internet partner for businesses of every size. By investing in projects like fiber for the Cocopah Tribe, supporting local entrepreneurs, and meeting the demands of major corporations, we’re helping build a stronger, more connected future for Yuma County—one business at a time.
+    Our mission: be the trusted fiber partner for businesses of every size.
   </a>
 </p>
 
@@ -126,7 +78,7 @@ export function AppleCardsList() {
           index={2}
           card={{
             src: "/web-images/image-10.webp",
-            title: "Local team, global connectivity",
+            title: "Local team on your side",
             category: "Support",
             content: (
 <p className="text-neutral-700 dark:text-neutral-300">
@@ -169,7 +121,7 @@ export function AppleCardsList() {
     More Than Just Troubleshooting
   </a>
   <a>
-    While our primary focus is on resolving connectivity issues, we also provide guidance on optimizing your home or business network, improving Wi-Fi coverage, and ensuring that your devices are set up for maximum performance. For customers who need the fastest available speeds, we are proud to offer fiber-optic service in select areas—bringing unmatched reliability and performance to your connection.
+    While our primary focus is on resolving connectivity issues, we also provide guidance on optimizing your home or business network, improving Wi‑Fi coverage, and ensuring that your devices are set up for maximum performance. For customers who need the fastest available speeds, we are proud to offer fiber‑optic service — bringing unmatched reliability and performance to your connection.
   </a>
   <br />
   <br />
@@ -205,7 +157,7 @@ export function AppleCardsList() {
     Secure Communication, Always
   </a>
   <a>
-    All of our services are delivered over HTTPS whenever possible, providing end-to-end encryption for your traffic. This means that the content you send and receive cannot be intercepted or read by third parties—including us. We do not log your browsing history or track what you access, ensuring that your online activity remains your business and your business alone.
+    All services are delivered over HTTPS whenever possible, providing end‑to‑end encryption for your traffic. We do not log your browsing history or track what you access.
   </a>
   <br />
   <br />
@@ -213,7 +165,7 @@ export function AppleCardsList() {
     Encouraging Privacy Tools and Self-Hosting
   </a>
   <a>
-    We support and encourage the use of privacy-focused tools such as the Tor network for anonymous browsing and communication. We also welcome and empower our customers to self-host their own websites, applications, and services from their own connections. If you are interested in hosting content from your location, we can work with you to reserve a static IP address that meets your needs. Simply give us a call and our team will help you explore the options.
+    We support privacy‑focused tools and self‑hosting. Need a static IP? We can help.
   </a>
   <br />
   <br />
@@ -221,7 +173,7 @@ export function AppleCardsList() {
     Support for P2P File Sharing
   </a>
   <a>
-    We believe that peer-to-peer (P2P) file sharing plays an important role in the open internet ecosystem when used responsibly. Our network fully supports and encourages the use of P2P protocols for legitimate content distribution, such as seeding Linux ISOs and other open-source software. By sharing these resources, our customers help strengthen the free software community and ensure that important tools remain widely available. We are proud to provide a network where you can participate in P2P distribution without unnecessary restrictions.
+    Our network supports legitimate peer‑to‑peer distribution like Linux ISOs and open‑source software.
   </a>
   <br />
   <br />

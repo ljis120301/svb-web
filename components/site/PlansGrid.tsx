@@ -1,8 +1,9 @@
 import React from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogTrigger, DialogHeader, DialogTitle, DialogClose } from "@/components/ui/dialog";
 import BroadbandFactsLabel from "@/components/site/FCCbroadbandLabels";
 import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
 
 type Plan = {
   name: string;
@@ -29,7 +30,7 @@ export function PlansGrid({ plans, serviceLabel, showFacts = true, gridClassName
     <div className={gridClassName ?? "mt-8 grid auto-rows-fr gap-6 sm:grid-cols-2 md:grid-cols-4"}>
       {plans.map((plan) => {
         const CardInner = (
-          <Card className={`group relative h-full border-2 ${plan.color} cursor-pointer overflow-hidden bg-white transition hover:-translate-y-1 hover:shadow-md dark:bg-neutral-950 pb-14`}>
+          <Card className={`group relative h-full border-2 ${plan.color} overflow-hidden bg-white transition hover:-translate-y-1 hover:shadow-md dark:bg-neutral-950`}>
             <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-neutral-200 via-neutral-400 to-neutral-200 dark:from-neutral-800 dark:via-neutral-700 dark:to-neutral-800" />
             <div className="absolute top-2 right-2 z-10">
               <Badge
@@ -39,11 +40,9 @@ export function PlansGrid({ plans, serviceLabel, showFacts = true, gridClassName
                 {plan.businessOnly ? "Business only" : "Residential & business"}
               </Badge>
             </div>
-            <CardHeader className="pb-0 pr-24">
-              <div className="min-h-[64px]">
-                <CardTitle className="text-xl tracking-tight">{plan.name}</CardTitle>
-                <CardDescription className="mt-1 text-[13px] truncate">{serviceLabel}</CardDescription>
-              </div>
+            <CardHeader className="pb-0 pr-24 min-h-[72px]">
+              <CardTitle className="text-xl tracking-tight truncate">{plan.name}</CardTitle>
+              <CardDescription className="mt-1 text-[13px] truncate">{serviceLabel}</CardDescription>
             </CardHeader>
             <CardContent className="pt-4">
               <div className="flex flex-col items-center">
@@ -52,21 +51,15 @@ export function PlansGrid({ plans, serviceLabel, showFacts = true, gridClassName
                   <span className="pb-1 text-sm text-neutral-500">/mo</span>
                 </div>
                 <div className="mt-4 flex w-full items-center justify-center gap-2">
-                  <Badge
-                    variant="outline"
-                    className="px-2 py-0.5 text-xs font-medium rounded-sm whitespace-nowrap shrink-0 border-neutral-300 text-neutral-700 bg-transparent dark:border-neutral-700 dark:text-neutral-300"
-                  >
+                  <Badge variant="outline" className="px-2 py-0.5 text-xs font-medium rounded-sm whitespace-nowrap shrink-0 border-neutral-300 text-neutral-700 bg-transparent dark:border-neutral-700 dark:text-neutral-300">
                     {plan.download} Mbps down
                   </Badge>
-                  <Badge
-                    variant="outline"
-                    className="px-2 py-0.5 text-xs font-medium rounded-sm whitespace-nowrap shrink-0 border-neutral-300 text-neutral-700 bg-transparent dark:border-neutral-700 dark:text-neutral-300"
-                  >
+                  <Badge variant="outline" className="px-2 py-0.5 text-xs font-medium rounded-sm whitespace-nowrap shrink-0 border-neutral-300 text-neutral-700 bg-transparent dark:border-neutral-700 dark:text-neutral-300">
                     {plan.upload} Mbps up
                   </Badge>
                 </div>
                 {plan.description ? (
-                  <p className="mt-4 text-center text-sm text-neutral-600 dark:text-neutral-400">
+                  <p className="mt-4 text-center text-sm text-neutral-600 dark:text-neutral-400 line-clamp-2">
                     {plan.description}
                   </p>
                 ) : (
@@ -76,9 +69,12 @@ export function PlansGrid({ plans, serviceLabel, showFacts = true, gridClassName
                 )}
               </div>
             </CardContent>
-            {showFacts && plan.planId ? (
-              <span className="absolute bottom-3 right-3 text-xs text-neutral-500 whitespace-nowrap shrink-0">View FCC facts</span>
-            ) : null}
+            <CardFooter className="mt-auto flex items-center justify-between px-6 pb-4 pt-0">
+              {showFacts && plan.planId ? (
+                <span className="text-xs text-neutral-500 whitespace-nowrap shrink-0">FCC facts</span>
+              ) : <span />}
+              <Link href="/contact" className="text-sm font-medium text-primary hover:underline">Get started</Link>
+            </CardFooter>
           </Card>
         );
 
