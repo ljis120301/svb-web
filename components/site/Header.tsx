@@ -29,7 +29,7 @@ export function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60 text-[110%]">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60">
       <div className="mx-auto flex h-[80px] max-w-7xl items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-0">
           <BrandLogo />
@@ -75,31 +75,28 @@ export function Header() {
           <a
             href="tel:+19283430300"
             aria-label="Call (928) 343-0300"
-            className={buttonVariants({ variant: "outline" })}
+            className={buttonVariants({ variant: "ghost", size: "sm" })}
           >
             <IconPhone className="w-4 h-4" />
-            (928) 343-0300
+            <span className="hidden sm:inline">(928) 343-0300</span>
           </a>
           <Link
             href="https://webmail.beamspeed.net/"
             target="_blank"
             rel="noopener noreferrer"
-            className={cn(
-              buttonVariants({ variant: "default" }),
-              "bg-accent text-black hover:bg-accent/80"
-            )}
+            className={buttonVariants({ variant: "ghost", size: "sm" })}
           >
             <IconMail className="w-4 h-4" />
-            Email
+            <span className="hidden sm:inline">Email</span>
           </Link>
-          <Link href="/contact" className={buttonVariants({ variant: "default" })}>
+          <Link href="/contact" className={buttonVariants({ variant: "default", size: "sm" })}>
             Get started
           </Link>
           <Link
             href="https://billing.beamspeed.net/"
             target="_blank"
             rel="noopener noreferrer"
-            className={buttonVariants({ variant: "outline" })}
+            className={buttonVariants({ variant: "outline", size: "sm" })}
           >
             Pay Bill
           </Link>
