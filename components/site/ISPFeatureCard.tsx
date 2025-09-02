@@ -73,7 +73,7 @@ export function ISPFeatureCard({
             <ul className="mt-4 space-y-2">
               {highlights.map((item, idx) => (
                 <li key={idx} className="flex items-start gap-2 text-sm text-neutral-800 dark:text-neutral-200">
-                  <IconCheck className="mt-0.5 h-4 w-4 shrink-0 border border-blue-500 rounded-full" />
+                  <IconCheck className="mt-0.5 h-4 w-4 shrink-0" />
                   <span>{item}</span>
                 </li>
               ))}

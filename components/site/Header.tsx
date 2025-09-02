@@ -19,8 +19,7 @@ import { BrandLogo } from "@/components/site/BrandLogo";
 const navItems = [
   { href: "/", label: "Home" },
   { href: "/fiber", label: "Fiber" },
-  { href: "/wireless", label: "Wireless" },
-  { href: "/cable", label: "Cable" },
+  { href: "/wireless", label: "Legacy Wireless" },
   { href: "/support", label: "Support" },
   { href: "/contact", label: "Contact" },
 ];
@@ -45,16 +44,13 @@ export function Header() {
                     <Link href="/fiber" className="block rounded-md px-3 py-2 hover:bg-accent hover:text-accent-foreground">Fiber</Link>
                   </NavigationMenuLink>
                   <NavigationMenuLink asChild>
-                    <Link href="/wireless" className="block rounded-md px-3 py-2 hover:bg-accent hover:text-accent-foreground">Wireless</Link>
-                  </NavigationMenuLink>
-                  <NavigationMenuLink asChild>
-                    <Link href="/cable" className="block rounded-md px-3 py-2 hover:bg-accent hover:text-accent-foreground">Cable</Link>
+                    <Link href="/wireless" className="block rounded-md px-3 py-2 hover:bg-accent hover:text-accent-foreground">Legacy Wireless</Link>
                   </NavigationMenuLink>
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
-                  <Link href="/about" className={cn("rounded-md px-3 py-2", pathname === "/about" && "font-semibold text-primary")}>About</Link>
+                  <Link href="/about" className={cn("rounded-md px-3 py-2", pathname === "/about" && "font-semibold text-primary")}>Why Fiber</Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>

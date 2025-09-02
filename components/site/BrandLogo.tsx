@@ -15,13 +15,13 @@ export function BrandLogo() {
           className="object-contain"
         />
       </div>
-      <div className="relative h-[80px] w-[250px]  -ml-6 -mt-[-10px]">
+      <div className="relative h-[500px] w-[300px]  -ml-6 -mt-[-8px]">
         <Image
           src="/cropped-Transparent-Logo-4-2048x682.webp"
           alt="Sun Valley Broadband wordmark"
           fill
           priority={false}
-          sizes="250px"
+          sizes="2048px"
           className="object-contain"
         />
       </div>

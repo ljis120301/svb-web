@@ -1,79 +1,88 @@
-import { Timeline } from "@/components/ui/timeline";
 import Link from "next/link";
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator, BreadcrumbPage } from "@/components/ui/breadcrumb";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 export const metadata = {
-  title: "About Sun Valley Broadband in Yuma, AZ",
+  title: "Why Fiber with SVB — Sun Valley Broadband",
   description:
-    "Learn about Sun Valley Broadband, a local ISP in Yuma, Arizona providing fiber and fixed wireless internet with friendly, local support.",
+    "Fiber-first internet: faster uploads, lower latency, and reliability for Home, Business, and Municipal customers.",
   alternates: { canonical: "/about" },
 };
 
-export default function AboutPage() {
-  const timelineData = [
+export default function WhyFiberPage() {
+  const cards = [
     {
-      title: "Founded and Early Days",
-      content:
-        "First began providing radio communication equipment to Farmers who needed to stay in real time communication before cell phones were widely introduced. Then, Gila Electronics began providing Dial Up Internet throughout the late 90’s into the early 2000’s to the Yuma area.",
+      title: "Why fiber",
+      subtitle: "Modern. Symmetric. Low latency.",
+      description: "Fiber delivers consistent speeds up and down, resilient performance during peak hours, and the lowest latency for work, streaming, and gaming.",
     },
     {
-      title: "From Dial Up to Wireless",
-      content:
-        "We began offering LTE based service as well as Antenna based service through Micrtotik SXT. We moved on from LTE and began being among the first in Yuma County to begin providing 5Ghz Wireless home internet services. We utilized Ubiquiti’s excellent line of Wireless products to deploy a Point to Multi Point WISP all throughout Yuma County. This was a major leap forward in our abilities to provide stable high speed internet to the masses",
+      title: "Who we serve",
+      subtitle: "Home • Business • Municipal",
+      description: "Simple, clear plans for homes; scalable options for businesses; dependable connectivity for public sector deployments.",
     },
     {
-      title: "Fiber and Beyond",
-      content:
-        "From there, we still felt the rising need to push our speeds even faster, we saw the rising trend of fiber optic and began working with the City to coordinate permits to run fiber into areas no other company would touch. We worked to run incredibly high speed fiber lines into the Counties and Imperial in places no other ISP can provide service to. ",
-    },
-    {
-      title: "What's Next?",
-      content:
-        "We are moving on today expanding our fiber optic infastucture forward at an an immense pace, we have partnered with the FCC to be among the first to utilize the 60Ghz spectrum for our wireless infastructure. We have also looked into new systems currently in beta test from Tarana, a promising company able to provide even higher bandwidth. Tarana offers a more stable connection compared to Ubiquiti wirelsss. Eventually we hope to see mass deployment as our beta test as thus far been a tremendous sucesss. ",
+      title: "Our network",
+      subtitle: "Built for growth",
+      description: "A fiber-first footprint with targeted legacy wireless only where needed. Designed for uptime and future expansion.",
     },
   ];
+
   return (
-    <>
+    <div className="mx-auto max-w-6xl px-4 py-10">
       <script type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             itemListElement: [
-              {
-                "@type": "ListItem",
-                position: 1,
-                name: "Home",
-                item: "https://sunvalleybroadband.com/"
-              },
-              {
-                "@type": "ListItem",
-                position: 2,
-                name: "About",
-                item: "https://sunvalleybroadband.com/about"
-              }
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://sunvalleybroadband.com/" },
+              { "@type": "ListItem", position: 2, name: "Why Fiber", item: "https://sunvalleybroadband.com/about" }
             ]
           })
         }}
       />
-      <Breadcrumb className="mx-auto max-w-6xl px-4 mb-4 mt-4">
+
+      <Breadcrumb className="mb-6">
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink asChild><Link href="/">Home</Link></BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbPage>About</BreadcrumbPage>
+            <BreadcrumbPage>Why Fiber</BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      
-      <Timeline
-        data={timelineData as any}
-        title="Our Journey"
-        description="A brief look at our milestones and growth over the years."
-      />
-    </>
+
+      <div className="text-center">
+        <Badge className="bg-primary text-primary-foreground">Fiber‑first</Badge>
+        <h1 className="mt-3 text-3xl font-bold tracking-tight">Why Fiber with SVB</h1>
+        <p className="mx-auto mt-3 max-w-2xl text-sm text-neutral-700 dark:text-neutral-300">
+          Built for speed and reliability today, with headroom for tomorrow. Legacy options are available only where fiber is not yet present.
+        </p>
+      </div>
+
+      <div className="mt-8 grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+        {cards.map((c) => (
+          <Card key={c.title} className="relative h-[280px] overflow-hidden">
+            <CardHeader className="pb-2">
+              <CardTitle className="text-base">{c.title}</CardTitle>
+              <CardDescription className="text-sm">{c.subtitle}</CardDescription>
+            </CardHeader>
+            <CardContent className="pt-0">
+              <p className="line-clamp-5 text-sm text-neutral-700 dark:text-neutral-300">
+                {c.description}
+              </p>
+            </CardContent>
+            <CardFooter className="absolute bottom-3 left-3 right-3 pt-0">
+              <span className="text-xs text-neutral-500">SVB • Fiber Internet</span>
+            </CardFooter>
+          </Card>
+        ))}
+      </div>
+    </div>
   );
 }
 

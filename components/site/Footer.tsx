@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { BrandLogo } from "@/components/site/BrandLogo";
-import { IconPhone } from "@tabler/icons-react";
+import { IconPhone, IconBrandFacebook, IconBrandInstagram, IconBrandTwitter } from "@tabler/icons-react";
 
 const ADDRESS_QUERY = encodeURIComponent("2481 E Palo Verde St Yuma, AZ 85365");
 const BUSINESS_PHONE_DISPLAY = "(928) 343-0300";
@@ -44,6 +44,54 @@ export function Footer() {
               aria-label={`Call ${BUSINESS_PHONE_DISPLAY}`} itemProp="telephone">
                 {BUSINESS_PHONE_DISPLAY}
             </a>
+            
+            {/* Social Media Links */}
+            <div className="mt-6" itemScope itemType="https://schema.org/Organization">
+              <h3 className="text-lg font-semibold">Follow Us</h3>
+              <div className="mt-2 flex flex-col gap-2">
+                <a
+                  href="https://www.facebook.com/SunValleyBroadband"
+                  target="_blank"
+                  rel="noopener noreferrer me"
+                  className="flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200"
+                  aria-label="Follow Sun Valley Broadband on Facebook"
+                  itemProp="sameAs"
+                  data-platform="facebook"
+                  title="Sun Valley Broadband Facebook Page"
+                >
+                  <IconBrandFacebook size={16} />
+                  <span itemProp="name">Facebook</span>
+                </a>
+                <a
+                  href="https://www.instagram.com/sun_valley_broadband/"
+                  target="_blank"
+                  rel="noopener noreferrer me"
+                  className="flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200"
+                  aria-label="Follow Sun Valley Broadband on Instagram @sun_valley_broadband"
+                  itemProp="sameAs"
+                  data-platform="instagram"
+                  title="Sun Valley Broadband Instagram Profile"
+                >
+                  <IconBrandInstagram size={16} />
+                  <span itemProp="name">Instagram</span>
+                </a>
+                <a
+                  href="https://twitter.com/SVB_Yuma"
+                  target="_blank"
+                  rel="noopener noreferrer me"
+                  className="flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200"
+                  aria-label="Follow Sun Valley Broadband on Twitter @SVB_Yuma"
+                  itemProp="sameAs"
+                  data-platform="twitter"
+                  title="Sun Valley Broadband Twitter Account"
+                >
+                  <IconBrandTwitter size={16} />
+                  <span itemProp="name">Twitter</span>
+                </a>
+              </div>
+              <meta itemProp="name" content="Sun Valley Broadband" />
+              <meta itemProp="url" content="https://sunvalleybroadband.com/" />
+            </div>
           </div>
           <div className="flex flex-col items-start gap-2">
             <div className="w-full overflow-hidden rounded-md border border-neutral-200 text-xs dark:border-neutral-800 md:h-[300px]">
@@ -85,6 +133,7 @@ export function Footer() {
             <p className="text-sm text-neutral-600 dark:text-neutral-400">
               Affordable, reliable, and high-speed internet solutions.
             </p>
+            
             <div className="flex gap-4 text-sm">
               <Link href="/about" className="hover:underline">
                 About

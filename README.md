@@ -32,5 +32,18 @@ sudo docker run ljis120301/svb-web:latest
 
 - dark mode? 
 
-- 
+- Speed test server with LibreSpeed test, fit into docker swarm, deploy both containers simoltaniously. 
+
+
+
+There is a build in Admin Portal for creating new blog posts as /author , however keep in mind you will also need to map the environment variable of ADMIN_PASSWORD
+
+
+Social Media:
+
+Facebook: https://www.facebook.com/SunValleyBroadband
+
+Instagram: sun_valley_broadband
+
+Twitter: SVB_Yuma
 

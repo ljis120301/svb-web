@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator, BreadcrumbPage } from "@/components/ui/breadcrumb";
-import { getAllSupportArticles } from "@/lib/supportArticles";
+import { prisma } from "@/lib/db";
 import { FAQ } from "@/components/site/FAQ";
+import { PageLayout } from "@/components/layout/PageLayout";
 
 export const metadata = {
   title: "Support Center | Sun Valley Broadband",
@@ -10,43 +10,39 @@ export const metadata = {
   alternates: { canonical: "/support" },
 };
 
-export default function SupportPage() {
-  const articles = getAllSupportArticles();
+export default async function SupportPage() {
+  const articles = await prisma.article.findMany({
+    where: { published: true },
+    orderBy: { updatedAt: "desc" },
+    select: { slug: true, title: true, excerpt: true, updatedAt: true },
+  });
+
+  const breadcrumbs = [
+    { label: "Home", href: "/" },
+    { label: "Support" }
+  ];
+
+  const jsonLdBreadcrumbs = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://sunvalleybroadband.com/"
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Support",
+        item: "https://sunvalleybroadband.com/support"
+      }
+    ]
+  };
+
   return (
-    <div className="mx-auto max-w-5xl px-4 py-12">
-      <script type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            itemListElement: [
-              {
-                "@type": "ListItem",
-                position: 1,
-                name: "Home",
-                item: "https://sunvalleybroadband.com/"
-              },
-              {
-                "@type": "ListItem",
-                position: 2,
-                name: "Support",
-                item: "https://sunvalleybroadband.com/support"
-              }
-            ]
-          })
-        }}
-      />
-      <Breadcrumb className="mb-4">
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink asChild><Link href="/">Home</Link></BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbPage>Support</BreadcrumbPage>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
+    <PageLayout breadcrumbs={breadcrumbs} jsonLdBreadcrumbs={jsonLdBreadcrumbs} contentMaxWidth="5xl">
       <h1 className="text-3xl font-bold">Support Center</h1>
       <p className="mt-2 text-neutral-600 dark:text-neutral-400">
         Find step‑by‑step guides and fixes. If you still need help, you can
@@ -54,7 +50,7 @@ export default function SupportPage() {
       </p>
 
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {articles.map((a) => (
+        {articles.map((a: any) => (
           <Link
             key={a.slug}
             href={`/support/${a.slug}`}
@@ -76,7 +72,7 @@ export default function SupportPage() {
           Contact support
         </Link>
       </div>
-    </div>
+    </PageLayout>
   );
 }
 
