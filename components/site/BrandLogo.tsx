@@ -5,7 +5,7 @@ import Image from "next/image";
 export function BrandLogo() {
   return (
     <>
-      <div className="relative h-[48px] w-[48px]">
+      <div className="relative size-12">
         <Image
           src="/web-images/logos/Transparent-LogoNOTEXT.webp"
           alt="Sun Valley Broadband logo"
@@ -15,7 +15,7 @@ export function BrandLogo() {
           className="object-contain"
         />
       </div>
-      <div className="relative h-[500px] w-[300px]  -ml-6 -mt-[-8px]">
+      <div className="relative h-24 w-72 -ml-6 mt-2">
         <Image
           src="/cropped-Transparent-Logo-4-2048x682.webp"
           alt="Sun Valley Broadband wordmark"

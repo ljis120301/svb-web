@@ -47,7 +47,7 @@ export function ServicesGrid() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="text-3xl font-bold tracking-tight sm:text-4xl"
+            className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight"
           >
             Choose your connection
           </motion.h2>
@@ -56,7 +56,7 @@ export function ServicesGrid() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
-            className="mt-4 text-lg text-muted-foreground"
+            className="mt-4 text-sm md:text-base text-muted-foreground"
           >
             From blazing-fast fiber to reliable wireless, we have the right solution for your needs
           </motion.p>

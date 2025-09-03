@@ -15,8 +15,8 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-10">
         <div className="grid gap-6 md:grid-cols-2">
           <div>
-            <div className="group block overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800 md:h-[300px]">
-              <div className="relative h-[220px] md:h-[300px] w-full bg-neutral-100 dark:bg-neutral-900">
+            <div className="group block overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800 md:h-72">
+              <div className="relative h-56 md:h-72 w-full bg-neutral-100 dark:bg-neutral-900">
                 <iframe
                   title="Google Map - Sun Valley Broadband"
                   src={`https://www.google.com/maps?q=${ADDRESS_QUERY}&output=embed`}
@@ -94,7 +94,7 @@ export function Footer() {
             </div>
           </div>
           <div className="flex flex-col items-start gap-2">
-            <div className="w-full overflow-hidden rounded-md border border-neutral-200 text-xs dark:border-neutral-800 md:h-[300px]">
+            <div className="w-full overflow-hidden rounded-md border border-neutral-200 text-xs dark:border-neutral-800 md:h-72">
               <div className="bg-neutral-50 px-3 py-2 font-medium dark:bg-neutral-900">Hours</div>
               <div className="divide-y divide-neutral-200 dark:divide-neutral-800">
                 <div className="flex items-center justify-between px-3 py-2" itemProp="openingHours" content="Mo 08:00-16:00">

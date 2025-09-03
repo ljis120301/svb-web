@@ -33,9 +33,8 @@ export function ContainerTextFlip({
 
   const updateWidthForWord = () => {
     if (textRef.current) {
-      // Add some padding to the text width (30px on each side)
       // @ts-ignore
-      const textWidth = textRef.current.scrollWidth + 30;
+      const textWidth = textRef.current.scrollWidth;
       setWidth(textWidth);
       setMaxWidth((prev) => Math.max(prev, textWidth));
     }
@@ -72,7 +71,7 @@ export function ContainerTextFlip({
     let localMax = 0;
     for (const w of words) {
       measurer.textContent = w;
-      const wpx = measurer.scrollWidth + 30; // same padding as updateWidthForWord
+      const wpx = measurer.scrollWidth;
       if (wpx > localMax) localMax = wpx;
     }
     document.body.removeChild(measurer);
@@ -82,7 +81,7 @@ export function ContainerTextFlip({
   return (
     <span
       className={cn(
-        "relative inline-flex items-baseline justify-end m-0 text-4xl font-bold text-black md:text-7xl dark:text-white",
+        "relative inline-flex items-baseline justify-start m-0 text-4xl font-bold text-black md:text-7xl dark:text-white whitespace-nowrap",
       )}
       style={{ width: maxWidth }}
     >
@@ -92,7 +91,7 @@ export function ContainerTextFlip({
         animate={{ width }}
         transition={{ duration: animationDuration / 2000 }}
         className={cn(
-          "relative inline-block rounded-lg pt-2 pb-3 align-baseline",
+          "relative inline-block rounded-lg align-baseline",
           "[background:linear-gradient(to_bottom,#f3f4f6,#e5e7eb)]",
           "shadow-[inset_0_-1px_#d1d5db,inset_0_0_0_1px_#d1d5db,_0_4px_8px_#d1d5db]",
           "dark:[background:linear-gradient(to_bottom,#374151,#1f2937)]",
@@ -106,11 +105,11 @@ export function ContainerTextFlip({
             duration: animationDuration / 1000,
             ease: "easeInOut",
           }}
-          className={cn("inline-block", textClassName)}
+          className={cn("inline-block whitespace-nowrap", textClassName)}
           ref={textRef}
           layoutId={`word-div-${words[currentWordIndex]}-${id}`}
         >
-          <motion.span className="inline-block">
+          <motion.span className="inline-block whitespace-nowrap">
             {words[currentWordIndex].split("").map((letter, index) => (
               <motion.span
                 key={index}

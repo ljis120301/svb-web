@@ -27,8 +27,8 @@ export function ServiceFeatures({ features }: ServiceFeaturesProps) {
             >
               <Card className="h-full border-0 bg-background/60 backdrop-blur-sm">
                 <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold">{feature.title}</h3>
-                  <p className="mt-2 text-muted-foreground">{feature.description}</p>
+                  <h3 className="text-2xl md:text-3xl font-semibold">{feature.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground md:text-base">{feature.description}</p>
                 </CardContent>
               </Card>
             </motion.div>

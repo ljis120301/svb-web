@@ -50,7 +50,7 @@ export default async function SupportArticlePage({ params }: { params: Promise<{
 
   return (
     <PageLayout breadcrumbs={breadcrumbs} jsonLdBreadcrumbs={jsonLdBreadcrumbs} contentMaxWidth="3xl">
-      <h1 className="mt-2 text-3xl font-bold">{article.title}</h1>
+      <h1 className="mt-2 text-4xl md:text-5xl font-bold tracking-tight">{article.title}</h1>
       {"updatedAt" in article && article.updatedAt && (
         <p className="mt-1 text-xs text-neutral-500">Updated {new Date(article.updatedAt as any).toLocaleDateString()}</p>
       )}

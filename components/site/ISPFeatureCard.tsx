@@ -55,7 +55,7 @@ export function ISPFeatureCard({
               </div>
               <div>
                 {badge ? (
-                  <Badge variant="secondary" className="mb-1 inline-flex rounded-full px-2 py-0.5 text-[11px] tracking-wide">
+                  <Badge variant="secondary" className="mb-1 inline-flex rounded-full px-2 py-0.5 text-xs tracking-wide">
                     {badge}
                   </Badge>
                 ) : null}
@@ -66,7 +66,7 @@ export function ISPFeatureCard({
           </div>
 
           {description ? (
-            <p className="mt-4 text-[15px] leading-relaxed text-neutral-700 dark:text-neutral-300">{description}</p>
+            <p className="mt-4 text-sm md:text-base leading-relaxed text-neutral-700 dark:text-neutral-300">{description}</p>
           ) : null}
 
           {highlights.length ? (

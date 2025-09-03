@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 import { cn } from "@/utils/cn";
 
 export function ContainerTextFlipDemo() {
-  const words = [" blazing fast", "reliable", "high-speed", "optimized", "affordable", "localy owned", "modern"];
+  const words = ["blazing fast", "reliable", "high-speed", "optimized", "affordable", "locally owned", "modern"];
   return (
     <motion.h1
       initial={{
@@ -14,17 +14,21 @@ export function ContainerTextFlipDemo() {
         opacity: 1,
       }}
       className={cn(
-        "relative mb-6 max-w-2xl text-center text-4xl leading-normal font-bold tracking-tight text-zinc-700 md:text-7xl dark:text-zinc-100",
+        "relative mb-6 mx-auto max-w-4xl text-center text-4xl leading-normal font-bold tracking-tight text-zinc-700 md:text-7xl dark:text-zinc-100",
       )}
       layout
     >
-      <div className="inline-block">
-        <span className="inline-flex items-baseline align-baseline whitespace-nowrap gap-2">
-          <ContainerTextFlip words={words} className="pt-0 pb-1 leading-none md:leading-none" />
-          <span>internet</span>
-        </span>{" "}
-        for the Yuma area and Imperial Valley
-        {/* <Blips /> */}
+      <div className="inline-block align-baseline ">
+        <span className="block">Serving the Yuma area</span>
+        <span className="block">and Imperial Valley</span>
+        <span className="block whitespace-nowrap">
+          <span className="inline-flex items-baseline">with internet that's</span>
+          <ContainerTextFlip
+            words={words}
+            className="ml-2 leading-none align-baseline"
+            textClassName="leading-none"
+          />
+        </span>
       </div>
     </motion.h1>
   );

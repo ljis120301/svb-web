@@ -35,14 +35,14 @@ export function PlansGrid({ plans, serviceLabel, showFacts = true, gridClassName
             <div className="absolute top-2 right-2 z-10">
               <Badge
                 variant="default"
-                className={`${plan.businessOnly ? 'bg-primary text-primary-foreground' : 'bg-accent text-accent-foreground'} border-transparent whitespace-nowrap shrink-0 text-[10px] font-medium px-1.5 py-0 rounded-sm`}
+                className={`${plan.businessOnly ? 'bg-primary text-primary-foreground' : 'bg-accent text-accent-foreground'} border-transparent whitespace-nowrap shrink-0 text-xs font-medium px-1.5 py-0 rounded-sm`}
               >
                 {plan.businessOnly ? "Business only" : "Residential & business"}
               </Badge>
             </div>
-            <CardHeader className="pb-0 pr-24 min-h-[72px]">
+            <CardHeader className="pb-0 pr-24 min-h-20">
               <CardTitle className="text-xl tracking-tight truncate">{plan.name}</CardTitle>
-              <CardDescription className="mt-1 text-[13px] truncate">{serviceLabel}</CardDescription>
+              <CardDescription className="mt-1 text-sm truncate">{serviceLabel}</CardDescription>
             </CardHeader>
             <CardContent className="pt-4">
               <div className="flex flex-col items-center">

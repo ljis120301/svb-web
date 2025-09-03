@@ -58,7 +58,7 @@ export default function WhyFiberPage() {
 
       <div className="text-center">
         <Badge className="bg-primary text-primary-foreground">Fiber‑first</Badge>
-        <h1 className="mt-3 text-3xl font-bold tracking-tight">Why Fiber with SVB</h1>
+        <h1 className="mt-3 text-4xl md:text-5xl font-bold tracking-tight">Why Fiber with SVB</h1>
         <p className="mx-auto mt-3 max-w-2xl text-sm text-neutral-700 dark:text-neutral-300">
           Built for speed and reliability today, with headroom for tomorrow. Legacy options are available only where fiber is not yet present.
         </p>
@@ -66,9 +66,9 @@ export default function WhyFiberPage() {
 
       <div className="mt-8 grid gap-6 sm:grid-cols-2 md:grid-cols-3">
         {cards.map((c) => (
-          <Card key={c.title} className="relative h-[280px] overflow-hidden">
+          <Card key={c.title} className="relative h-64 md:h-72 overflow-hidden">
             <CardHeader className="pb-2">
-              <CardTitle className="text-base">{c.title}</CardTitle>
+              <CardTitle className="text-2xl md:text-3xl font-semibold">{c.title}</CardTitle>
               <CardDescription className="text-sm">{c.subtitle}</CardDescription>
             </CardHeader>
             <CardContent className="pt-0">

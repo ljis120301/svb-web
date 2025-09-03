@@ -107,7 +107,7 @@ export function TipTapEditor({ value, onChange }: TipTapEditorProps) {
     },
     editorProps: {
       attributes: {
-        class: "tiptap-editor prose prose-base dark:prose-invert max-w-none p-6 min-h-[400px] focus:outline-none [&_h1]:text-3xl [&_h1]:font-bold [&_h1]:mb-4 [&_h1]:mt-6 [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:mb-3 [&_h2]:mt-5 [&_h3]:text-xl [&_h3]:font-bold [&_h3]:mb-2 [&_h3]:mt-4 [&_p]:text-base [&_p]:mb-3 [&_strong]:font-bold [&_em]:italic [&_u]:underline [&_code]:bg-gray-100 [&_code]:dark:bg-gray-800 [&_code]:px-1 [&_code]:py-0.5 [&_code]:rounded [&_code]:text-sm [&_code]:font-mono [&_blockquote]:border-l-4 [&_blockquote]:border-gray-300 [&_blockquote]:dark:border-gray-600 [&_blockquote]:pl-4 [&_blockquote]:italic [&_a]:text-blue-600 [&_a]:dark:text-blue-400 [&_a]:underline [&_img]:max-w-full [&_img]:h-auto [&_img]:rounded-lg",
+        class: "tiptap-editor prose prose-base dark:prose-invert max-w-none p-6 min-h-[400px] focus:outline-none [&_h1]:text-4xl [&_h1]:md:text-5xl [&_h1]:font-bold [&_h1]:mb-4 [&_h1]:mt-6 [&_h2]:text-3xl [&_h2]:sm:text-4xl [&_h2]:md:text-5xl [&_h2]:font-semibold [&_h2]:mb-3 [&_h2]:mt-5 [&_h3]:text-2xl [&_h3]:md:text-3xl [&_h3]:font-semibold [&_h3]:mb-2 [&_h3]:mt-4 [&_p]:text-base [&_p]:mb-3 [&_strong]:font-bold [&_em]:italic [&_u]:underline [&_code]:bg-gray-100 [&_code]:dark:bg-gray-800 [&_code]:px-1 [&_code]:py-0.5 [&_code]:rounded [&_code]:text-sm [&_code]:font-mono [&_blockquote]:border-l-4 [&_blockquote]:border-gray-300 [&_blockquote]:dark:border-gray-600 [&_blockquote]:pl-4 [&_blockquote]:italic [&_a]:text-blue-600 [&_a]:dark:text-blue-400 [&_a]:underline [&_img]:max-w-full [&_img]:h-auto [&_img]:rounded-lg",
         spellcheck: "false",
       },
     },

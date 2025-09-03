@@ -33,7 +33,7 @@ export function FeatureCard({ title, description, Icon, badge, badgeClassName, h
       >
         <CardHeader className="pb-4">
           {badge ? (
-            <Badge variant="secondary" className={cn("w-fit mb-3 rounded-full px-2 py-0.5 text-[11px] tracking-wide", badgeClassName)}>
+            <Badge variant="secondary" className={cn("w-fit mb-3 rounded-full px-2 py-0.5 text-xs tracking-wide", badgeClassName)}>
               {badge}
             </Badge>
           ) : null}

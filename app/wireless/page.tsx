@@ -160,7 +160,7 @@ export default function WirelessPage() {
       </div>
 
       <div className="mt-8 text-center">
-        <h1 className="mt-4 text-3xl font-bold tracking-tight">Wireless Internet</h1>
+        <h1 className="mt-4 text-4xl md:text-5xl font-bold tracking-tight">Wireless Internet</h1>
         <p className="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-gray-700 transition-colors duration-300 dark:text-gray-200">Where fiber isn’t yet available, our wireless service delivers dependable internet with professional installation and local support.</p>
       </div>
 
@@ -171,7 +171,7 @@ export default function WirelessPage() {
       <section className="mx-auto mt-8 max-w-6xl">
         <div className="mb-3 text-center sm:text-left">
           <span className="inline-flex items-center rounded-full border border-slate-200 bg-primary/80 px-3 py-1 text-xs font-medium text-white shadow-sm ">Equipment spotlight</span>
-          <h2 className="mt-3 text-xl font-semibold tracking-tight">How it works</h2>
+          <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight">How it works</h2>
           <p className="mt-1 text-sm text-neutral-700 dark:text-neutral-300">An outdoor antenna receives signal from our network and an in‑home router shares it over Wi‑Fi.</p>
         </div>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -181,7 +181,7 @@ export default function WirelessPage() {
                 <IconRouter className="h-8 w-8 text-neutral-600 dark:text-neutral-300" />
               </div>
               <div>
-                <h3 className="text-base font-semibold">Directional antenna — focused signal</h3>
+                <h3 className="text-2xl md:text-3xl font-semibold">Directional antenna — focused signal</h3>
                 <p className="mt-1 text-sm text-neutral-700 dark:text-neutral-300">Mounted outside and aligned to our tower for steady speeds and reliable signal.</p>
                 <ul className="mt-2 space-y-1 text-sm text-neutral-700 dark:text-neutral-300">
                   <li className="flex items-center gap-2"><IconBadgeCc className="h-4 w-4 text-green-600" /> Clean install, small footprint</li>
@@ -197,7 +197,7 @@ export default function WirelessPage() {
                 <IconRouter className="h-8 w-8 text-neutral-600 dark:text-neutral-300" />
               </div>
               <div>
-                <h3 className="text-base font-semibold">Wi‑Fi router — simple whole‑home Wi‑Fi</h3>
+                <h3 className="text-2xl md:text-3xl font-semibold">Wi‑Fi router — simple whole‑home Wi‑Fi</h3>
                 <p className="mt-1 text-sm text-neutral-700 dark:text-neutral-300">Inside, the router spreads that connection to your devices with dependable, easy‑to‑use Wi‑Fi.</p>
                 <ul className="mt-2 space-y-1 text-sm text-neutral-700 dark:text-neutral-300">
                   <li className="flex items-center gap-2"><IconBadgeCc className="h-4 w-4 text-green-600" /> Quick setup, friendly app</li>
@@ -215,7 +215,7 @@ export default function WirelessPage() {
           <div className="overflow-x-auto">
             <table className="min-w-full text-sm">
               <thead>
-                <tr className="text-left text-[13px] text-neutral-600 dark:text-neutral-300">
+                <tr className="text-left text-sm text-neutral-600 dark:text-neutral-300">
                   <th className="p-2 font-semibold">Compare plans</th>
                   {wirelessPlans.map((p) => (
                     <th key={p.name} className="p-2 font-semibold">{p.name}</th>

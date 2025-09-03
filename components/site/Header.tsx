@@ -9,11 +9,13 @@ import {
   NavigationMenuLink,
 } from "@/components/ui/navigation-menu";
 import { usePathname } from "next/navigation";
-import { buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { IconMail } from "@tabler/icons-react";
 import { IconPhone } from "@tabler/icons-react";
 import { BrandLogo } from "@/components/site/BrandLogo";
+import { HeaderActions } from "@/components/site/HeaderActions";
+import type { HeaderButtonStyle } from "@/components/site/HeaderActions";
 
 
 const navItems = [
@@ -26,10 +28,14 @@ const navItems = [
 
 export function Header() {
   const pathname = usePathname();
-
+  // Change this to switch header action button styles globally
+  const HEADER_BUTTON_STYLE: HeaderButtonStyle = "gradient";
+//simple
+// sketch is inverted animation
+// 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60">
-      <div className="mx-auto flex h-[80px] max-w-7xl items-center justify-between px-4">
+      <div className="mx-auto flex h-14 md:h-16 max-w-8xl items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-0">
           <BrandLogo />
         </Link>
@@ -39,7 +45,7 @@ export function Header() {
             <NavigationMenuList>
               <NavigationMenuItem>
                 <NavigationMenuTrigger>Services</NavigationMenuTrigger>
-                <NavigationMenuContent className="min-w-[220px] p-2">
+                <NavigationMenuContent className="min-w-56 p-2">
                   <NavigationMenuLink asChild>
                     <Link href="/fiber" className="block rounded-md px-3 py-2 hover:bg-accent hover:text-accent-foreground">Fiber</Link>
                   </NavigationMenuLink>
@@ -67,36 +73,7 @@ export function Header() {
           </NavigationMenu>
         </nav>
 
-        <div className="flex items-center gap-2">
-          <a
-            href="tel:+19283430300"
-            aria-label="Call (928) 343-0300"
-            className={buttonVariants({ variant: "ghost", size: "sm" })}
-          >
-            <IconPhone className="w-4 h-4" />
-            <span className="hidden sm:inline">(928) 343-0300</span>
-          </a>
-          <Link
-            href="https://webmail.beamspeed.net/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={buttonVariants({ variant: "ghost", size: "sm" })}
-          >
-            <IconMail className="w-4 h-4" />
-            <span className="hidden sm:inline">Email</span>
-          </Link>
-          <Link href="/contact" className={buttonVariants({ variant: "default", size: "sm" })}>
-            Get started
-          </Link>
-          <Link
-            href="https://billing.beamspeed.net/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={buttonVariants({ variant: "outline", size: "sm" })}
-          >
-            Pay Bill
-          </Link>
-        </div>
+        <HeaderActions style={HEADER_BUTTON_STYLE} />
       </div>
     </header>
   );

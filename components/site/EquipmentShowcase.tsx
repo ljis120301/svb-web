@@ -38,10 +38,10 @@ export function EquipmentShowcase({
             <Badge variant="outline" className="mb-4">
               Equipment included
             </Badge>
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight">
               {title}
             </h2>
-            <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="mt-4 text-sm md:text-base text-muted-foreground max-w-2xl mx-auto">
               {description}
             </p>
           </motion.div>

@@ -37,7 +37,7 @@ export default function ServicesPage() {
 
   return (
     <PageLayout breadcrumbs={breadcrumbs} jsonLdBreadcrumbs={jsonLdBreadcrumbs}>
-      <h1 className="text-3xl font-bold">Our Services</h1>
+      <h1 className="text-4xl md:text-5xl font-bold tracking-tight">Our Services</h1>
       <p className="mt-2 max-w-2xl text-neutral-600 dark:text-neutral-400">
         Get a fast, affordable, and reliable connection to your online world with
         Sun Valley Broadband.

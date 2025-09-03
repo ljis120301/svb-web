@@ -18,10 +18,10 @@ export function CTASection() {
         >
           <div className="absolute inset-0 bg-grid-white/[0.05]" />
           <div className="relative text-center text-white">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight">
               Ready to get connected?
             </h2>
-            <p className="mt-4 text-lg opacity-90">
+            <p className="mt-4 text-sm md:text-base opacity-90">
               Join hundreds of satisfied customers across Yuma and Imperial Valley
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">

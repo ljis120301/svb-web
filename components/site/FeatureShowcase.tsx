@@ -42,10 +42,10 @@ export function FeatureShowcase() {
             <Badge variant="outline" className="mb-4">
               Why choose us
             </Badge>
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight">
               Built for the community
             </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
+            <p className="mt-4 text-sm md:text-base text-muted-foreground">
               We're not just another ISP. We're your neighbors, committed to bringing 
               world-class internet to Yuma and Imperial Valley.
             </p>
