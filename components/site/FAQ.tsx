@@ -1,5 +1,8 @@
+"use client";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 
 const faqs = [
   {
@@ -36,9 +39,19 @@ export function FAQ() {
         <Badge className="mb-3">Good to know</Badge>
         <h2 className="text-balance text-2xl font-bold sm:text-3xl">Frequently asked questions</h2>
       </div>
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid items-stretch gap-4 md:grid-cols-2">
         {faqs.map((f) => (
-          <Card key={f.q}>
+          <Card key={f.q} className="relative h-full rounded-2xl md:rounded-3xl min-h-[12rem] overflow-visible pb-1">
+            <GlowingEffect
+              blur={0}
+              borderWidth={3}
+              spread={80}
+              glow={true}
+              disabled={false}
+              proximity={64}
+              inactiveZone={0.01}
+              variant="orange"
+            />
             <CardHeader>
               <CardTitle className="text-base">{f.q}</CardTitle>
             </CardHeader>

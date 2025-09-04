@@ -20,9 +20,9 @@ export function ContainerTextFlipDemo() {
     >
       <div className="inline-block align-baseline ">
         <span className="block">Serving the Yuma area</span>
-        <span className="block">and Imperial Valley</span>
+        <span className="block pr-6">and Imperial Valley</span>
         <span className="block whitespace-nowrap">
-          <span className="inline-flex items-baseline">with internet that's</span>
+          <span className="inline-flex items-baseline ">with internet that's</span>
           <ContainerTextFlip
             words={words}
             className="ml-2 leading-none align-baseline"
