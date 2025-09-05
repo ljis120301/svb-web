@@ -43,8 +43,8 @@ export default async function SupportPage() {
 
   return (
     <PageLayout breadcrumbs={breadcrumbs} jsonLdBreadcrumbs={jsonLdBreadcrumbs} contentMaxWidth="5xl">
-      <h1 className="text-4xl md:text-5xl font-bold tracking-tight">Support Center</h1>
-      <p className="mt-2 text-neutral-600 dark:text-neutral-400">
+      <h1 className="page-title">Support Center</h1>
+      <p className="mt-2 lead">
         Find step‑by‑step guides and fixes. If you still need help, you can
         <Link href="/support/contact" className="text-primary underline underline-offset-4 ml-1">contact support</Link>.
       </p>
@@ -56,7 +56,7 @@ export default async function SupportPage() {
             href={`/support/${a.slug}`}
             className="block rounded-lg border border-border p-4 hover:bg-accent/10"
           >
-            <h2 className="text-2xl md:text-3xl font-semibold">{a.title}</h2>
+            <h2 className="section-title">{a.title}</h2>
             <p className="mt-1 text-sm text-neutral-600 dark:text-neutral-400">{a.excerpt}</p>
             {a.updatedAt && (
               <p className="mt-3 text-xs text-neutral-500">Updated {new Date(a.updatedAt).toLocaleDateString()}</p>

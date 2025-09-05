@@ -160,7 +160,7 @@ export default function WirelessPage() {
       </div>
 
       <div className="mt-8 text-center">
-        <h1 className="mt-4 text-4xl md:text-5xl font-bold tracking-tight">Wireless Internet</h1>
+        <h2 className="mt-4 section-title">Wireless Internet</h2>
         <p className="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-gray-700 transition-colors duration-300 dark:text-gray-200">Where fiber isn’t yet available, our wireless service delivers dependable internet with professional installation and local support.</p>
       </div>
 
@@ -171,7 +171,7 @@ export default function WirelessPage() {
       <section className="mx-auto mt-8 max-w-6xl">
         <div className="mb-3 text-center sm:text-left">
           <span className="inline-flex items-center rounded-full border border-slate-200 bg-primary/80 px-3 py-1 text-xs font-medium text-white shadow-sm ">Equipment spotlight</span>
-          <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight">How it works</h2>
+          <h2 className="mt-3 section-title">How it works</h2>
           <p className="mt-1 text-sm text-neutral-700 dark:text-neutral-300">An outdoor antenna receives signal from our network and an in‑home router shares it over Wi‑Fi.</p>
         </div>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">

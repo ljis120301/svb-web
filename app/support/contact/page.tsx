@@ -27,8 +27,8 @@ export default function SupportContactPage() {
 
   return (
     <PageLayout breadcrumbs={breadcrumbs} jsonLdBreadcrumbs={jsonLdBreadcrumbs} contentMaxWidth="3xl">
-      <h1 className="text-4xl md:text-5xl font-bold tracking-tight">Contact Support</h1>
-      <p className="mt-2 text-neutral-600 dark:text-neutral-400">Tell us what’s going on and our support team will reach out.</p>
+      <h1 className="page-title">Contact Support</h1>
+      <p className="mt-2 lead">Tell us what’s going on and our support team will reach out.</p>
       <div className="mt-6">
         <ContactForm pageKind="support" />
       </div>

@@ -42,7 +42,7 @@ export function FeatureShowcase() {
             <Badge variant="outline" className="mb-4">
               Why choose us
             </Badge>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight">
+            <h2 className="section-title">
               Built for the community
             </h2>
             <p className="mt-4 text-sm md:text-base text-muted-foreground">

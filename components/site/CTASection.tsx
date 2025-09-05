@@ -18,7 +18,7 @@ export function CTASection() {
         >
           <div className="absolute inset-0 bg-grid-white/[0.05]" />
           <div className="relative text-center text-white">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight">
+            <h2 className="section-title">
               Ready to get connected?
             </h2>
             <p className="mt-4 text-sm md:text-base opacity-90">

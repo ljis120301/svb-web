@@ -13,8 +13,8 @@ export default function NotFound() {
           priority
         />
       </div>
-      <h1 className="text-3xl font-bold tracking-tight">Page not found</h1>
-      <p className="mt-2 max-w-xl text-neutral-600 dark:text-neutral-400">
+      <h1 className="page-title">Page not found</h1>
+      <p className="mt-2 max-w-xl lead">
         Sorry, we couldn’t find that page. Sun Valley Broadband proudly serves Yuma, AZ
         with fast, reliable internet.
       </p>

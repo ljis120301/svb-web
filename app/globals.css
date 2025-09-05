@@ -161,6 +161,24 @@
   }
 }
 
+/* Global, consistent typography scales for page and section titles */
+@layer components {
+  /* Page-level H1 titles: consistent scale across routes */
+  .page-title {
+    @apply font-bold tracking-tight text-4xl md:text-5xl;
+  }
+
+  /* Section H2 titles used inside pages */
+  .section-title {
+    @apply font-semibold tracking-tight text-2xl md:text-3xl;
+  }
+
+  /* Paragraph lead text beneath titles */
+  .lead {
+    @apply text-neutral-600 dark:text-neutral-400;
+  }
+}
+
 /* Utility to style the brand mark text */
 .font-brand {
   font-family: var(--font-brand);

@@ -125,7 +125,7 @@ export default function BroadbandFactsLabel({ planId = 'standard-100', planFromP
     <article className="text-sm leading-tight border-2 border-black p-2 mb-2 bg-white min-w-64 max-w-xs text-black mx-auto" style={{fontFamily: 'Helvetica, Arial, sans-serif'}}>
       {/* Header Section */}
       <section className="border-b-8 border-black pb-1 -mb-1.5">
-        <h1 className="font-black text-4xl border-b-2 border-black mb-0.5 text-black leading-none tracking-tight">Broadband Facts</h1>
+        <h2 className="font-black text-4xl border-b-2 border-black mb-0.5 text-black leading-none tracking-tight">Broadband Facts</h2>
         <h2 className="font-bold text-sm text-black">{provider.name}</h2>
         <h3 className="font-bold text-sm text-black">{plan.planName}</h3>
         <p className="m-0 text-black">{plan.serviceType} Broadband Consumer Disclosure</p>

@@ -35,8 +35,8 @@ export default function ContactPage() {
 
   return (
     <PageLayout breadcrumbs={breadcrumbs} jsonLdBreadcrumbs={jsonLdBreadcrumbs} contentMaxWidth="3xl">
-      <h1 className="text-3xl font-bold">Contact Sales</h1>
-      <p className="mt-2 text-neutral-600 dark:text-neutral-400">
+      <h1 className="page-title">Contact Sales</h1>
+      <p className="mt-2 lead">
         Looking for service or have questions? Send us a message and our sales
         team will get back to you.
       </p>

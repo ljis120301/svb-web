@@ -58,7 +58,7 @@ export default function WhyFiberPage() {
 
       <div className="text-center">
         <Badge className="bg-primary text-primary-foreground">Fiber‑first</Badge>
-        <h1 className="mt-3 text-4xl md:text-5xl font-bold tracking-tight">Why Fiber with SVB</h1>
+        <h1 className="mt-3 page-title">Why Fiber with SVB</h1>
         <p className="mx-auto mt-3 max-w-2xl text-sm text-neutral-700 dark:text-neutral-300">
           Built for speed and reliability today, with headroom for tomorrow. Legacy options are available only where fiber is not yet present.
         </p>
