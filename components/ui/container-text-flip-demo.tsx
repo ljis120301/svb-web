@@ -14,18 +14,18 @@ export function ContainerTextFlipDemo() {
         opacity: 1,
       }}
       className={cn(
-        "relative mb-6 mx-auto max-w-4xl text-center text-4xl leading-normal font-bold tracking-tight text-zinc-700 md:text-7xl dark:text-zinc-100",
+        "relative mb-6 mx-auto max-w-4xl text-center text-3xl leading-tight font-bold tracking-tight text-zinc-700 sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl dark:text-zinc-100",
       )}
       layout
     >
-      <div className="inline-block align-baseline ">
+      <div className="inline-block align-baseline">
         <span className="block">Serving the Yuma area</span>
-        <span className="block pr-6">and Imperial Valley</span>
+        <span className="block">and Imperial Valley</span>
         <span className="block whitespace-nowrap">
-          <span className="inline-flex items-baseline ">with internet that's</span>
+          with internet that's
           <ContainerTextFlip
             words={words}
-            className="ml-2 leading-none align-baseline"
+            className="ml-2 leading-none align-baseline inline-block"
             textClassName="leading-none"
           />
         </span>

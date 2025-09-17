@@ -215,6 +215,8 @@ export const metadata: Metadata = {
 export const viewport = {
   width: "device-width",
   initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
   themeColor: "#ffffff",
 };
 
@@ -225,7 +227,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${siteFont.variable} ${brandFont.variable} antialiased`}>
+      <body className={`${siteFont.variable} ${brandFont.variable} antialiased`} style={{
+        textSizeAdjust: '100%',
+        WebkitTextSizeAdjust: '100%',
+        MozTextSizeAdjust: '100%',
+        msTextSizeAdjust: '100%'
+      }}>
         <Script id="org-jsonld" type="application/ld+json" strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
@@ -370,7 +377,7 @@ export default function RootLayout({
         </Suspense>
         <RootBannerSlot />
         <Header />
-        <main className="min-h-[calc(100vh-16rem)]">{children}</main>
+        <main className="min-h-[calc(100vh-4rem)]">{children}</main>
         <Footer />
       </body>
     </html>

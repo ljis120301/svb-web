@@ -64,7 +64,7 @@ export function ContainerTextFlip({
     measurer.style.pointerEvents = "none";
     // Mirror typography styles that affect width
     measurer.className = cn(
-      "text-4xl font-bold md:text-7xl",
+      "font-bold",
       textClassName,
     );
     document.body.appendChild(measurer);
@@ -81,7 +81,7 @@ export function ContainerTextFlip({
   return (
     <span
       className={cn(
-        "relative inline-flex items-baseline justify-start m-0 text-4xl font-bold text-black md:text-7xl dark:text-white whitespace-nowrap",
+        "relative inline-flex items-baseline justify-start m-0 font-bold text-black dark:text-white whitespace-nowrap font-inherit",
       )}
       style={{ width: maxWidth }}
     >

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useMemo } from "react";
-import { motion } from "motion/react";
+import { motion, useAnimate } from "motion/react";
 import Link from "next/link";
 import { ContainerTextFlipDemo } from "@/components/ui/container-text-flip-demo";
 import { Button } from "@/components/ui/button";
@@ -141,7 +141,7 @@ export default function NetworkHero() {
   const edges = useMemo(() => buildConnections(nodes, 3, 34), [nodes]);
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-background via-background to-muted/20">
+    <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-background via-background to-muted/20 touch-pan-y">
       {/* Background suggestion of map/area */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary/10" />
@@ -149,7 +149,7 @@ export default function NetworkHero() {
       </div>
 
       {/* Network overlay fills entire section */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 pause-animations-on-menu-open">
         <svg className="h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
           <defs>
             <radialGradient id="edgeGlow" cx="50%" cy="50%" r="50%">
@@ -208,20 +208,20 @@ export default function NetworkHero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex min-h-screen items-center justify-center">
-        <div className="mx-auto w-full max-w-4xl px-6">
-          <div className="flex flex-col items-center text-center gap-8">
-            <div className="space-y-5">
+      <div className="relative z-10 flex min-h-[calc(100vh-4rem)] items-center justify-center pt-16">
+        <div className="mx-auto w-full max-w-4xl px-4 sm:px-6">
+          <div className="flex flex-col items-center text-center gap-6 sm:gap-8">
+            <div className="space-y-4 sm:space-y-5">
               <ContainerTextFlipDemo />
             </div>
             {/* Primary actions */}
-            <div className="flex w-full flex-col items-stretch sm:flex-row sm:justify-center gap-3">
-              <Button asChild size="lg" className="rounded-full px-8">
+            <div className="flex w-full flex-col items-stretch sm:flex-row sm:justify-center gap-3 max-w-md sm:max-w-none">
+              <Button asChild size="lg" className="rounded-full px-6 sm:px-8 h-12 text-base font-medium">
                 <Link href="/contact" aria-label="Get Started">
                   Get Started
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="rounded-full px-8">
+              <Button asChild variant="outline" size="lg" className="rounded-full px-6 sm:px-8 h-12 text-base font-medium">
                 <Link href="https://billing.beamspeed.net/" target="_blank" rel="noopener noreferrer" aria-label="Pay Bill">
                   Pay Bill
                 </Link>
