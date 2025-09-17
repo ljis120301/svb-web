@@ -61,10 +61,15 @@ export default function Home() {
       />
       
       <NetworkHero />
-      <section className="mx-auto mt-12 max-w-6xl px-4">
-        <AppleCardsList />
+      <section className="mx-auto mt-12 max-w-full p-4">
+        <div className="pr-8 pl-8 "> 
+          <AppleCardsList />
+          </div>
+       
         <Separator />
-        <ServicesGrid />
+        <div className="mx-auto max-w-7xl px-4">
+          <ServicesGrid />
+        </div>
       </section>
       <section
         className="mx-auto mt-16 max-w-6xl px-4"

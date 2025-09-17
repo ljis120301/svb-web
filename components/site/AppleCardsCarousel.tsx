@@ -79,9 +79,10 @@ export const AppleCarousel = ({ items, initialScroll = 0 }: AppleCarouselProps) 
 
   const handleCardClose = (index: number) => {
     if (carouselRef.current) {
-      const cardWidth = typeof window !== "undefined" && window.innerWidth < 768 ? 230 : 384;
-      const gap = typeof window !== "undefined" && window.innerWidth < 768 ? 4 : 8;
-      const scrollPosition = (cardWidth + gap) * (index + 1);
+      const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+      const cardWidth = isMobile ? 224 : 384; // w-56 (14rem) on mobile, w-96 (24rem) on md+
+      const gap = 16; // gap-4
+      const scrollPosition = (cardWidth + gap) * index;
       carouselRef.current.scrollTo({
         left: scrollPosition,
         behavior: "smooth",
@@ -103,7 +104,7 @@ export const AppleCarousel = ({ items, initialScroll = 0 }: AppleCarouselProps) 
               "pointer-events-none absolute right-0 top-0 z-[10] h-full w-12 bg-gradient-to-l from-background to-transparent",
             )}
           />
-          <div className={cn("mx-auto max-w-7xl", "flex flex-row justify-start gap-4 pl-4")}> 
+          <div className={cn("flex flex-row justify-start gap-4")}> 
             {items.map((item, index) => (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}

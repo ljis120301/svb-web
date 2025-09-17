@@ -50,7 +50,7 @@ function ButtonByStyle({ children, styleKey, asChild = false }: { children: Reac
       );
     case "gradient":
       return (
-        <Button asChild={asChild} size="sm" className="rounded-full bg-[var(--svb-poly-blue)] text-white focus-visible:ring-2 focus-visible:ring-[var(--svb-poly-blue)] cursor-pointer transform-gpu will-change-transform transition duration-150 ease-out hover:opacity-95 hover:-translate-y-0.5">
+        <Button asChild={asChild} size="sm" className="rounded-full bg-[var(--svb-orange)] hover:bg-[var(--svb-orange)] text-black focus-visible:ring-2 focus-visible:ring-[var(--svb-orange)] cursor-pointer transform-gpu will-change-transform transition duration-150 ease-out hover:opacity-95 hover:-translate-y-0.5">
           {children}
         </Button>
       );

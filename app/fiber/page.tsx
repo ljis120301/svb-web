@@ -92,6 +92,7 @@ export default function FiberPage() {
         serviceType="Fiber Internet"
         title="Choose your speed"
         description="All plans include unlimited data, local support, and transparent pricing"
+        centerThreeAtXl
       />
 
       <EquipmentShowcase

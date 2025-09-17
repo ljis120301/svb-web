@@ -25,6 +25,7 @@ interface ModernPlansSectionProps {
   serviceType: string;
   title: string;
   description: string;
+  centerThreeAtXl?: boolean;
 }
 
 export function ModernPlansSection({
@@ -32,7 +33,9 @@ export function ModernPlansSection({
   serviceType,
   title,
   description,
+  centerThreeAtXl = false,
 }: ModernPlansSectionProps) {
+  const isThreeAtXl = centerThreeAtXl && plans.length === 3;
   const getFeatures = (plan: Plan) => {
     const baseFeatures = [
       "No data caps",
@@ -86,16 +89,18 @@ export function ModernPlansSection({
           </motion.div>
         </div>
 
-        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className={isThreeAtXl ? "mt-16 gap-8 grid sm:grid-cols-2 lg:grid-cols-3 xl:flex xl:flex-wrap xl:justify-center" : "mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"}>
           {plans.map((plan, index) => (
             <motion.div
+              className={isThreeAtXl ? "xl:flex-none" : undefined}
+              style={isThreeAtXl ? { flexBasis: "calc((100% - 3 * 2rem) / 4)", maxWidth: "calc((100% - 3 * 2rem) / 4)" } : undefined}
               key={plan.name}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <Card className={`group relative h-full overflow-hidden border-2 ${plan.color} bg-background transition-all duration-300 hover:-translate-y-2 hover:shadow-xl`}>
+              <Card className={`group relative h-full overflow-hidden border-2 ${plan.color} bg-background transition-all duration-300 hover:-translate-y-2 hover:shadow-xl flex flex-col`}>
                 {plan.name === "Gold" && (
                   <div className="absolute -top-px left-1/2 -translate-x-1/2">
                     <Badge className="rounded-b-md rounded-t-none border-t-0 bg-primary text-primary-foreground">
@@ -119,7 +124,7 @@ export function ModernPlansSection({
                   </div>
                 </CardHeader>
 
-                <CardContent className="space-y-4">
+                <CardContent className="space-y-4 flex-1 flex flex-col">
                   <div className="space-y-2">
                     <div className="flex items-center justify-between text-sm">
                       <span className="text-muted-foreground">Download</span>
@@ -143,7 +148,7 @@ export function ModernPlansSection({
                     ))}
                   </div>
 
-                  <div className="space-y-3 pt-4">
+                  <div className="mt-auto space-y-3 pt-4">
                     <Button asChild className="w-full group">
                       <Link href="/contact">
                         Choose plan
@@ -154,7 +159,7 @@ export function ModernPlansSection({
                     {plan.planId && (
                       <Dialog>
                         <DialogTrigger asChild>
-                          <Button variant="outline" size="sm" className="w-full">
+                          <Button variant="outline" size="sm" className="w-full cursor-pointer">
                             View FCC facts
                           </Button>
                         </DialogTrigger>

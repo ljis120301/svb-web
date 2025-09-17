@@ -29,7 +29,7 @@ const navItems = [
 export function Header() {
   const pathname = usePathname();
   // Change this to switch header action button styles globally
-  const HEADER_BUTTON_STYLE: HeaderButtonStyle = "gradient";
+  const HEADER_BUTTON_STYLE: HeaderButtonStyle = "simple";
 //simple
 // sketch is inverted animation
 // 
@@ -44,29 +44,29 @@ export function Header() {
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuTrigger>Services</NavigationMenuTrigger>
+                <NavigationMenuTrigger className="hover:underline">Services</NavigationMenuTrigger>
                 <NavigationMenuContent className="min-w-56 p-2">
                   <NavigationMenuLink asChild>
-                    <Link href="/fiber" className="block rounded-md px-3 py-2 hover:bg-accent hover:text-accent-foreground">Fiber</Link>
+                    <Link href="/fiber" className="block rounded-md px-3 py-2  hover:text-accent-foreground hover:underline">Fiber</Link>
                   </NavigationMenuLink>
                   <NavigationMenuLink asChild>
-                    <Link href="/wireless" className="block rounded-md px-3 py-2 hover:bg-accent hover:text-accent-foreground">Legacy Wireless</Link>
+                    <Link href="/wireless" className="block rounded-md px-3 py-2 hover:text-accent-foreground hover:underline">Legacy Wireless</Link>
                   </NavigationMenuLink>
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
-                  <Link href="/about" className={cn("rounded-md px-3 py-2", pathname === "/about" && "font-semibold text-primary")}>Why Fiber</Link>
+                  <Link href="/about" className={cn("rounded-md px-3 py-2 hover:underline", pathname === "/about" && "font-semibold text-primary")}>Why Fiber</Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
-                  <Link href="/support" className={cn("rounded-md px-3 py-2", pathname === "/support" && "font-semibold text-primary")}>Support</Link>
+                  <Link href="/support" className={cn("rounded-md px-3 py-2 hover:underline", pathname === "/support" && "font-semibold text-primary")}>Support</Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
-                  <Link href="/contact" className={cn("rounded-md px-3 py-2", pathname === "/contact" && "font-semibold text-primary")}>Contact</Link>
+                  <Link href="/contact" className={cn("rounded-md px-3 py-2 hover:underline", pathname === "/contact" && "font-semibold text-primary")}>Contact</Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
             </NavigationMenuList>
