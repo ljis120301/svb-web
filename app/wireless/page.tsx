@@ -1,13 +1,12 @@
 import { ModernServiceHero } from "@/components/site/ModernServiceHero";
 import { ModernPlansSection } from "@/components/site/ModernPlansSection";
-import { EquipmentShowcase } from "@/components/site/EquipmentShowcase";
 import { Card, CardContent } from "@/components/ui/card";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { EligibilityCta } from "@/components/site/EligibilityCta";
-import { ProductBanner } from "@/components/site/Banners";
 import Script from "next/script";
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator, BreadcrumbPage } from "@/components/ui/breadcrumb";
 import Link from "next/link";
+import { Signal, Wrench, Router, CloudSun } from "lucide-react";
 
 export const metadata = {
   title: "Wireless Internet in Yuma, Wellton, Brawley, Winterhaven, and Holtville",
@@ -24,22 +23,6 @@ export default function WirelessPage() {
     { name: "Titanium", price: 89.95, download: 30, upload: 5, color: "border-slate-400", businessOnly: true, planId: "wireless-titanium", description: "Small business and work from home" },
   ];
 
-  const equipmentOptions = [
-    {
-      name: "Ubiquiti LiteBeam",
-      description: "Professional outdoor antenna for reliable wireless connection",
-      image: "/web-images/lightbeamNOBACKGROUND.webp",
-      features: ["Directional antenna", "Weather resistant", "Professional alignment", "Long-range capability"],
-      bestFor: "Outdoor signal reception",
-    },
-    {
-      name: "TP-Link Router",
-      description: "Indoor Wi-Fi router for whole-home coverage",
-      image: "/tpLinkRouter.webp",
-      features: ["Whole-home Wi-Fi", "Multiple devices", "Ethernet ports", "Easy management"],
-      bestFor: "Indoor connectivity and Wi-Fi",
-    },
-  ];
 
   return (
     <div className="min-h-screen">
@@ -125,11 +108,63 @@ export default function WirelessPage() {
         description="From basic browsing to business needs, we have a plan that fits"
       />
 
-      <EquipmentShowcase
-        title="Professional wireless equipment"
-        description="Industry-leading hardware for reliable, long-range connectivity"
-        equipment={equipmentOptions}
-      />
+      <section className="bg-muted/30 py-16 sm:py-24">
+        <div className="mx-auto w-full max-w-7xl px-4">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">Purpose-built for Reliability</h2>
+            <p className="mt-3 text-muted-foreground">A professional setup designed for stable performance across distance and weather — no gimmicks, just results.</p>
+          </div>
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <Card>
+              <CardContent className="flex items-start gap-4 p-6">
+                <div className="flex h-12 w-12 aspect-square shrink-0 items-center justify-center rounded-full ring-2 ring-accent/50 bg-accent/10">
+                  <Signal className="h-6 w-6 text-accent" strokeWidth={2.5} />
+                </div>
+                <div>
+                  <h3 className="font-medium">Focused Connection</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">Line‑of‑sight link to our nearest tower for consistent speeds.</p>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardContent className="flex items-start gap-4 p-6">
+                <div className="flex h-12 w-12 aspect-square shrink-0 items-center justify-center rounded-full ring-2 ring-accent/50 bg-accent/10">
+                  <Wrench className="h-6 w-6 text-accent" strokeWidth={2.5} />
+                </div>
+                <div>
+                  <h3 className="font-medium">Pro Alignment</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">Installed and tuned by technicians for optimal signal quality.</p>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardContent className="flex items-start gap-4 p-6">
+                <div className="flex h-12 w-12 aspect-square shrink-0 items-center justify-center rounded-full ring-2 ring-accent/50 bg-accent/10">
+                  <CloudSun className="h-6 w-6 text-accent" strokeWidth={2.5} />
+                </div>
+                <div>
+                  <h3 className="font-medium">Weather‑Ready</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">Hardware and mounts selected for Arizona heat and wind.</p>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardContent className="flex items-start gap-4 p-6">
+                <div className="flex h-12 w-12 aspect-square shrink-0 items-center justify-center rounded-full ring-2 ring-accent/50 bg-accent/10">
+                  <Router className="h-6 w-6 text-accent" strokeWidth={2.5} />
+                </div>
+                <div>
+                  <h3 className="font-medium">Whole‑Home Wi‑Fi</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">Flexible indoor Wi‑Fi setup to match your home layout.</p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
 
       <section className="py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-4">

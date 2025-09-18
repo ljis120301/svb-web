@@ -216,12 +216,12 @@ export default function NetworkHero() {
             </div>
             {/* Primary actions */}
             <div className="flex w-full flex-col items-stretch sm:flex-row sm:justify-center gap-3 max-w-md sm:max-w-none">
-              <Button asChild size="lg" className="rounded-full px-6 sm:px-8 h-12 text-base font-medium">
+              <Button asChild size="sm" className="rounded-full px-4 h-10 text-sm font-medium sm:size-default sm:px-6 sm:h-12 sm:text-base">
                 <Link href="/contact" aria-label="Get Started">
                   Get Started
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="rounded-full px-6 sm:px-8 h-12 text-base font-medium">
+              <Button asChild variant="outline" size="sm" className="rounded-full px-4 h-10 text-sm font-medium sm:size-default sm:px-6 sm:h-12 sm:text-base">
                 <Link href="https://billing.beamspeed.net/" target="_blank" rel="noopener noreferrer" aria-label="Pay Bill">
                   Pay Bill
                 </Link>

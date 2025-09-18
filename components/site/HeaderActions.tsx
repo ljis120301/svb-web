@@ -5,20 +5,20 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 
 export type HeaderButtonStyle =
-  | "outline"
-  | "simple"
-  | "sketch"
-  | "invert"
-  | "gradient"
-  | "favourite"
-  | "borderMagic"
-  | "litBorders"
-  | "topGradient"
-  | "brutal"
-  | "backdropBlur"
+  | "outline" // no 
+  | "simple" // yes
+  | "sketch" // love mayber
+  | "invert" // bad
+  | "gradient" // maybe
+  | "favourite" // maybe
+  | "borderMagic" // terrible
+  | "litBorders" // bad
+  | "topGradient" // breaks
+  | "brutal" 
+  | "backdropBlur" // perfect
   | "figma"
   | "figmaOutline"
-  | "nextBlue";
+  | "nextBlue"; 
 
 type ButtonProps = {
   href: string;
@@ -44,7 +44,7 @@ function ButtonByStyle({ children, styleKey, asChild = false }: { children: Reac
       );
     case "invert":
       return (
-        <Button asChild={asChild} size="sm" className="bg-teal-500 text-white font-medium cursor-pointer transition duration-150 ease-out hover:bg-white hover:text-black border-2 border-transparent hover:border-teal-500">
+        <Button asChild={asChild} size="sm" className="bg-accent text-white font-medium cursor-pointer transition duration-150 ease-out hover:bg-white hover:text-black border-2 border-transparent hover:border-accent">
           {children}
         </Button>
       );

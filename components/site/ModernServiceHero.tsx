@@ -69,7 +69,7 @@ export function ModernServiceHero({
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg">
-                <Link href="/support">
+                <Link href="/contact">
                   Learn more
                 </Link>
               </Button>
@@ -80,11 +80,11 @@ export function ModernServiceHero({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="mt-12 grid grid-cols-3 gap-8"
+              className="mt-12 grid grid-cols-2 sm:grid-cols-3 gap-8"
             >
               {stats.map((stat, index) => (
-                <div key={stat.label}>
-                  <div className="text-2xl font-bold text-primary">{stat.value}</div>
+                <div key={stat.label} className="min-w-0">
+                  <div className="text-xl sm:text-2xl font-bold text-primary break-words">{stat.value}</div>
                   <div className="text-sm text-muted-foreground">{stat.label}</div>
                 </div>
               ))}

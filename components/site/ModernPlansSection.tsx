@@ -89,11 +89,20 @@ export function ModernPlansSection({
           </motion.div>
         </div>
 
-        <div className={isThreeAtXl ? "mt-16 gap-8 grid sm:grid-cols-2 lg:grid-cols-3 xl:flex xl:flex-wrap xl:justify-center" : "mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"}>
+        <div
+          className={
+            isThreeAtXl
+              ? "mt-16 relative flex gap-4 overflow-x-auto snap-x snap-mandatory pl-1 pr-6 pb-2 sm:grid sm:gap-8 sm:overflow-visible sm:snap-none sm:pl-0 sm:pr-0 sm:pb-0 sm:grid-cols-2 lg:grid-cols-3 xl:flex xl:flex-wrap xl:justify-center"
+              : "mt-16 relative flex gap-4 overflow-x-auto snap-x snap-mandatory pl-1 pr-6 pb-2 sm:grid sm:gap-8 sm:overflow-visible sm:snap-none sm:pl-0 sm:pr-0 sm:pb-0 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+          }
+        >
+          <div
+            className="pointer-events-none absolute right-0 top-0 h-full w-8 bg-gradient-to-l from-[hsl(var(--background))] to-transparent sm:hidden"
+            aria-hidden="true"
+          />
           {plans.map((plan, index) => (
             <motion.div
-              className={isThreeAtXl ? "xl:flex-none" : undefined}
-              style={isThreeAtXl ? { flexBasis: "calc((100% - 3 * 2rem) / 4)", maxWidth: "calc((100% - 3 * 2rem) / 4)" } : undefined}
+              className={isThreeAtXl ? "shrink-0 snap-start w-[85%] sm:w-auto xl:flex-none" : "shrink-0 snap-start w-[85%] sm:w-auto"}
               key={plan.name}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -191,6 +200,10 @@ export function ModernPlansSection({
               </Card>
             </motion.div>
           ))}
+        </div>
+        <div className="mt-2 flex items-center gap-1 text-xs text-muted-foreground sm:hidden">
+          <span>Swipe to see more</span>
+          <ArrowRight className="h-3 w-3" />
         </div>
       </div>
     </section>

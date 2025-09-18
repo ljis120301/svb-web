@@ -209,14 +209,14 @@ export default function FiberPage() {
             <p className="mt-3 text-muted-foreground">We make switching to fiber internet simple and hassle-free.</p>
           </div>
           <div className="mx-auto mt-12 max-w-md">
-            <div className="relative">
+            <div className="relative z-0">
               <div
-                className="absolute left-5 top-5 h-[calc(100%-2.5rem)] w-px bg-border"
+                className="absolute left-5 top-5 h-[calc(100%-2.5rem)] w-px bg-border z-0"
                 aria-hidden="true"
               />
               <div className="space-y-8">
                 <div className="flex gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent text-white">
+                  <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent text-white">
                     <Search className="h-5 w-5" />
                   </div>
                   <div>
@@ -225,7 +225,7 @@ export default function FiberPage() {
                   </div>
                 </div>
                 <div className="flex gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent text-white">
+                  <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent text-white">
                     <Calendar className="h-5 w-5" />
                   </div>
                   <div>
@@ -236,7 +236,7 @@ export default function FiberPage() {
                   </div>
                 </div>
                 <div className="flex gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent text-white">
+                  <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent text-white">
                     <Wrench className="h-5 w-5" />
                   </div>
                   <div>
@@ -247,7 +247,7 @@ export default function FiberPage() {
                   </div>
                 </div>
                 <div className="flex gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent text-white">
+                  <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent text-white">
                     <Wifi className="h-5 w-5" />
                   </div>
                   <div>
@@ -268,7 +268,7 @@ export default function FiberPage() {
             <p className="mt-3 text-muted-foreground">See how our fiber service stacks up against cable and satellite.</p>
           </div>
           <div className="mx-auto mt-12 max-w-4xl">
-            <Card>
+            <Card className="hidden sm:block">
               <Table>
                 <TableHeader>
                   <TableRow>
@@ -347,6 +347,103 @@ export default function FiberPage() {
                 </TableBody>
               </Table>
             </Card>
+            <div className="sm:hidden space-y-4">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Download Speed</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <span className="font-medium">Our Fiber</span>
+                    <span className="text-accent font-medium">Up to 500 Mbps</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="font-medium">Cable</span>
+                    <span>Varies</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="font-medium">Satellite</span>
+                    <span>Limited</span>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle>Upload Speed</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <span className="font-medium">Our Fiber</span>
+                    <span className="text-accent font-medium">Fast, plan-dependent</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="font-medium">Cable</span>
+                    <span>Much slower</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="font-medium">Satellite</span>
+                    <span>Limited</span>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle>Latency</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <span className="font-medium">Our Fiber</span>
+                    <span className="flex items-center gap-2"><CheckCircle2 className="h-5 w-5 text-green-500" />Low</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="font-medium">Cable</span>
+                    <span>Moderate</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="font-medium">Satellite</span>
+                    <span>High</span>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle>Data Caps</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <span className="font-medium">Our Fiber</span>
+                    <span className="flex items-center gap-2"><CheckCircle2 className="h-5 w-5 text-green-500" />None</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="font-medium">Cable</span>
+                    <span className="flex items-center gap-2"><X className="h-5 w-5 text-destructive" />Common</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="font-medium">Satellite</span>
+                    <span className="flex items-center gap-2"><X className="h-5 w-5 text-destructive" />Common</span>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle>Contract</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <span className="font-medium">Our Fiber</span>
+                    <span className="flex items-center gap-2"><CheckCircle2 className="h-5 w-5 text-green-500" />None</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="font-medium">Cable</span>
+                    <span className="flex items-center gap-2"><X className="h-5 w-5 text-destructive" />Often required</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="font-medium">Satellite</span>
+                    <span className="flex items-center gap-2"><X className="h-5 w-5 text-destructive" />Often required</span>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </section>

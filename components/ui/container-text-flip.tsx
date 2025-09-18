@@ -6,16 +6,12 @@ import { motion } from "motion/react";
 import { cn } from "@/utils/cn";
 
 export interface ContainerTextFlipProps {
-  /** Array of words to cycle through in the animation */
   words?: string[];
-  /** Time in milliseconds between word transitions */
   interval?: number;
-  /** Additional CSS classes to apply to the container */
   className?: string;
-  /** Additional CSS classes to apply to the text */
   textClassName?: string;
-  /** Duration of the transition animation in milliseconds */
   animationDuration?: number;
+  onMaxWidthMeasured?: (widthPx: number) => void;
 }
 
 export function ContainerTextFlip({
@@ -24,37 +20,39 @@ export function ContainerTextFlip({
   className,
   textClassName,
   animationDuration = 700,
+  onMaxWidthMeasured,
 }: ContainerTextFlipProps) {
   const id = useId();
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const [width, setWidth] = useState(100);
-  const [maxWidth, setMaxWidth] = useState(100);
-  const textRef = React.useRef(null);
+  const [width, setWidth] = useState(0);
+  const [maxWidth, setMaxWidth] = useState(0);
+  const textRef = React.useRef<HTMLSpanElement>(null);
+
+  const longestWordChars = React.useMemo(
+    () => words.reduce((m, w) => Math.max(m, w.length), 0),
+    [words]
+  );
+  const estimatedWidthEm = Math.max(1, Math.round(longestWordChars * 0.62 * 100) / 100);
 
   const updateWidthForWord = () => {
     if (textRef.current) {
-      // @ts-ignore
-      const textWidth = textRef.current.scrollWidth;
+      const textWidth = textRef.current.scrollWidth + 2; // safety pad to avoid clipping
       setWidth(textWidth);
       setMaxWidth((prev) => Math.max(prev, textWidth));
     }
   };
 
   useEffect(() => {
-    // Update width whenever the word changes
     updateWidthForWord();
   }, [currentWordIndex]);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentWordIndex((prevIndex) => (prevIndex + 1) % words.length);
-      // Width will be updated in the effect that depends on currentWordIndex
     }, interval);
-
     return () => clearInterval(intervalId);
   }, [words, interval]);
 
-  // Measure all words once to reserve max width up-front and avoid layout shift
   useLayoutEffect(() => {
     if (typeof document === "undefined") return;
     const measurer = document.createElement("span");
@@ -62,28 +60,41 @@ export function ContainerTextFlip({
     measurer.style.visibility = "hidden";
     measurer.style.whiteSpace = "nowrap";
     measurer.style.pointerEvents = "none";
-    // Mirror typography styles that affect width
-    measurer.className = cn(
-      "font-bold",
-      textClassName,
-    );
+
+    const sourceEl = textRef.current;
+    if (sourceEl && typeof window !== "undefined") {
+      const cs = window.getComputedStyle(sourceEl);
+      measurer.style.fontSize = cs.fontSize;
+      measurer.style.fontFamily = cs.fontFamily;
+      measurer.style.fontWeight = cs.fontWeight as string;
+      measurer.style.letterSpacing = cs.letterSpacing;
+      measurer.style.fontFeatureSettings = cs.fontFeatureSettings;
+      measurer.style.fontVariationSettings = cs.fontVariationSettings;
+    }
+
+    measurer.className = cn("font-bold font-inherit", textClassName);
     document.body.appendChild(measurer);
     let localMax = 0;
     for (const w of words) {
       measurer.textContent = w;
-      const wpx = measurer.scrollWidth;
+      const wpx = measurer.scrollWidth + 2; // safety pad
       if (wpx > localMax) localMax = wpx;
     }
     document.body.removeChild(measurer);
-    if (localMax > 0) setMaxWidth(localMax);
-  }, [words, textClassName]);
+    if (localMax > 0) {
+      setMaxWidth(localMax);
+      onMaxWidthMeasured?.(localMax);
+    }
+  }, [words, textClassName, onMaxWidthMeasured]);
 
   return (
     <span
       className={cn(
-        "relative inline-flex items-baseline justify-start m-0 font-bold text-black dark:text-white whitespace-nowrap font-inherit",
+        "relative inline-flex items-baseline justify-start m-0 font-bold text-black dark:text-white whitespace-nowrap font-inherit max-w-full",
       )}
-      style={{ width: maxWidth }}
+      style={{
+        width: maxWidth > 0 ? maxWidth : `${estimatedWidthEm}em`,
+      }}
     >
       <motion.span
         layout
@@ -91,11 +102,8 @@ export function ContainerTextFlip({
         animate={{ width }}
         transition={{ duration: animationDuration / 2000 }}
         className={cn(
-          "relative inline-block rounded-lg align-baseline",
-          "[background:linear-gradient(to_bottom,#f3f4f6,#e5e7eb)]",
-          "shadow-[inset_0_-1px_#d1d5db,inset_0_0_0_1px_#d1d5db,_0_4px_8px_#d1d5db]",
-          "dark:[background:linear-gradient(to_bottom,#374151,#1f2937)]",
-          "dark:shadow-[inset_0_-1px_#10171e,inset_0_0_0_1px_hsla(205,89%,46%,.24),_0_4px_8px_#00000052]",
+          "relative inline-block rounded-lg align-baseline will-change-[width] box-border",
+          "bg-background/70 border border-border/50 shadow-sm dark:bg-background/30",
           className,
         )}
         key={words[currentWordIndex]}
@@ -113,17 +121,9 @@ export function ContainerTextFlip({
             {words[currentWordIndex].split("").map((letter, index) => (
               <motion.span
                 key={index}
-                initial={{
-                  opacity: 0,
-                  filter: "blur(10px)",
-                }}
-                animate={{
-                  opacity: 1,
-                  filter: "blur(0px)",
-                }}
-                transition={{
-                  delay: index * 0.02,
-                }}
+                initial={{ opacity: 0, filter: "blur(10px)" }}
+                animate={{ opacity: 1, filter: "blur(0px)" }}
+                transition={{ delay: index * 0.02 }}
               >
                 {letter}
               </motion.span>
