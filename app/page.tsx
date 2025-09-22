@@ -24,7 +24,7 @@ const FAQ = dynamic(() => import("@/components/site/FAQ").then((m) => m.FAQ), { 
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen overflow-x-hidden">
+    <div className="flex flex-col min-h-screen">
       <script type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
@@ -53,7 +53,7 @@ export default function Home() {
       <Hero />
 
       {/* Keep Apple cards feature section */}
-      <section className="w-full mt-12 overflow-x-hidden">
+      <section className="w-full mt-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AppleCardsList />
         </div>
@@ -66,15 +66,15 @@ export default function Home() {
       <ContactUs />
 
       {/* Social proof and FAQ */}
-      <section className="w-full mt-16 overflow-x-hidden">
+      <section className="w-full mt-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <HomeTestimonials />
         </div>
       </section>
-      <div className="w-full overflow-x-hidden" style={{ contentVisibility: "auto", containIntrinsicSize: "600px" }}>
+      <div className="w-full" style={{ contentVisibility: "auto", containIntrinsicSize: "600px" }}>
         <GoogleReviewsMarquee />
       </div>
-      <div className="w-full overflow-x-hidden" style={{ contentVisibility: "auto", containIntrinsicSize: "1200px" }}>
+      <div className="w-full" style={{ contentVisibility: "auto", containIntrinsicSize: "1200px" }}>
         <FAQ />
       </div>
     </div>

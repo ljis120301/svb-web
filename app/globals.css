@@ -172,7 +172,6 @@
 
 /* Guardrail: prevent horizontal scroll caused by overflowing children */
 html, body {
-  overflow-x: hidden;
   width: 100%;
   overscroll-behavior-x: contain;
 }
