@@ -69,8 +69,8 @@
   --radius: 0.625rem;
 
   /* Base surfaces and text */
-  --background: var(--svb-smoke-white);
-  --foreground: var(--svb-night-black);
+  --background: #ffffff;
+  --foreground: #0a0a0a;
   --card: #FFFFFF;
   --card-foreground: var(--svb-night-black);
   --popover: #FFFFFF;
@@ -81,11 +81,15 @@
   --primary-foreground: #FFFFFF;
   --secondary: var(--svb-arg-lite-blue);
   --secondary-foreground: #0A0A0A;
-  --muted: #EBEBEB;
+  --muted: #f5f5f5;
   --muted-foreground: #555555;
   --accent: var(--svb-orange);
   --accent-foreground: #1A1A1A;
   --destructive: #E5484D;
+
+  /* Solid hover tokens (avoid alpha blending that affects text perception) */
+  --primary-hover: color-mix(in oklab, var(--primary) 82%, white);
+  --accent-hover: color-mix(in oklab, var(--accent) 85%, white);
 
   /* UI chrome */
   --border: #E5E5E5;
@@ -149,6 +153,10 @@
   --sidebar-accent-foreground: #0F0F0F;
   --sidebar-border: #1F2A28;
   --sidebar-ring: var(--svb-poly-blue);
+
+  /* Solid hover tokens for dark (mix toward black to keep contrast) */
+  --primary-hover: color-mix(in oklab, var(--primary) 82%, black);
+  --accent-hover: color-mix(in oklab, var(--accent) 85%, black);
 }
 
 @layer base {

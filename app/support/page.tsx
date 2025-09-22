@@ -2,6 +2,15 @@ import Link from "next/link";
 import { prisma } from "@/lib/db";
 import { FAQ } from "@/components/site/FAQ";
 import { PageLayout } from "@/components/layout/PageLayout";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationPrevious,
+  PaginationNext,
+  PaginationEllipsis,
+} from "@/components/ui/pagination";
 
 export const metadata = {
   title: "Support Center | Sun Valley Broadband",
@@ -10,11 +19,25 @@ export const metadata = {
   alternates: { canonical: "/support" },
 };
 
-export default async function SupportPage() {
+export default async function SupportPage({
+  searchParams,
+}: {
+  searchParams?: { [key: string]: string | string[] | undefined };
+}) {
+  const pageParam = typeof searchParams?.page === "string" ? searchParams?.page : Array.isArray(searchParams?.page) ? searchParams?.page[0] : undefined;
+  const pageSize = 9;
+  const totalCount = await prisma.article.count({ where: { published: true } });
+  const rawPage = Number(pageParam || 1);
+  const totalPages = Math.max(1, Math.ceil(totalCount / pageSize));
+  const currentPage = Number.isFinite(rawPage) && rawPage > 0 ? Math.min(rawPage, totalPages) : 1;
+  const skip = (currentPage - 1) * pageSize;
+
   const articles = await prisma.article.findMany({
     where: { published: true },
     orderBy: { updatedAt: "desc" },
     select: { slug: true, title: true, excerpt: true, updatedAt: true },
+    skip,
+    take: pageSize,
   });
 
   const breadcrumbs = [
@@ -50,6 +73,11 @@ export default async function SupportPage() {
       </p>
 
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {articles.length === 0 && (
+          <div className="col-span-full text-center text-muted-foreground py-8">
+            No articles found.
+          </div>
+        )}
         {articles.map((a: any) => (
           <Link
             key={a.slug}
@@ -64,6 +92,75 @@ export default async function SupportPage() {
           </Link>
         ))}
       </div>
+
+      {/* Pagination */}
+      {totalPages > 1 && (
+        <div className="mt-8">
+          <Pagination>
+            <PaginationContent>
+              {currentPage > 1 && (
+                <PaginationItem>
+                  <PaginationPrevious href={`/support?page=${currentPage - 1}`} />
+                </PaginationItem>
+              )}
+
+              {(() => {
+                const items: React.ReactNode[] = [];
+                const pushPage = (p: number) => {
+                  items.push(
+                    <PaginationItem key={p}>
+                      <PaginationLink href={`/support?page=${p}`} isActive={p === currentPage}>
+                        {p}
+                      </PaginationLink>
+                    </PaginationItem>
+                  );
+                };
+                const showFirst = 1;
+                const showLast = totalPages;
+                const start = Math.max(showFirst + 1, currentPage - 1);
+                const end = Math.min(showLast - 1, currentPage + 1);
+
+                // First page
+                pushPage(showFirst);
+
+                // Left ellipsis
+                if (start > showFirst + 1) {
+                  items.push(
+                    <PaginationItem key="ellipsis-start">
+                      <PaginationEllipsis />
+                    </PaginationItem>
+                  );
+                }
+
+                // Middle window
+                for (let p = start; p <= end; p++) {
+                  if (p !== showFirst && p !== showLast) pushPage(p);
+                }
+
+                // Right ellipsis
+                if (end < showLast - 1) {
+                  items.push(
+                    <PaginationItem key="ellipsis-end">
+                      <PaginationEllipsis />
+                    </PaginationItem>
+                  );
+                }
+
+                // Last page (only if more than one page)
+                if (showLast > showFirst) pushPage(showLast);
+
+                return items;
+              })()}
+
+              {currentPage < totalPages && (
+                <PaginationItem>
+                  <PaginationNext href={`/support?page=${currentPage + 1}`} />
+                </PaginationItem>
+              )}
+            </PaginationContent>
+          </Pagination>
+        </div>
+      )}
 
       <FAQ />
 

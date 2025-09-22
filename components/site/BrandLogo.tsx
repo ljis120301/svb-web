@@ -22,7 +22,7 @@ export function BrandLogo() {
           fill
           priority={false}
           sizes="2048px"
-          className="object-contain"
+          className="object-contain dark:invert"
         />
       </div>
     </>

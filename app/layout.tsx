@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import Script from "next/script";
 import "./globals.css";
+import ThemeProvider from "@/components/theme/ThemeProvider";
+import ThemeColorMeta from "@/components/theme/ThemeColorMeta";
 import { GA4Pageview } from "./ga-pageview";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
@@ -217,7 +219,6 @@ export const viewport = {
   initialScale: 1,
   maximumScale: 5,
   userScalable: true,
-  themeColor: "#ffffff",
 };
 
 export default function RootLayout({
@@ -226,13 +227,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${siteFont.variable} ${brandFont.variable} antialiased`} style={{
         textSizeAdjust: '100%',
         WebkitTextSizeAdjust: '100%',
         MozTextSizeAdjust: '100%',
         msTextSizeAdjust: '100%'
       }}>
+        {/* Pre-hydration theme-color to prevent initial black flash in browser UI */}
+        <meta name="theme-color" content="#FF8B1F" />
+        <ThemeProvider>
+        <ThemeColorMeta />
         <Script id="org-jsonld" type="application/ld+json" strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
@@ -379,6 +384,7 @@ export default function RootLayout({
         <Header />
         <main className="min-h-[calc(100vh-4rem)]">{children}</main>
         <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

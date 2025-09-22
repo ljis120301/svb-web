@@ -90,7 +90,7 @@ export function ContainerTextFlip({
   return (
     <span
       className={cn(
-        "relative inline-flex items-baseline justify-start m-0 font-bold text-black dark:text-white whitespace-nowrap font-inherit max-w-full",
+        "relative inline-flex items-baseline justify-start m-0 font-bold text-foreground whitespace-nowrap font-inherit max-w-full",
       )}
       style={{
         width: maxWidth > 0 ? maxWidth : `${estimatedWidthEm}em`,

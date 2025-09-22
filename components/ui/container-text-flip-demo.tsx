@@ -52,7 +52,7 @@ export function ContainerTextFlipDemo() {
         opacity: 1,
       }}
       className={cn(
-        "relative mb-6 mx-auto max-w-4xl text-center font-bold tracking-tight text-zinc-700 [font-size:clamp(1.95rem,8vw,2.5rem)] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.25] sm:leading-tight dark:text-zinc-100",
+        "relative mb-6 mx-auto max-w-4xl text-center font-bold tracking-tight text-foreground text-4xl md:text-6xl leading-tight dark:text-foreground",
       )}
       layout
     >
@@ -67,7 +67,7 @@ export function ContainerTextFlipDemo() {
           <span ref={staticTextRef}>internet that's</span>
           <ContainerTextFlip
             words={words}
-            className="ml-2 leading-none align-baseline inline-block text-accent/80"
+            className="ml-2 leading-none align-baseline inline-block text-foreground dark:text-foreground"
             textClassName="leading-none"
             onMaxWidthMeasured={(w) => setReservedFlipWidth(w)}
           />

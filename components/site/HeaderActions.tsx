@@ -3,22 +3,21 @@ import Link from "next/link";
 import { IconMail, IconPhone } from "@tabler/icons-react";
 import React from "react";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import ThemeToggle from "@/components/theme/ThemeToggle";
 
 export type HeaderButtonStyle =
-  | "outline" // no 
-  | "simple" // yes
-  | "sketch" // love mayber
-  | "invert" // bad
-  | "gradient" // maybe
-  | "favourite" // maybe
-  | "borderMagic" // terrible
-  | "litBorders" // bad
-  | "topGradient" // breaks
-  | "brutal" 
-  | "backdropBlur" // perfect
-  | "figma"
-  | "figmaOutline"
-  | "nextBlue"; 
+  | "simple"
+  | "inset-shadow" // in what part of me saying you can not use blue did you feel the need to make a blue button?
+  | "bottom-edge"
+  | "accent-glow"
+  | "split-tone"
+  | "gradient-bg"
+  | "layered-border"
+  | "dot-accent"
+  | "textured"
+  | "subtle-outline"
+  | "refined-pill";
 
 type ButtonProps = {
   href: string;
@@ -29,110 +28,81 @@ type ButtonProps = {
 };
 
 function ButtonByStyle({ children, styleKey, asChild = false }: { children: React.ReactNode; styleKey: HeaderButtonStyle; asChild?: boolean }) {
+  const focusRing = "outline-none focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:ring-offset-2";
+
   switch (styleKey) {
-    case "sketch":
-      return (
-        <Button asChild={asChild} variant="outline" size="sm" className="border-black bg-white text-black cursor-pointer hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)]">
-          {children}
-        </Button>
-      );
     case "simple":
       return (
-        <Button asChild={asChild} variant="outline" size="sm" className="border-neutral-300 bg-neutral-100 text-neutral-700 cursor-pointer hover:-translate-y-0.5 transition duration-150 ease-out transform-gpu will-change-transform">
+        <Button asChild={asChild} variant="outline" size="sm" className={cn("border-slate-300 bg-white text-slate-900 hover:bg-slate-50 hover:border-orange-300 shadow-sm hover:shadow-md transition-all duration-200", focusRing)}>
           {children}
         </Button>
       );
-    case "invert":
+    case "inset-shadow":
+       return (
+        <Button asChild={asChild} size="sm" className={cn("bg-gradient-to-b from-slate-50 to-white text-slate-900 border border-slate-200 shadow-[inset_0_1px_3px_rgba(0,0,0,0.08)] hover:shadow-[inset_0_2px_6px_rgba(0,0,0,0.12)] hover:from-white hover:to-slate-50 transition-all duration-300", focusRing)}>
+           {children}
+        </Button>
+      );
+    case "bottom-edge":
+       return (
+         <Button asChild={asChild} size="sm" className={cn("bg-white text-slate-900 border border-slate-200 border-b-4 border-b-orange-400 hover:border-b-orange-500 hover:bg-slate-50 hover:translate-y-[-1px] shadow-sm transition-all duration-200", focusRing)}>
+           {children}
+         </Button>
+       );
+    case "accent-glow":
       return (
-        <Button asChild={asChild} size="sm" className="bg-accent text-white font-medium cursor-pointer transition duration-150 ease-out hover:bg-white hover:text-black border-2 border-transparent hover:border-accent">
+        <Button asChild={asChild} size="sm" className={cn("bg-white text-slate-900 border border-slate-200 shadow-sm hover:shadow-[0_4px_20px_rgba(255,138,31,0.25)] hover:border-orange-200 hover:bg-orange-50/30 transition-all duration-300", focusRing)}>
           {children}
         </Button>
       );
-    case "gradient":
+    case "split-tone":
+       return (
+        <Button asChild={asChild} size="sm" className={cn("text-slate-900 bg-gradient-to-r from-white via-slate-50 to-orange-50/40 border border-slate-200 hover:from-orange-50/20 hover:via-white hover:to-white hover:border-orange-200 shadow-sm transition-all duration-300", focusRing)}>
+          {children}
+        </Button>
+       );
+    case "gradient-bg":
       return (
-        <Button asChild={asChild} size="sm" className="rounded-full bg-[var(--svb-orange)] hover:bg-[var(--svb-orange)] text-black focus-visible:ring-2 focus-visible:ring-[var(--svb-orange)] cursor-pointer transform-gpu will-change-transform transition duration-150 ease-out hover:opacity-95 hover:-translate-y-0.5">
+        <Button asChild={asChild} size="sm" className={cn("text-slate-900 border border-orange-200/50 bg-gradient-to-br from-white via-orange-50/30 to-slate-50 hover:from-orange-50/50 hover:via-white hover:to-orange-50/20 shadow-sm hover:shadow-md transition-all duration-300", focusRing)}>
           {children}
         </Button>
       );
-    case "favourite":
+    case "layered-border":
+       return (
+         <Button asChild={asChild} size="sm" className={cn("relative text-slate-900 bg-white border-2 border-slate-200 hover:border-orange-300 shadow-[0_0_0_3px_rgba(255,138,31,0.1)] hover:shadow-[0_0_0_3px_rgba(255,138,31,0.2)] hover:bg-slate-50 transition-all duration-200", focusRing)}>
+           {children}
+         </Button>
+       );
+    case "dot-accent":
       return (
-        <Button asChild={asChild} size="sm" className="bg-black text-white rounded-md font-semibold cursor-pointer hover:bg-black/80 hover:shadow-md transition duration-150 ease-out">
-          {children}
-        </Button>
-      );
-    case "borderMagic":
-      return asChild ? (
-        <span className="relative inline-flex h-9 overflow-hidden rounded-full p-[1px] focus:outline-none cursor-pointer">
-          <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
-          <span className="inline-flex h-full w-full items-center justify-center rounded-full bg-slate-950 px-3 text-sm font-medium text-white">
-            {children}
-          </span>
-        </span>
-      ) : (
-        <button className="relative inline-flex h-9 overflow-hidden rounded-full p-[1px] focus:outline-none cursor-pointer">
-          <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
-          <span className="inline-flex h-full w-full items-center justify-center rounded-full bg-slate-950 px-3 text-sm font-medium text-white">
-            {children}
-          </span>
-        </button>
-      );
-    case "litBorders":
-      return asChild ? (
-        <span className="p-[3px] relative rounded-md cursor-pointer">
-          <span className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-md" />
-          <span className="px-3 py-1.5 bg-black rounded-[6px] relative text-white text-sm hover:bg-transparent transition">
-            {children}
-          </span>
-        </span>
-      ) : (
-        <button className="p-[3px] relative rounded-md cursor-pointer">
-          <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-md" />
-          <div className="px-3 py-1.5 bg-black rounded-[6px] relative text-white text-sm hover:bg-transparent transition">
+        <Button asChild={asChild} size="sm" className={cn("bg-white text-slate-900 border border-slate-200 hover:bg-slate-50 hover:border-orange-200 shadow-sm transition-all duration-200 group", focusRing)}>
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 rounded-full bg-orange-400 group-hover:bg-orange-500 group-hover:scale-110 transition-all duration-200"></div>
             {children}
           </div>
-        </button>
-      );
-    case "topGradient":
-      return (
-        <Button asChild={asChild} size="sm" className="rounded-full relative bg-slate-700 text-white border border-slate-600 cursor-pointer transition duration-150 ease-out transform-gpu will-change-transform hover:-translate-y-0.5 hover:shadow-lg hover:shadow-white/10">
-          <div className="absolute inset-x-0 h-px w-1/2 mx-auto -top-px bg-gradient-to-r from-transparent via-teal-500 to-transparent" />
-          <span className="relative z-10">{children}</span>
         </Button>
       );
-    case "brutal":
+    case "textured":
       return (
-        <Button asChild={asChild} size="sm" className="border-2 border-black uppercase bg-white text-black text-xs tracking-wide shadow-[1px_1px_rgba(0,0,0),2px_2px_rgba(0,0,0),3px_3px_rgba(0,0,0)] cursor-pointer hover:-translate-y-0.5 transition duration-150 ease-out transform-gpu will-change-transform">
+        <Button asChild={asChild} size="sm" className={cn("text-slate-900 border border-slate-300 bg-slate-50 hover:bg-white hover:border-orange-200 shadow-sm transition-all duration-200", focusRing)} style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23f1f5f9' fill-opacity='0.4'%3E%3Ccircle cx='3' cy='3' r='1'/%3E%3Ccircle cx='13' cy='13' r='1'/%3E%3C/g%3E%3C/svg%3E")` }}>
           {children}
         </Button>
       );
-    case "backdropBlur":
+    case "subtle-outline":
+       return (
+         <Button asChild={asChild} size="sm" className={cn("bg-slate-50/50 text-slate-900 ring-1 ring-inset ring-slate-300 hover:ring-orange-300 hover:bg-white shadow-sm transition-all duration-200", focusRing)}>
+           {children}
+         </Button>
+       );
+    case "refined-pill":
       return (
-        <Button asChild={asChild} variant="outline" size="sm" className="text-black backdrop-blur-sm border-black bg-white/20 cursor-pointer transition duration-150 ease-out">
+        <Button asChild={asChild} size="sm" className={cn("rounded-full bg-gradient-to-r from-slate-100 to-orange-50/60 text-slate-900 border border-orange-200/50 hover:from-orange-50/40 hover:to-white hover:border-orange-300 shadow-sm hover:shadow-md transition-all duration-200", focusRing)}>
           {children}
         </Button>
       );
-    case "figma":
-      return (
-        <Button asChild={asChild} size="sm" className="bg-black text-white rounded-md font-semibold cursor-pointer transform-gpu will-change-transform transition duration-150 ease-out hover:-translate-y-0.5">
-          {children}
-        </Button>
-      );
-    case "figmaOutline":
-      return (
-        <Button asChild={asChild} variant="outline" size="sm" className="shadow-[0_0_0_2px_#000_inset] border border-black text-black rounded-md font-semibold cursor-pointer transform-gpu will-change-transform transition duration-150 ease-out hover:-translate-y-0.5">
-          {children}
-        </Button>
-      );
-    case "nextBlue":
-      return (
-        <Button asChild={asChild} size="sm" className="bg-[#0070f3] text-white rounded-md font-medium cursor-pointer shadow-md hover:shadow-lg hover:bg-[rgba(0,118,255,0.9)] transition duration-150 ease-out transform-gpu will-change-transform">
-          {children}
-        </Button>
-      );
-    case "outline":
     default:
       return (
-        <Button asChild={asChild} variant="outline" size="sm" className="border-neutral-600 text-black bg-white hover:bg-gray-100 cursor-pointer transition duration-150 ease-out">
+        <Button asChild={asChild} variant="outline" size="sm" className={cn("border-neutral-300 bg-neutral-100 text-neutral-800 cursor-pointer hover:-translate-y-0.5 transition-transform duration-150 ease-out", focusRing)}>
           {children}
         </Button>
       );
@@ -175,6 +145,7 @@ function HeaderLinkButton({ href, label, icon, external, styleKey }: ButtonProps
 export function HeaderActions({ style }: { style: HeaderButtonStyle }) {
   return (
     <div className="flex items-center gap-2">
+      <ThemeToggle />
       <HeaderLinkButton
         href="tel:+19283430300"
         label="(928) 343-0300"

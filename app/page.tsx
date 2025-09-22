@@ -1,7 +1,11 @@
-import NetworkHero from "@/components/site/NetworkHero";
 import dynamic from "next/dynamic";
-import { Separator } from "@/components/ui/separator";
+import { Button } from "@/components/ui/button";
 import type { Metadata } from "next";
+const Hero = dynamic(() => import("@/components/sections/Hero"), { loading: () => null });
+const Services = dynamic(() => import("@/components/sections/Services"), { loading: () => null });
+const Projects = dynamic(() => import("@/components/sections/Projects"), { loading: () => null });
+const AboutUs = dynamic(() => import("@/components/sections/AboutUs"), { loading: () => null });
+const ContactUs = dynamic(() => import("@/components/sections/ContactUs"), { loading: () => null });
 
 export const metadata: Metadata = {
   title: "Sun Valley Broadband — Fiber Internet in Yuma, AZ",
@@ -14,26 +18,13 @@ const AppleCardsList = dynamic(
   () => import("@/components/cards/AppleCardsList").then((m) => m.AppleCardsList),
   { loading: () => null }
 );
-const ServicesGrid = dynamic(
-  () => import("@/app/services/services-grid").then((m) => m.ServicesGrid),
-  { loading: () => null }
-);
-const HomeTestimonials = dynamic(
-  () => import("@/components/site/TestimonialsSection").then((m) => m.TestimonialsSection),
-  { loading: () => null }
-);
-const GoogleReviewsMarquee = dynamic(
-  () => import("@/components/site/GoogleReviewsMarquee"),
-  { loading: () => null }
-);
-const FAQ = dynamic(
-  () => import("@/components/site/FAQ").then((m) => m.FAQ),
-  { loading: () => null }
-);
+const HomeTestimonials = dynamic(() => import("@/components/site/TestimonialsSection").then((m) => m.TestimonialsSection), { loading: () => null });
+const GoogleReviewsMarquee = dynamic(() => import("@/components/site/GoogleReviewsMarquee"), { loading: () => null });
+const FAQ = dynamic(() => import("@/components/site/FAQ").then((m) => m.FAQ), { loading: () => null });
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
+    <div className="flex flex-col min-h-screen">
       <script type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
@@ -59,22 +50,23 @@ export default function Home() {
           })
         }}
       />
-      
-      <NetworkHero />
-      <section className="mx-auto mt-12 max-w-full p-4">
-        <div className="pr-8 pl-8 "> 
+      <Hero />
+
+      {/* Keep Apple cards feature section */}
+      <section className="mx-auto mt-12 max-w-full px-4">
+        <div className="mx-auto max-w-7xl">
           <AppleCardsList />
-          </div>
-       
-        <Separator />
-        <div className="mx-auto max-w-7xl px-4">
-          <ServicesGrid />
         </div>
       </section>
-      <section
-        className="mx-auto mt-16 max-w-6xl px-4"
-        style={{ contentVisibility: "auto", containIntrinsicSize: "800px" }}
-      >
+
+      {/* Services, Projects, About, Contact (gram-style) */}
+      <Services />
+      <Projects />
+      <AboutUs />
+      <ContactUs />
+
+      {/* Social proof and FAQ */}
+      <section className="mx-auto mt-16 max-w-6xl px-4" style={{ contentVisibility: "auto", containIntrinsicSize: "800px" }}>
         <HomeTestimonials />
       </section>
       <div style={{ contentVisibility: "auto", containIntrinsicSize: "600px" }}>
