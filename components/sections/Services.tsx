@@ -83,15 +83,15 @@ export default function Services() {
 	};
 
 	return (
-		<section id="services" className="py-20 bg-background">
-			<div className="container mx-auto px-4">
+		<section id="services" className="py-20 bg-background overflow-x-hidden">
+			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="text-center mb-16">
 					<h2 className="text-3xl md:text-5xl font-bold mb-4 text-foreground">Our Services</h2>
 					<p className="text-xl text-muted-foreground max-w-2xl mx-auto">
 						Connectivity solutions for homes and businesses in Yuma and Imperial Valley
 					</p>
 				</div>
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 max-w-full">
 					{services.map((service, index) => (
 						<Card key={`service-${index}`} className="overflow-hidden transition-all hover:shadow-lg bg-card text-card-foreground border-border">
 							<CardHeader className="p-4 md:p-6">

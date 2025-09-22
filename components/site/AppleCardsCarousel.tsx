@@ -93,9 +93,9 @@ export const AppleCarousel = ({ items, initialScroll = 0 }: AppleCarouselProps) 
 
   return (
     <AppleCarouselContext.Provider value={{ onCardClose: handleCardClose, currentIndex }}>
-      <div className="relative w-full">
+      <div className="relative w-full max-w-full overflow-hidden">
         <div
-          className="flex w-full overflow-x-scroll overscroll-x-auto scroll-smooth py-10 [scrollbar-width:none] md:py-20"
+          className="flex w-full max-w-full overflow-x-auto scroll-smooth py-10 [scrollbar-width:none] md:py-20 [overscroll-behavior-x:contain] overflow-y-hidden"
           ref={carouselRef}
           onScroll={checkScrollability}
         >
@@ -104,14 +104,14 @@ export const AppleCarousel = ({ items, initialScroll = 0 }: AppleCarouselProps) 
               "pointer-events-none absolute right-0 top-0 z-[10] h-full w-12 bg-gradient-to-l from-background to-transparent",
             )}
           />
-          <div className={cn("flex flex-row justify-start gap-4")}> 
+          <div className={cn("flex flex-row justify-start gap-4 pr-4")}> 
             {items.map((item, index) => (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 * index, ease: "easeOut" }}
                 key={index}
-                className="rounded-3xl last:pr-[5%] md:last:pr-[33%]"
+                className="rounded-3xl"
               >
                 {item}
               </motion.div>

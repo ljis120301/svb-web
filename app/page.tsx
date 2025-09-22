@@ -24,7 +24,7 @@ const FAQ = dynamic(() => import("@/components/site/FAQ").then((m) => m.FAQ), { 
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen overflow-x-hidden">
       <script type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
@@ -53,8 +53,8 @@ export default function Home() {
       <Hero />
 
       {/* Keep Apple cards feature section */}
-      <section className="mx-auto mt-12 max-w-full px-4">
-        <div className="mx-auto max-w-7xl">
+      <section className="w-full mt-12 overflow-x-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AppleCardsList />
         </div>
       </section>
@@ -66,13 +66,15 @@ export default function Home() {
       <ContactUs />
 
       {/* Social proof and FAQ */}
-      <section className="mx-auto mt-16 max-w-6xl px-4" style={{ contentVisibility: "auto", containIntrinsicSize: "800px" }}>
-        <HomeTestimonials />
+      <section className="w-full mt-16 overflow-x-hidden">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <HomeTestimonials />
+        </div>
       </section>
-      <div style={{ contentVisibility: "auto", containIntrinsicSize: "600px" }}>
+      <div className="w-full overflow-x-hidden" style={{ contentVisibility: "auto", containIntrinsicSize: "600px" }}>
         <GoogleReviewsMarquee />
       </div>
-      <div style={{ contentVisibility: "auto", containIntrinsicSize: "1200px" }}>
+      <div className="w-full overflow-x-hidden" style={{ contentVisibility: "auto", containIntrinsicSize: "1200px" }}>
         <FAQ />
       </div>
     </div>

@@ -166,7 +166,16 @@
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-site);
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
+
+/* Guardrail: prevent horizontal scroll caused by overflowing children */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  overscroll-behavior-x: contain;
+}
 }
 
 /* Global, consistent typography scales for page and section titles */

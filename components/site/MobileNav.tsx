@@ -34,26 +34,22 @@ export function MobileNav() {
           <span className="sr-only">Toggle Menu</span>
         </Button>
       </SheetTrigger>
-      <SheetContent side="right" className="pl-4 pr-0">
+      <SheetContent side="right" className="pl-4 pr-0 w-[300px] sm:w-[350px] max-w-[80vw]">
         <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
         <SheetDescription className="sr-only">
           Main navigation links and call-to-action buttons.
         </SheetDescription>
-        <div className="flex justify-between items-center pr-4">
-            <MobileLink
-              href="/"
-              className="flex items-center"
-              onOpenChange={setOpen}
-            >
-              <BrandLogo />
-            </MobileLink>
-            <Button variant="ghost" size="sm" onClick={() => setOpen(false)}>
-                <IconX className="h-5 w-5" />
-                <span className="sr-only">Close Menu</span>
-            </Button>
+        <div className="flex items-center pr-4 overflow-hidden">
+          <MobileLink
+            href="/"
+            className="flex items-center max-w-full"
+            onOpenChange={setOpen}
+          >
+            <BrandLogo />
+          </MobileLink>
         </div>
-        <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10">
-          <div className="flex flex-col space-y-2 pr-4">
+        <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10 overflow-x-hidden">
+          <div className="flex flex-col space-y-2 pr-4 max-w-full">
             <MobileLink href="/" onOpenChange={setOpen} pathname={pathname}>Home</MobileLink>
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="services" className="border-b-0">
@@ -72,35 +68,36 @@ export function MobileNav() {
             <MobileLink href="/support" onOpenChange={setOpen} pathname={pathname}>Support</MobileLink>
             <MobileLink href="/contact" onOpenChange={setOpen} pathname={pathname}>Contact</MobileLink>
           </div>
-          <div className="border-t pt-6 mt-6 space-y-3 pr-4">
-            <div className="grid grid-cols-2 gap-3">
-              <Button asChild size="lg" className="w-full">
-                <a href="tel:+19283430300" className="flex items-center justify-center gap-2">
-                  <IconPhone className="w-4 h-4" />
-                  Call
+          <div className="border-t pt-6 mt-6 space-y-3 pr-4 max-w-full overflow-hidden">
+            <div className="grid grid-cols-2 gap-3 max-w-full">
+              <Button asChild size="lg" className="w-full min-w-0">
+                <a href="tel:+19283430300" className="flex items-center justify-center gap-2 truncate">
+                  <IconPhone className="w-4 h-4 shrink-0" />
+                  <span className="truncate">Call</span>
                 </a>
               </Button>
-              <Button asChild variant="outline" size="lg" className="w-full">
+              <Button asChild variant="outline" size="lg" className="w-full min-w-0">
                 <a
                   href="https://webmail.beamspeed.net/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2"
+                  className="flex items-center justify-center gap-2 truncate"
                 >
-                  <IconMail className="w-4 h-4" />
-                  Email
+                  <IconMail className="w-4 h-4 shrink-0" />
+                  <span className="truncate">Email</span>
                 </a>
               </Button>
             </div>
-            <div className="grid grid-cols-2 gap-3">
-              <Button asChild size="lg" variant="default" className="w-full">
-                <Link href="/contact">Get Started</Link>
+            <div className="grid grid-cols-2 gap-3 max-w-full">
+              <Button asChild size="lg" variant="default" className="w-full min-w-0">
+                <Link href="/contact" className="truncate">Get Started</Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="w-full">
+              <Button asChild size="lg" variant="outline" className="w-full min-w-0">
                 <a
                   href="https://billing.beamspeed.net/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="truncate"
                 >
                   Pay Bill
                 </a>

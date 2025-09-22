@@ -22,11 +22,11 @@ export function PageLayout({
   contentMaxWidth = "6xl",
   className = ""
 }: PageLayoutProps) {
-  const breadcrumbContainerClass = `mx-auto max-w-6xl px-4`; // Always 6xl for consistent breadcrumb positioning
-  const contentContainerClass = `mx-auto max-w-${contentMaxWidth} px-4`;
+  const breadcrumbContainerClass = `mx-auto max-w-6xl px-4 sm:px-6 lg:px-8`; // Always 6xl for consistent breadcrumb positioning
+  const contentContainerClass = `mx-auto max-w-${contentMaxWidth} px-4 sm:px-6 lg:px-8`;
   
   return (
-    <>
+    <div className="w-full overflow-x-hidden">
       {jsonLdBreadcrumbs && (
         <script 
           type="application/ld+json"
@@ -59,9 +59,9 @@ export function PageLayout({
       </div>
 
       {/* Main content with flexible width but consistent horizontal alignment */}
-      <div className={`${contentContainerClass} pb-12 ${breadcrumbs && breadcrumbs.length > 0 ? '' : 'py-12'} ${className}`}>
+      <div className={`${contentContainerClass} pb-12 ${breadcrumbs && breadcrumbs.length > 0 ? '' : 'py-12'} ${className} max-w-full overflow-x-hidden`}>
         {children}
       </div>
-    </>
+    </div>
   );
 }

@@ -90,22 +90,20 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
     <CarouselContext.Provider
       value={{ onCardClose: handleCardClose, currentIndex }}
     >
-      <div className="relative w-full">
+      <div className="relative w-full max-w-full">
         <div
-          className="flex w-full overflow-x-scroll overscroll-x-auto scroll-smooth py-10 [scrollbar-width:none] md:py-20"
+          className="flex w-full max-w-full overflow-x-auto scroll-smooth py-10 [scrollbar-width:none] md:py-20 [overscroll-behavior-x:contain]"
           ref={carouselRef}
           onScroll={checkScrollability}
         >
           <div
-            className={cn(
-              "absolute right-0 z-[1000] h-auto w-[5%] overflow-hidden bg-gradient-to-l",
-            )}
+            className={cn("absolute right-0 z-[1000] h-full w-8 overflow-hidden bg-gradient-to-l from-background to-transparent")}
           ></div>
 
           <div
             className={cn(
-              "flex flex-row justify-start gap-4 pl-4",
-              "mx-auto max-w-7xl", // remove max-w-4xl if you want the carousel to span the full width of its container
+              "flex flex-row justify-start gap-4 pl-4 pr-4",
+              "mx-auto max-w-7xl",
             )}
           >
             {items.map((item, index) => (
@@ -117,7 +115,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 * index, ease: "easeOut" }}
                 key={"card" + index}
-                className="rounded-3xl last:pr-[5%] md:last:pr-[33%]"
+                className="rounded-3xl"
               >
                 {item}
               </motion.div>

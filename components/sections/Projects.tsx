@@ -8,16 +8,16 @@ const items = [
 
 export default function Projects() {
 	return (
-		<section id="projects" className="py-20 bg-background">
-			<div className="container mx-auto px-4">
+		<section id="projects" className="py-20 bg-background overflow-x-hidden">
+			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="text-center mb-16">
 					<h2 className="text-3xl md:text-5xl font-bold mb-4 text-foreground">Recent Work</h2>
 					<p className="text-xl text-muted-foreground max-w-2xl mx-auto">A glimpse at builds and upgrades across our service area</p>
 				</div>
-				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-full">
 					{items.map((it, i) => (
-						<div key={i} className="relative aspect-[3/2] overflow-hidden rounded-md border bg-card">
-							<Image src={it.src} alt={it.alt} fill sizes="(max-width: 1024px) 50vw, 33vw" className="object-cover" />
+						<div key={i} className="relative aspect-[3/2] overflow-hidden rounded-md border bg-card max-w-full">
+							<Image src={it.src} alt={it.alt} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover" />
 						</div>
 					))}
 				</div>

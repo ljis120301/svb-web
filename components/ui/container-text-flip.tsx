@@ -27,6 +27,7 @@ export function ContainerTextFlip({
   const [width, setWidth] = useState(0);
   const [maxWidth, setMaxWidth] = useState(0);
   const textRef = React.useRef<HTMLSpanElement>(null);
+  const [fontsReadyTick, setFontsReadyTick] = useState(0);
 
   const longestWordChars = React.useMemo(
     () => words.reduce((m, w) => Math.max(m, w.length), 0),
@@ -36,7 +37,7 @@ export function ContainerTextFlip({
 
   const updateWidthForWord = () => {
     if (textRef.current) {
-      const textWidth = textRef.current.scrollWidth + 2; // safety pad to avoid clipping
+      const textWidth = Math.ceil(textRef.current.scrollWidth) + 6; // extra pad to avoid platform rounding/clipping
       setWidth(textWidth);
       setMaxWidth((prev) => Math.max(prev, textWidth));
     }
@@ -77,7 +78,7 @@ export function ContainerTextFlip({
     let localMax = 0;
     for (const w of words) {
       measurer.textContent = w;
-      const wpx = measurer.scrollWidth + 2; // safety pad
+      const wpx = Math.ceil(measurer.scrollWidth) + 6; // extra pad for cross-device consistency
       if (wpx > localMax) localMax = wpx;
     }
     document.body.removeChild(measurer);
@@ -85,26 +86,35 @@ export function ContainerTextFlip({
       setMaxWidth(localMax);
       onMaxWidthMeasured?.(localMax);
     }
-  }, [words, textClassName, onMaxWidthMeasured]);
+  }, [words, textClassName, onMaxWidthMeasured, fontsReadyTick]);
+
+  // Re-measure once web fonts are loaded to avoid FOUT width mismatch across devices
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+    const anyDoc: any = document as any;
+    const fontsObj = anyDoc.fonts;
+    if (fontsObj && typeof fontsObj.ready?.then === "function") {
+      fontsObj.ready.then(() => setFontsReadyTick((v: number) => v + 1));
+    }
+  }, [words, textClassName]);
 
   return (
     <span
       className={cn(
-        "relative inline-flex items-baseline justify-start m-0 font-bold text-foreground whitespace-nowrap font-inherit max-w-full",
+        "relative inline-block items-baseline m-0 font-bold text-foreground whitespace-nowrap font-inherit overflow-visible text-left",
+        className
       )}
-      style={{
-        width: maxWidth > 0 ? maxWidth : `${estimatedWidthEm}em`,
-      }}
+      style={
+        maxWidth > 0
+          ? { width: `${maxWidth}px` }
+          : { width: `${estimatedWidthEm}em` }
+      }
     >
       <motion.span
         layout
         layoutId={`words-here-${id}`}
-        animate={{ width }}
-        transition={{ duration: animationDuration / 2000 }}
         className={cn(
-          "relative inline-block rounded-lg align-baseline will-change-[width] box-border",
-          "bg-background/70 border border-border/50 shadow-sm dark:bg-background/30",
-          className,
+          "relative inline-block align-baseline text-left"
         )}
         key={words[currentWordIndex]}
       >
