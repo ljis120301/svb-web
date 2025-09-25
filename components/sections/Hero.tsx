@@ -30,7 +30,7 @@ export default function Hero() {
 							size="lg"
 						className="w-full sm:w-auto min-w-0 whitespace-nowrap text-base sm:text-lg px-6 sm:px-8 h-12 cursor-pointer transition-colors bg-accent text-accent-foreground hover:bg-[var(--accent-hover)] hover:text-accent-foreground focus-visible:ring-1 focus-visible:ring-ring dark:bg-primary dark:text-primary-foreground dark:hover:bg-[var(--primary-hover)] dark:hover:text-primary-foreground"
 						>
-							<Link href="#projects">View Our Work</Link>
+							<Link target="_blank" rel="noopener noreferrer" href="https://billing.beamspeed.net/">Pay Your Bill</Link>
 						</Button>
 					</div>
 			</div>

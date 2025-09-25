@@ -147,6 +147,9 @@ export function Footer() {
               <Link href="/contact" className="hover:underline">
                 Contact
               </Link>
+              <Link href="/network" className="hover:underline">
+                Network Info
+              </Link>
             </div>
             <p className="mt-6 text-xs text-neutral-500">
               © {new Date().getFullYear()} Sun Valley Broadband. All rights reserved.
