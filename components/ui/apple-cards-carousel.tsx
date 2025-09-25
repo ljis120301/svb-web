@@ -90,19 +90,25 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
     <CarouselContext.Provider
       value={{ onCardClose: handleCardClose, currentIndex }}
     >
-      <div className="relative w-full max-w-full">
+      <div className="relative w-full max-w-full overflow-hidden">
         <div
-          className="flex w-full max-w-full overflow-x-auto scroll-smooth py-10 [scrollbar-width:none] md:py-20 [overscroll-behavior-x:contain]"
+          className="flex w-full max-w-full overflow-x-auto scroll-smooth py-10 [scrollbar-width:none] md:py-20 [overscroll-behavior-x:contain] overflow-y-hidden"
           ref={carouselRef}
           onScroll={checkScrollability}
+          style={{ 
+            WebkitOverflowScrolling: 'touch',
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none',
+            touchAction: 'pan-x'
+          }}
         >
           <div
-            className={cn("absolute right-0 z-[1000] h-full w-8 overflow-hidden bg-gradient-to-l from-background to-transparent")}
+            className={cn("absolute right-0 z-[1000] h-full w-8 overflow-hidden bg-gradient-to-l from-background to-transparent pointer-events-none")}
           ></div>
 
           <div
             className={cn(
-              "flex flex-row justify-start gap-4 pl-4 pr-4",
+              "flex flex-row justify-start gap-4 pl-4 pr-4 min-w-0",
               "mx-auto max-w-7xl",
             )}
           >

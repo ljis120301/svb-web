@@ -10,14 +10,14 @@ export default function Hero() {
 			<div className="absolute inset-0 z-0 opacity-20 dark:opacity-10">
             <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
 			</div>
-			<div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 text-center">
+			<div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 text-center overflow-x-hidden">
             <div className="max-w-4xl mx-auto">
               <ContainerTextFlipDemo />
             </div>
-            <p className="text-lg sm:text-xl lg:text-2xl mb-8 max-w-3xl mx-auto text-muted-foreground px-4">
+            <p className="text-lg sm:text-xl lg:text-2xl mb-8 max-w-3xl mx-auto text-muted-foreground px-4 break-words">
               Fiber‑first connectivity with quality service and local support
             </p>
-					<div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-lg mx-auto sm:max-w-none">
+					<div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-lg mx-auto sm:max-w-none overflow-x-hidden">
 					<Button
 							asChild
 							size="lg"

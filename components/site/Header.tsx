@@ -19,10 +19,10 @@ const navItems = [
 export function Header() {
   const pathname = usePathname();
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between px-6 mx-auto">
-        <div className="flex items-center gap-3 pl-2">
-          <Link href="/" className="flex items-center">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 overflow-x-hidden">
+      <div className="container w-full max-w-full flex h-16 items-center justify-between px-4 sm:px-6 mx-auto overflow-x-hidden min-w-0">
+        <div className="flex min-w-0 items-center gap-2 sm:gap-3 shrink-0 max-w-[200px] sm:max-w-none">
+          <Link href="/" className="flex items-center min-w-0">
             <BrandLogo />
           </Link>
         </div>
@@ -66,14 +66,14 @@ export function Header() {
           </Link>
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex min-w-0 items-center gap-1 sm:gap-2 shrink-0 max-w-[160px] sm:max-w-none">
           <ThemeToggle />
-          <div className="hidden md:flex items-center gap-2">
+          <div className="hidden lg:flex items-center gap-2">
             <Button
               variant="outline"
               size="sm"
               asChild
-              className="hover:text-foreground dark:text-white dark:hover:text-white hover:bg-accent/20 dark:hover:bg-accent/30"
+              className="hover:text-foreground dark:text-white dark:hover:text-white hover:bg-accent/20 dark:hover:bg-accent/30 whitespace-nowrap"
             >
               <a href="tel:+19283430300" aria-label="Call (928) 343-0300">
                 <IconPhone className="w-4 h-4 mr-1" /> (928) 343-0300
@@ -83,7 +83,7 @@ export function Header() {
               variant="outline"
               size="sm"
               asChild
-              className="hover:text-foreground dark:text-white dark:hover:text-white hover:bg-accent/20 dark:hover:bg-accent/30"
+              className="hover:text-foreground dark:text-white dark:hover:text-white hover:bg-accent/20 dark:hover:bg-accent/30 whitespace-nowrap"
             >
               <a href="https://webmail.beamspeed.net/" target="_blank" rel="noopener noreferrer" aria-label="Email">
                 <IconMail className="w-4 h-4 mr-1" /> Email
@@ -93,7 +93,7 @@ export function Header() {
               size="sm"
               variant="outline"
               asChild
-              className="hover:text-foreground dark:text-white dark:hover:text-white hover:bg-accent/20 dark:hover:bg-accent/30"
+              className="hover:text-foreground dark:text-white dark:hover:text-white hover:bg-accent/20 dark:hover:bg-accent/30 whitespace-nowrap"
             >
               <Link href="/contact" aria-label="Get started">Get started</Link>
             </Button>
@@ -101,7 +101,7 @@ export function Header() {
               variant="outline"
               size="sm"
               asChild
-              className="hover:text-foreground dark:text-white dark:hover:text-white hover:bg-accent/20 dark:hover:bg-accent/30"
+              className="hover:text-foreground dark:text-white dark:hover:text-white hover:bg-accent/20 dark:hover:bg-accent/30 whitespace-nowrap"
             >
               <a href="https://billing.beamspeed.net/" target="_blank" rel="noopener noreferrer" aria-label="Pay Bill">Pay Bill</a>
             </Button>

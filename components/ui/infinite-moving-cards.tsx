@@ -77,6 +77,10 @@ export const InfiniteMovingCards = ({
         "scroller relative z-20 w-full max-w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)] [overscroll-behavior-x:contain]",
         className,
       )}
+      style={{
+        WebkitOverflowScrolling: 'touch',
+        touchAction: 'pan-x'
+      }}
     >
       <ul
         ref={scrollerRef}
@@ -88,7 +92,7 @@ export const InfiniteMovingCards = ({
       >
         {items.map((item, idx) => (
           <li
-            className="relative w-80 sm:w-96 max-w-full shrink-0 rounded-xl border border-neutral-200 bg-white shadow-sm dark:border-neutral-700 dark:bg-neutral-900"
+            className="relative w-80 sm:w-96 max-w-[calc(100vw-2rem)] shrink-0 rounded-xl border border-neutral-200 bg-white shadow-sm dark:border-neutral-700 dark:bg-neutral-900"
             key={`${item.name}-${idx}`}
           >
             <blockquote className="flex h-64 md:h-72 flex-col px-6 py-5">

@@ -92,9 +92,13 @@ export function ModernPlansSection({
         <div
           className={
             isThreeAtXl
-              ? "mt-16 relative flex gap-4 overflow-x-auto snap-x snap-mandatory pl-1 pr-6 pb-2 sm:grid sm:gap-8 sm:overflow-visible sm:snap-none sm:pl-0 sm:pr-0 sm:pb-0 sm:grid-cols-2 lg:grid-cols-3 xl:flex xl:flex-wrap xl:justify-center"
-              : "mt-16 relative flex gap-4 overflow-x-auto snap-x snap-mandatory pl-1 pr-6 pb-2 sm:grid sm:gap-8 sm:overflow-visible sm:snap-none sm:pl-0 sm:pr-0 sm:pb-0 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+              ? "mt-16 relative flex gap-4 overflow-x-auto snap-x snap-mandatory pl-1 pr-6 pb-2 sm:grid sm:gap-8 sm:overflow-visible sm:snap-none sm:pl-0 sm:pr-0 sm:pb-0 sm:grid-cols-2 lg:grid-cols-3 xl:flex xl:flex-wrap xl:justify-center [overscroll-behavior-x:contain]"
+              : "mt-16 relative flex gap-4 overflow-x-auto snap-x snap-mandatory pl-1 pr-6 pb-2 sm:grid sm:gap-8 sm:overflow-visible sm:snap-none sm:pl-0 sm:pr-0 sm:pb-0 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 [overscroll-behavior-x:contain]"
           }
+          style={{
+            WebkitOverflowScrolling: 'touch',
+            touchAction: 'pan-x'
+          }}
         >
           <div
             className="pointer-events-none absolute right-0 top-0 h-full w-8 bg-gradient-to-l from-[hsl(var(--background))] to-transparent sm:hidden"

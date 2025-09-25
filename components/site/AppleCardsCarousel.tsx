@@ -98,13 +98,19 @@ export const AppleCarousel = ({ items, initialScroll = 0 }: AppleCarouselProps) 
           className="flex w-full max-w-full overflow-x-auto scroll-smooth py-10 [scrollbar-width:none] md:py-20 [overscroll-behavior-x:contain] overflow-y-hidden"
           ref={carouselRef}
           onScroll={checkScrollability}
+          style={{ 
+            WebkitOverflowScrolling: 'touch',
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none',
+            touchAction: 'pan-x'
+          }}
         >
           <div
             className={cn(
               "pointer-events-none absolute right-0 top-0 z-[10] h-full w-12 bg-gradient-to-l from-background to-transparent",
             )}
           />
-          <div className={cn("flex flex-row justify-start gap-4 pr-4")}> 
+          <div className={cn("flex flex-row justify-start gap-4 pr-4 min-w-0 pl-4")}> 
             {items.map((item, index) => (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}

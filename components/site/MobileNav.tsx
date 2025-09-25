@@ -27,7 +27,7 @@ export function MobileNav() {
         <Button
           variant="ghost"
           size="sm"
-          className="lg:hidden z-10"
+          className="md:hidden z-10"
           aria-label="Toggle menu"
         >
           <IconMenu2 className="h-5 w-5" />

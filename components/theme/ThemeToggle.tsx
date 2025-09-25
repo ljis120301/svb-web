@@ -25,11 +25,15 @@ export default function ThemeToggle() {
 		);
 	}
 
+	const handleThemeToggle = () => {
+		setTheme(theme === "dark" ? "light" : "dark");
+	};
+
 	return (
 		<Button
 			variant="ghost"
 			size="icon"
-			onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+			onClick={handleThemeToggle}
 			aria-label="Toggle theme"
       className="rounded-md focus-visible:ring-1 focus-visible:ring-ring cursor-pointer hover:bg-accent/20 dark:hover:bg-accent/30 hover:text-foreground dark:text-white dark:hover:text-white"
 		>
