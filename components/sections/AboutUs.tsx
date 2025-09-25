@@ -32,7 +32,7 @@ export default function AboutUs() {
 							src="/web-images/logos/Transparent-Logo-4-1-2.webp"
 							alt="Sun Valley Broadband"
 							fill
-							className="object-contain bg-muted"
+							className="object-contain bg-zinc-500"
 							sizes="(max-width: 768px) 100vw, 50vw"
 							priority={false}
 						/>

@@ -18,7 +18,6 @@ const AppleCardsList = dynamic(
   () => import("@/components/cards/AppleCardsList").then((m) => m.AppleCardsList),
   { loading: () => null }
 );
-const HomeTestimonials = dynamic(() => import("@/components/site/TestimonialsSection").then((m) => m.TestimonialsSection), { loading: () => null });
 const GoogleReviewsMarquee = dynamic(() => import("@/components/site/GoogleReviewsMarquee"), { loading: () => null });
 const FAQ = dynamic(() => import("@/components/site/FAQ").then((m) => m.FAQ), { loading: () => null });
 
@@ -52,31 +51,34 @@ export default function Home() {
       />
       <Hero />
 
-      {/* Keep Apple cards feature section */}
+      {/* Google Reviews - moved from bottom to after Hero */}
+      <div className="w-full" style={{ contentVisibility: "auto", containIntrinsicSize: "600px" }}>
+        <GoogleReviewsMarquee />
+      </div>
+
+      {/* Services */}
+      <Services />
+
+      {/* Get a Quote (Contact Us) */}
+      <ContactUs />
+
+      {/* FAQ */}
+      <div className="w-full" style={{ contentVisibility: "auto", containIntrinsicSize: "1200px" }}>
+        <FAQ />
+      </div>
+
+      {/* Apple Cards */}
       <section className="w-full mt-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AppleCardsList />
         </div>
       </section>
 
-      {/* Services, Projects, About, Contact (gram-style) */}
-      <Services />
+      {/* Recent Work (Projects) */}
       <Projects />
-      <AboutUs />
-      <ContactUs />
 
-      {/* Social proof and FAQ */}
-      <section className="w-full mt-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <HomeTestimonials />
-        </div>
-      </section>
-      <div className="w-full" style={{ contentVisibility: "auto", containIntrinsicSize: "600px" }}>
-        <GoogleReviewsMarquee />
-      </div>
-      <div className="w-full" style={{ contentVisibility: "auto", containIntrinsicSize: "1200px" }}>
-        <FAQ />
-      </div>
+      {/* About Us */}
+      <AboutUs />
     </div>
   );
 }

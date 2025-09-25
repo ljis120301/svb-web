@@ -22,9 +22,10 @@ export const metadata = {
 export default async function SupportPage({
   searchParams,
 }: {
-  searchParams?: { [key: string]: string | string[] | undefined };
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
-  const pageParam = typeof searchParams?.page === "string" ? searchParams?.page : Array.isArray(searchParams?.page) ? searchParams?.page[0] : undefined;
+  const resolvedSearchParams = await searchParams;
+  const pageParam = typeof resolvedSearchParams?.page === "string" ? resolvedSearchParams?.page : Array.isArray(resolvedSearchParams?.page) ? resolvedSearchParams?.page[0] : undefined;
   const pageSize = 9;
   const totalCount = await prisma.article.count({ where: { published: true } });
   const rawPage = Number(pageParam || 1);

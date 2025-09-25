@@ -15,22 +15,22 @@ type ServiceItem = {
 
 const services: ServiceItem[] = [
 	{
-		title: "Fiber Internet",
-		description: "Symmetric speeds with ultra‑low latency for home and business.",
+		title: "DTH Fiber Internet",
+		description: "Blazing fast fiber optic internet with affordable pricing.",
 		icon: IconDeviceDesktop,
 		details: "Our fiber‑first network delivers reliable, low‑latency connectivity ideal for streaming, gaming, remote work, and business operations. Enjoy consistent performance at peak hours with no data caps."
 	},
 	{
-		title: "Home Networking",
+		title: "Wireless Setup",
 		description: "Whole‑home Wi‑Fi with expert router placement and setup.",
 		icon: IconWifi,
-		details: "We optimize Wi‑Fi coverage across your home with proper access point placement, interference reduction, and secure configuration for every device."
+		details: "We optimize Wi‑Fi coverage across your home with proper access point placement, interference reduction, and secure configuration for every device. Our Technicians are experts in setting up and optimizing your wireless network to ensure you have the best possible experience."
 	},
 	{
 		title: "Business Solutions",
-		description: "Static IPs, priority routing, and resilient connectivity.",
+		description: "Static IPs, and resilient connectivity.",
 		icon: IconBuildingSkyscraper,
-		details: "Business‑grade services include static IP addressing, traffic prioritization, and uptime‑focused deployments tailored to your operations."
+		details: "We partner with buisnesses all over the Yuma and Imperial County to provide them with the best possible service. We can provide buisness features like Static IPv4 addresses and in some cases dedicated ethernet lines. For specific buisness needs, or larger scale projects reach out to us by phone or email."
 	},
 	{
 		title: "Legacy Wireless",
@@ -39,16 +39,16 @@ const services: ServiceItem[] = [
 		details: "We provide dependable fixed wireless service in areas awaiting fiber build‑out, ensuring you’re connected while we expand the network."
 	},
 	{
-		title: "Kitchen‑table Help",
+		title: "United States based Technical Support ",
 		description: "Friendly support for everyday connectivity questions.",
 		icon: IconHelpCircle,
-		details: "From device setup to simple troubleshooting, our local team helps keep your home online without the jargon."
+		details: "We keep our tech support in house to deliver the best Tech Support expirence without the annoying hold time of other providers."
 	},
 	{
-		title: "Smart Home Setup",
-		description: "Set up cameras, thermostats, and connected devices securely.",
+		title: "Pop Up Event Internet",
+		description: "Have a local event that requires an internet connection? We have you covered.",
 		icon: IconDeviceMobile,
-		details: "We onboard smart devices with proper network isolation and best‑practice security so your home stays both convenient and safe."
+		details: "We have worked with the Yuma County Fair Grounds to provide internet service to the Yuma Fair each year. We are able to help you or you rbuisness setup a remote internet connection from anywhere. Ensuring your payments get processed and your event runs smoothly."
 	}
 ];
 

@@ -14,10 +14,13 @@ export function AppleCardsList() {
             category: "Fiber‑first",
             content: (
               <p className="text-neutral-700 dark:text-neutral-300">
-                <a>Low latency and high bandwidth for 4K streaming and gaming.</a>
+                <a>Low latency and high bandwidth for 4K streaming and gaming. </a>
                 <br />
                 <br />
                 <a className="">With modern platforms using more bandwidth than ever, fiber keeps everything smooth.</a>
+                <br />
+                <br />
+                <a>Fiber internet is built for 4K streaming and gaming, delivering blazing-fast speeds that keep your movies sharp and smooth without buffering. With ultra-low latency, you’ll crush the competition in online games and enjoy a truly lag-free experience. It’s the perfect choice for households that demand the best in entertainment and performance. Future-proof your home with the fastest, most reliable internet available.</a>
                 <a className="flex justify-center pt-6">
                   <Image src="/speedtest.svg" alt="Speedtest" width={500} height={500} className="rounded-lg" style={{ height: "auto" }} />
                 </a>
@@ -200,7 +203,7 @@ export function AppleCardsList() {
           key="5"
           index={4}
           card={{
-            src: "/web-images/fiber-splice.webp",
+            src: "/splice3.png",
             title: "Why fiber beats legacy",
             category: "Why Fiber",
             content: (
@@ -213,6 +216,13 @@ export function AppleCardsList() {
   <a>
     If fiber isn’t yet on your street, check availability — we’re expanding quickly.
   </a>
+  <br />
+  <br />
+  <a>
+  Fiber outperforms cable and antenna-based wireless internet by delivering consistent speeds that don’t slow down during peak hours. Unlike cable, which is shared among neighbors, fiber gives you dedicated bandwidth for smooth streaming, gaming, and video calls. Wireless internet can be affected by weather, distance, and interference, but fiber provides a rock-solid connection every time. If you want reliability, speed, and stability, fiber leaves cable and wireless in the dust.
+  </a>
+  <br />
+  <br />
 </p>
 
             ),
