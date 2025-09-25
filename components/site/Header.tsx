@@ -19,10 +19,10 @@ const navItems = [
 export function Header() {
   const pathname = usePathname();
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 overflow-x-hidden">
-      <div className="container w-full max-w-full flex h-16 items-center justify-between px-4 sm:px-6 mx-auto overflow-x-hidden min-w-0">
-        <div className="flex min-w-0 items-center gap-2 sm:gap-3 shrink-0 max-w-[200px] sm:max-w-none">
-          <Link href="/" className="flex items-center min-w-0">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 overflow-x-clip">
+      <div className="container w-full max-w-full flex h-16 items-center justify-between px-4 sm:px-6 mx-auto overflow-x-clip">
+        <div className="flex min-w-0 items-center gap-2 sm:gap-3 shrink-0">
+          <Link href="/" className="flex items-center">
             <BrandLogo />
           </Link>
         </div>
@@ -66,7 +66,7 @@ export function Header() {
           </Link>
         </nav>
 
-        <div className="flex min-w-0 items-center gap-1 sm:gap-2 shrink-0 max-w-[160px] sm:max-w-none">
+        <div className="flex min-w-0 items-center gap-1 sm:gap-2 shrink-0">
           <ThemeToggle />
           <div className="hidden lg:flex items-center gap-2">
             <Button

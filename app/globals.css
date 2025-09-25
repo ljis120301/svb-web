@@ -170,100 +170,11 @@
     text-size-adjust: 100%;
   }
 
-  /* Guardrail: prevent horizontal scroll caused by overflowing children */
-  html, body {
-    width: 100%;
-    overscroll-behavior-x: contain;
-    /* Safari-specific optimizations for theme transitions */
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    /* Force hardware acceleration and smooth transitions */
-    will-change: auto;
-    -webkit-perspective: 1000px;
-    perspective: 1000px;
-  }
-}
-
-/* Safari immediate background color updates */
+/* Guardrail: prevent horizontal scroll caused by overflowing children */
 html, body {
-  transition: background-color 0ms !important;
-  -webkit-transition: background-color 0ms !important;
+  width: 100%;
+  overscroll-behavior-x: contain;
 }
-
-/* Force Safari to apply background colors immediately */
-@supports (-webkit-appearance: none) {
-  /* Safari-specific immediate background application */
-  html {
-    background-color: var(--background) !important;
-    /* Force compositing layer for immediate updates */
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
-  body {
-    background-color: var(--background) !important;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-  
-  /* Ensure immediate theme color updates in Safari */
-  html.dark {
-    background-color: #000F08 !important;
-  }
-  
-  html.light, html:not(.dark) {
-    background-color: #ffffff !important;
-  }
-}
-
-/* Mobile-first touch optimizations */
-@media (hover: none) and (pointer: coarse) {
-  /* Improve touch targets on mobile */
-  button, [role="button"], input[type="button"], input[type="submit"] {
-    min-height: 44px;
-    min-width: 44px;
-  }
-  
-  /* Optimize scrolling performance */
-  * {
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior: contain;
-  }
-  
-  /* Better tap feedback handled by touch-action */
-}
-
-/* Prevent horizontal overflow globally */
-* {
-  box-sizing: border-box;
-}
-
-html, body {
-  overflow-x: hidden;
-  position: relative;
-}
-
-/* Ensure all flex containers don't overflow horizontally */
-.flex {
-  min-width: 0;
-}
-
-/* Make all images responsive by default */
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* Improve button touch targets on mobile */
-@media (max-width: 768px) {
-  button, [role="button"] {
-    min-height: 44px;
-    touch-action: manipulation;
-  }
 }
 
 /* Global, consistent typography scales for page and section titles */

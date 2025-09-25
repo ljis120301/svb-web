@@ -219,7 +219,6 @@ export const viewport = {
   initialScale: 1,
   maximumScale: 5,
   userScalable: true,
-  viewportFit: "cover", // For iPhone X+ notch handling
 };
 
 export default function RootLayout({
@@ -233,10 +232,10 @@ export default function RootLayout({
         textSizeAdjust: '100%',
         WebkitTextSizeAdjust: '100%',
         MozTextSizeAdjust: '100%',
-        WebkitTapHighlightColor: 'transparent', // Remove iOS tap highlights
-        WebkitTouchCallout: 'none', // Disable iOS callout menu
-        touchAction: 'manipulation', // Improve touch responsiveness
-      } as React.CSSProperties}>
+        msTextSizeAdjust: '100%'
+      }}>
+        {/* Pre-hydration theme-color to prevent initial black flash in browser UI */}
+        <meta name="theme-color" content="#FF8B1F" />
         <ThemeProvider>
         <ThemeColorMeta />
         <Script id="org-jsonld" type="application/ld+json" strategy="afterInteractive"
