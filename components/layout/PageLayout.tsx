@@ -23,7 +23,16 @@ export function PageLayout({
   className = ""
 }: PageLayoutProps) {
   const breadcrumbContainerClass = `mx-auto max-w-6xl px-4 sm:px-6 lg:px-8`; // Always 6xl for consistent breadcrumb positioning
-  const contentContainerClass = `mx-auto max-w-${contentMaxWidth} px-4 sm:px-6 lg:px-8`;
+  // Map to explicit Tailwind classes to prevent purging of dynamic class names
+  const maxWidthClass =
+    contentMaxWidth === "3xl"
+      ? "max-w-3xl"
+      : contentMaxWidth === "5xl"
+      ? "max-w-5xl"
+      : "max-w-6xl";
+  const contentContainerBase = `mx-auto ${maxWidthClass} px-4 sm:px-6 lg:px-8`;
+  const contentPaddingTopClass = breadcrumbs && breadcrumbs.length > 0 ? "pt-2 sm:pt-3" : "pt-8 sm:pt-12";
+  const contentContainerClass = `${contentContainerBase} ${contentPaddingTopClass}`;
   
   return (
     <div className="w-full overflow-x-hidden">
@@ -59,7 +68,7 @@ export function PageLayout({
       </div>
 
       {/* Main content with flexible width but consistent horizontal alignment */}
-      <div className={`${contentContainerClass} pb-12 ${breadcrumbs && breadcrumbs.length > 0 ? '' : 'py-12'} ${className} max-w-full overflow-x-hidden`}>
+      <div className={`${contentContainerClass} pb-12 sm:pb-16 ${className} overflow-x-hidden`}>
         {children}
       </div>
     </div>

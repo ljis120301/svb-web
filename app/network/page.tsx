@@ -59,8 +59,8 @@ export default function NetworkPage() {
               <Network className="h-8 w-8 text-blue-600 dark:text-blue-400" />
             </div>
           </div>
-          <h1 className="text-4xl font-bold tracking-tight">Network Information</h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <h1 className="page-title">Network Information</h1>
+          <p className="lead text-base sm:text-lg max-w-3xl mx-auto mt-2">
             Technical network details, routing information, and contact points for Sun Valley Broadband's infrastructure.
           </p>
         </div>
@@ -79,13 +79,12 @@ export default function NetworkPage() {
                 <div className="space-y-2">
                   <h4 className="font-semibold text-sm text-muted-foreground uppercase tracking-wide">AS Number</h4>
                   <div className="flex items-center gap-2">
-                    <Badge variant="outline" className="text-base px-3 py-1">AS12345</Badge>
-                    <span className="text-sm text-muted-foreground">(Placeholder)</span>
+                    <Badge variant="outline" className="text-base px-3 py-1">14237</Badge>
                   </div>
                 </div>
                 <div className="space-y-2">
                   <h4 className="font-semibold text-sm text-muted-foreground uppercase tracking-wide">AS Name</h4>
-                  <p className="font-mono text-sm">SUN-VALLEY-BROADBAND</p>
+                  <p className="font-mono text-sm">Not published</p>
                 </div>
                 <div className="space-y-2">
                   <h4 className="font-semibold text-sm text-muted-foreground uppercase tracking-wide">Registry</h4>
@@ -105,11 +104,10 @@ export default function NetworkPage() {
                   Network Prefixes
                 </h4>
                 <div className="bg-muted/50 rounded-lg p-4 space-y-2">
-                  <p className="font-mono text-sm">IPv4: 192.0.2.0/24 (Example)</p>
-                  <p className="font-mono text-sm">IPv6: 2001:db8::/32 (Example)</p>
-                  <p className="text-xs text-muted-foreground mt-2">
-                    * Actual network prefixes would be displayed here in production
-                  </p>
+                  <p className="font-mono text-sm">IPv4: 216.152.248.0/21</p>
+                  <p className="font-mono text-sm">Range: 216.152.248.0 - 216.152.255.255 (NET-216-152-248-0-1)</p>
+                  <p className="font-mono text-sm">NetName: BEAMS • NetType: allocation • Parent: NET-216-0-0-0-0</p>
+                  <p className="font-mono text-xs text-muted-foreground">RegDate: 2018-08-09 • Updated: 2018-08-09 • Source: ARIN</p>
                 </div>
               </div>
             </CardContent>
@@ -127,29 +125,49 @@ export default function NetworkPage() {
               <div className="space-y-3">
                 <div>
                   <h4 className="font-semibold text-sm text-muted-foreground uppercase tracking-wide mb-1">Organization</h4>
-                  <p className="font-mono text-sm">Sun Valley Broadband LLC</p>
+                  <p className="font-mono text-sm">Beamspeed LLC</p>
                 </div>
                 <div>
                   <h4 className="font-semibold text-sm text-muted-foreground uppercase tracking-wide mb-1">Address</h4>
                   <p className="font-mono text-sm">
-                    2481 E Palo Verde St<br />
+                    2481 E. Palo Verde St<br />
                     Yuma, AZ 85365<br />
                     United States
                   </p>
                 </div>
                 <div>
                   <h4 className="font-semibold text-sm text-muted-foreground uppercase tracking-wide mb-1">Registration Date</h4>
-                  <p className="font-mono text-sm">2023-01-01 (Example)</p>
+                  <p className="font-mono text-sm">2003-08-21</p>
                 </div>
                 <div>
                   <h4 className="font-semibold text-sm text-muted-foreground uppercase tracking-wide mb-1">Last Updated</h4>
-                  <p className="font-mono text-sm">2024-01-01 (Example)</p>
+                  <p className="font-mono text-sm">2024-11-25</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-sm text-muted-foreground uppercase tracking-wide mb-1">OrgID</h4>
+                  <p className="font-mono text-sm">BEAMS</p>
                 </div>
               </div>
-              
-              <Button variant="outline" className="w-full">
-                <Activity className="h-4 w-4 mr-2" />
-                View Full Whois Record
+
+              <Separator />
+
+              <div className="space-y-2">
+                <h4 className="font-semibold text-sm text-muted-foreground uppercase tracking-wide">ARIN Net Allocation</h4>
+                <div className="bg-muted/50 rounded-lg p-4 space-y-1">
+                  <p className="font-mono text-sm">NetHandle: NET-216-152-248-0-1</p>
+                  <p className="font-mono text-sm">NetName: BEAMS</p>
+                  <p className="font-mono text-sm">NetRange: 216.152.248.0 - 216.152.255.255</p>
+                  <p className="font-mono text-sm">NetType: allocation</p>
+                  <p className="font-mono text-sm">Parent: NET-216-0-0-0-0</p>
+                  <p className="font-mono text-xs text-muted-foreground">RegDate: 2018-08-09 • Updated: 2018-08-09 • Source: ARIN</p>
+                </div>
+              </div>
+
+              <Button variant="outline" asChild className="w-full">
+                <a href="https://search.arin.net/rdap/?query=NET-216-152-248-0-1" target="_blank" rel="noopener noreferrer">
+                  <Activity className="h-4 w-4 mr-2" />
+                  View ARIN Record
+                </a>
               </Button>
             </CardContent>
           </Card>

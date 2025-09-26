@@ -73,7 +73,7 @@ export default async function SupportPage({
         <Link href="/support/contact" className="text-primary underline underline-offset-4 ml-1">contact support</Link>.
       </p>
 
-      <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-6 sm:mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {articles.length === 0 && (
           <div className="col-span-full text-center text-muted-foreground py-8">
             No articles found.
@@ -96,7 +96,7 @@ export default async function SupportPage({
 
       {/* Pagination */}
       {totalPages > 1 && (
-        <div className="mt-8">
+        <div className="mt-6 sm:mt-8">
           <Pagination>
             <PaginationContent>
               {currentPage > 1 && (
@@ -165,7 +165,7 @@ export default async function SupportPage({
 
       <FAQ />
 
-      <div className="mt-10">
+      <div className="mt-8 sm:mt-10">
         <Link href="/support/contact" className="inline-flex items-center rounded-md bg-primary px-4 py-2 text-white hover:opacity-90">
           Contact support
         </Link>
