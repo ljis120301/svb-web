@@ -16,14 +16,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/network',
   ];
 
-  const staticEntries = routes.map((path) => ({
+  const staticEntries: MetadataRoute.Sitemap = routes.map((path) => ({
     url: `${baseUrl}${path}`,
     lastModified: now,
-    changeFrequency: path === '' ? 'weekly' : 'monthly',
+    changeFrequency: (path === '' ? 'weekly' : 'monthly') as MetadataRoute.Sitemap[number]['changeFrequency'],
     priority: path === '' ? 1 : 0.7,
   }));
 
-  const articleEntries = getAllSupportArticles().map((a) => ({
+  const articleEntries: MetadataRoute.Sitemap = getAllSupportArticles().map((a) => ({
     url: `${baseUrl}/support/${a.slug}`,
     lastModified: a.updatedAt ? new Date(a.updatedAt) : now,
     changeFrequency: 'monthly',

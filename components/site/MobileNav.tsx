@@ -44,6 +44,7 @@ export function MobileNav() {
             href="/"
             className="flex items-center max-w-full"
             onOpenChange={setOpen}
+            pathname={pathname}
           >
             <BrandLogo />
           </MobileLink>

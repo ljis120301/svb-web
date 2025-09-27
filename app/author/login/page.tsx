@@ -1,10 +1,10 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { PageLayout } from "@/components/layout/PageLayout";
 
-export default function AuthorLoginPage() {
+function AuthorLoginInner() {
   const router = useRouter();
   const search = useSearchParams();
   const next = search.get("next") || "/author";
@@ -66,5 +66,13 @@ export default function AuthorLoginPage() {
         </form>
       </div>
     </PageLayout>
+  );
+}
+
+export default function AuthorLoginPage() {
+  return (
+    <Suspense fallback={null}>
+      <AuthorLoginInner />
+    </Suspense>
   );
 }

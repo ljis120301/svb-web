@@ -231,8 +231,7 @@ export default function RootLayout({
       <body className={`${siteFont.variable} ${brandFont.variable} antialiased`} style={{
         textSizeAdjust: '100%',
         WebkitTextSizeAdjust: '100%',
-        MozTextSizeAdjust: '100%',
-        msTextSizeAdjust: '100%'
+        MozTextSizeAdjust: '100%'
       }}>
         {/* Pre-hydration theme-color to prevent initial black flash in browser UI */}
         <meta name="theme-color" content="#FF8B1F" />

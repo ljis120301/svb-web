@@ -1,9 +1,11 @@
 "use client";
 
-import { ThemeProvider as NextThemesProvider, type ThemeProviderProps } from "next-themes";
+import { ThemeProvider as NextThemesProvider } from "next-themes";
+import type { ComponentProps } from "react";
 
-export default function ThemeProvider({ children, ...props }: ThemeProviderProps) {
-	// Render the provider immediately to avoid dark-mode flash (no client gate)
+type NextThemesProviderProps = ComponentProps<typeof NextThemesProvider>;
+
+export default function ThemeProvider({ children, ...props }: NextThemesProviderProps) {
 	return (
 		<NextThemesProvider
 			attribute="class"
