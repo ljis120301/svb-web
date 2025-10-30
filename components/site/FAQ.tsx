@@ -3,15 +3,26 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
+import { LinkPreview } from "@/components/ui/link-preview";
 
 const faqs = [
   {
     q: "Do you have data caps?",
-    a: "No. All plans are unlimited. We do not throttle." ,
+    a: "No. All plans are unlimited. We never throttle your data." ,
   },
   {
     q: "Can I bring my own router?",
-    a: "Yes, any standard non-cable router will work. However keep in mind we do not support bringing routers owned from other providers, or any Doxis cable routers. We also offer the option to rent a router from us for a monthly fee of $5 per month.",
+    a: (
+      <>
+        Yes, any standard non-cable router will work. However keep in mind we do not support bringing routers owned from other providers, or any{" "}
+        <span className="inline-block">
+          <LinkPreview url="https://en.wikipedia.org/wiki/DOCSIS" className="underline">
+            DOCSIS
+          </LinkPreview>
+        </span>{" "}
+        cable routers. We also offer the option to rent a router from us for a monthly fee of $5 per month.
+      </>
+    ),
   },
   {
     q: "How soon can I get installed?",
@@ -22,8 +33,8 @@ const faqs = [
     a: "Yes, we work with many businesses all across Yuma County and Imperial. We can provide buisness features like Static IPv4 addresses and in some cases dedicated ethernet lines. For specific buisness needs, or larger scale projects reach out to us by phone or email.",
   },
   {
-    q: "What technology do you prioritize?",
-    a: "We are a fiber‑first ISP. Legacy wireless is available only where fiber is not yet built.",
+    q: "How fast is internet in my area?",
+    a: "In areas where we have fiber run you can see speeds as high as 500 Mbps.",
   },
   {
     q: "Is there a contract?",
@@ -34,32 +45,45 @@ const faqs = [
 
 export function FAQ() {
   return (
-    <section className="mx-auto mt-20 w-full max-w-6xl px-4">
-      <div className="mb-8 text-center">
-        <Badge className="mb-3">Good to know</Badge>
-        <h2 className="text-balance text-2xl font-bold sm:text-3xl">Frequently asked questions</h2>
-      </div>
-      <div className="grid items-stretch gap-4 md:grid-cols-2">
-        {faqs.map((f) => (
-          <Card key={f.q} className="relative h-full rounded-2xl md:rounded-3xl min-h-[12rem] overflow-visible pb-1">
-            <GlowingEffect
-              blur={0}
-              borderWidth={3}
-              spread={80}
-              glow={true}
-              disabled={false}
-              proximity={64}
-              inactiveZone={0.01}
-              variant="orange"
-            />
-            <CardHeader>
-              <CardTitle className="text-base">{f.q}</CardTitle>
-            </CardHeader>
-            <CardContent className="text-sm text-neutral-700 dark:text-neutral-300">{f.a}</CardContent>
-          </Card>
-        ))}
-      </div>
-    </section>
+    <>
+      <style dangerouslySetInnerHTML={{ __html: `
+        [data-radix-hover-card-content],
+        [data-radix-hover-card-content] > * {
+          z-index: 9999 !important;
+        }
+        [data-radix-portal] {
+          z-index: 9999 !important;
+        }
+      `}} />
+      <section className="mx-auto mt-20 w-full max-w-6xl px-4">
+        <div className="mb-8 text-center">
+          <Badge className="mb-3">Good to know</Badge>
+          <h2 className="text-balance text-2xl font-bold sm:text-3xl">Frequently asked questions</h2>
+        </div>
+        <div className="grid items-stretch gap-4 md:grid-cols-2">
+          {faqs.map((f) => (
+            <Card key={f.q} className="relative h-full rounded-2xl md:rounded-3xl min-h-[12rem] overflow-visible pb-1">
+              <GlowingEffect
+                blur={0}
+                borderWidth={3}
+                spread={80}
+                glow={true}
+                disabled={false}
+                proximity={64}
+                inactiveZone={0.01}
+                variant="orange"
+              />
+              <CardHeader>
+                <CardTitle className="text-base">{f.q}</CardTitle>
+              </CardHeader>
+              <CardContent className="relative text-sm text-neutral-700 dark:text-neutral-300">
+                {f.a}
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+    </>
   );
 }
 

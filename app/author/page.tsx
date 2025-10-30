@@ -27,12 +27,15 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
-import { MoreVertical, FileText, Eye, Trash2, Plus, Settings, Save, CheckCircle, Edit3 } from "lucide-react";
+import { MoreVertical, FileText, Eye, Trash2, Plus, Settings, Save, CheckCircle, Edit3, ArrowLeft } from "lucide-react";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
 export default function AuthorPortalPage() {
   const { data, mutate } = useSWR("/api/articles?take=100", fetcher);
+  const router = useRouter();
   
   const [form, setForm] = useState({
     slug: "",
@@ -123,8 +126,8 @@ export default function AuthorPortalPage() {
           slug: form.slug,
           title: form.title,
           excerpt: form.excerpt,
-          contentJson: JSON.stringify(form.contentJson ?? {}),
-          html: form.html,
+          contentJson: JSON.stringify(form.contentJson ?? { type: 'doc', content: [] }),
+          html: form.html || '<p></p>',
           tags,
           published: form.published,
         }),
@@ -134,9 +137,21 @@ export default function AuthorPortalPage() {
         throw new Error(j.error || "Failed");
       }
       // Keep the form filled for editing the newly created article
+      const createdArticle = await res.json();
       setShowNewArticleDialog(false);
-      setIsEditing(false);
+      setIsEditing(true);
       setEditMode("edit");
+      // Update form with the created article data to ensure we have the correct slug
+      setForm(prev => ({
+        ...prev,
+        slug: createdArticle.article.slug,
+        title: createdArticle.article.title,
+        excerpt: createdArticle.article.excerpt,
+        contentJson: JSON.parse(createdArticle.article.contentJson),
+        html: createdArticle.article.html,
+        tagsCsv: createdArticle.article.tagsJson ? JSON.parse(createdArticle.article.tagsJson).join(', ') : '',
+        published: createdArticle.article.published
+      }));
       mutate();
     } catch (e: any) {
       setError(e.message);
@@ -146,7 +161,10 @@ export default function AuthorPortalPage() {
   }
 
   async function updateArticle() {
-    if (!form.slug) return;
+    if (!form.slug) {
+      setError("No article selected for editing");
+      return;
+    }
     setSaving(true);
     setError(null);
     try {
@@ -168,12 +186,25 @@ export default function AuthorPortalPage() {
       });
       if (!res.ok) {
         const j = await res.json().catch(() => ({}));
+        if (res.status === 404) {
+          throw new Error(`Article with slug "${form.slug}" not found. Please refresh and try again.`);
+        }
         throw new Error(j.error || "Failed to update");
       }
       mutate();
       setError(null);
+      toast.success("Article published successfully!", {
+        description: `"${form.title}" has been updated and published.`,
+      });
+      // Navigate to the published article after a short delay to show the toast
+      setTimeout(() => {
+        router.push(`/support/${form.slug}`);
+      }, 1500);
     } catch (e: any) {
       setError(e.message);
+      toast.error("Failed to publish article", {
+        description: e.message || "An error occurred while publishing.",
+      });
     } finally {
       setSaving(false);
     }
@@ -459,9 +490,30 @@ export default function AuthorPortalPage() {
                     }}
                   />
                   
-                  {/* Floating Publish/Save Button */}
+                  {/* Floating Action Buttons */}
                   {isEditing && (
-                    <div className="fixed bottom-6 right-6 z-50">
+                    <div className="fixed bottom-6 right-6 z-50 flex gap-3">
+                      <Button
+                        variant="outline"
+                        size="lg"
+                        onClick={() => {
+                          setEditMode(null);
+                          setIsEditing(false);
+                          setForm({
+                            slug: "",
+                            title: "",
+                            excerpt: "",
+                            contentJson: null,
+                            html: "",
+                            tagsCsv: "",
+                            published: true,
+                          });
+                        }}
+                        className="shadow-lg hover:shadow-xl transition-all duration-200"
+                      >
+                        <ArrowLeft className="h-4 w-4 mr-2" />
+                        Back to Articles
+                      </Button>
                       <Button
                         size="lg"
                         onClick={updateArticle}
@@ -555,7 +607,7 @@ export default function AuthorPortalPage() {
                                   published: fullArticle.published,
                                 });
                                 setEditMode("edit");
-                                setIsEditing(false);
+                                setIsEditing(true);
                                 setError(null);
                               }
                             } catch (error) {

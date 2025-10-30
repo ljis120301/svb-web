@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
+import { trackFormSubmission } from "@/lib/analytics";
 
 interface ContactFormProps {
   pageKind: "support" | "sales";
@@ -186,6 +187,8 @@ export function ContactForm({ pageKind }: ContactFormProps) {
         throw new Error(data?.error || "Failed to send message");
       }
       setStatus("sent");
+      // Track successful form submission
+      trackFormSubmission(`${pageKind}_contact_form`);
       setName("");
       setEmail("");
       setMessage("");

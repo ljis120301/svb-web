@@ -7,6 +7,7 @@ import { BrandLogo } from "@/components/site/BrandLogo";
 import { MobileNav } from "./MobileNav";
 import ThemeToggle from "@/components/theme/ThemeToggle";
 import { IconMail, IconPhone } from "@tabler/icons-react";
+import { trackPhoneClick, trackButtonClick } from "@/lib/analytics";
 
 const navItems = [
   { href: "/", label: "Home" },
@@ -19,7 +20,7 @@ const navItems = [
 export function Header() {
   const pathname = usePathname();
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 overflow-x-clip">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60 overflow-x-clip">
       <div className="container w-full max-w-full flex h-16 items-center justify-between px-4 sm:px-6 mx-auto overflow-x-clip">
         <div className="flex min-w-0 items-center gap-2 sm:gap-3 shrink-0">
           <Link href="/" className="flex items-center">
@@ -75,7 +76,11 @@ export function Header() {
               asChild
               className="hover:text-foreground dark:text-white dark:hover:text-white hover:bg-accent/20 dark:hover:bg-accent/30 whitespace-nowrap"
             >
-              <a href="tel:+19283430300" aria-label="Call (928) 343-0300">
+              <a 
+                href="tel:+19283430300" 
+                aria-label="Call (928) 343-0300"
+                onClick={() => trackPhoneClick('(928) 343-0300', 'header')}
+              >
                 <IconPhone className="w-4 h-4 mr-1" /> (928) 343-0300
               </a>
             </Button>
@@ -85,7 +90,13 @@ export function Header() {
               asChild
               className="hover:text-foreground dark:text-white dark:hover:text-white hover:bg-accent/20 dark:hover:bg-accent/30 whitespace-nowrap"
             >
-              <a href="https://webmail.beamspeed.net/" target="_blank" rel="noopener noreferrer" aria-label="Email">
+              <a 
+                href="https://webmail.beamspeed.net/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label="Email"
+                onClick={() => trackButtonClick('email_webmail', 'header')}
+              >
                 <IconMail className="w-4 h-4 mr-1" /> Email
               </a>
             </Button>

@@ -38,7 +38,7 @@ export default function FiberPage() {
       <StickyBanner hideOnScroll className="bg-accent text-white">
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-2">
           <p className="text-xs sm:text-sm">Fiber is expanding in your area. Check availability today.</p>
-          <Button size="sm" variant="secondary" asChild>
+          <Button size="sm" variant="secondary" className="bg-primary hover:bg-primary-hover text-primary-foreground" asChild>
             <a href="#eligibility">Check eligibility</a>
           </Button>
         </div>

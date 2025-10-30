@@ -1,18 +1,21 @@
-FROM oven/bun:1-alpine
+FROM node:20-alpine
 
 WORKDIR /app
 
-# Copy the source code directly instead of cloning
+# Install pnpm
+RUN corepack enable pnpm
+
+# Copy the source code, .env, and dev.db into the image
 COPY . .
 
-# Install dependencies using Bun (allow lockfile updates if needed)
-RUN bun install
+# Install dependencies using pnpm
+RUN pnpm install
 
-# Generate Prisma client
-RUN bunx prisma generate
+# Generate Prisma client (uses DATABASE_URL from .env)
+RUN pnpm exec prisma generate
 
 # Build the Next.js application
-RUN bun run build
+RUN pnpm run build
 
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
@@ -20,4 +23,4 @@ ENV NEXT_TELEMETRY_DISABLED=1
 EXPOSE 3000
 
 # Run the production server
-CMD ["bun", "run", "start"]
+CMD ["pnpm", "run", "start"]

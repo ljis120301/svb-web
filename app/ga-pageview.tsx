@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
+import { pageview } from '@/lib/analytics';
 
 export function GA4Pageview() {
   const pathname = usePathname();
@@ -9,34 +10,21 @@ export function GA4Pageview() {
   const hasMountedRef = useRef(false);
 
   useEffect(() => {
-    // Ensure gtag is available
-    const gtag = (window as any).gtag as undefined | ((...args: any[]) => void);
-    if (!gtag) return;
-
-    // For SPA navigations send an explicit page_view with canonical fields
+    // For SPA navigations, send page_view events for route changes
+    // The initial page load is handled automatically by GA4
     const query = searchParams?.toString();
     const page_path = query ? `${pathname}?${query}` : pathname;
-    const page_location = typeof window !== 'undefined' ? window.location.href : undefined;
-    const page_title = typeof document !== 'undefined' ? document.title : undefined;
+    
     try {
-      // Initial mount: GA auto page_view disabled; send our own
-      if (!hasMountedRef.current) {
-        gtag('event', 'page_view', {
-          page_path,
-          page_location,
-          page_title,
-        });
+      // Only send page_view for subsequent route changes (not initial load)
+      if (hasMountedRef.current) {
+        pageview(page_path);
+      } else {
         hasMountedRef.current = true;
-        return;
       }
-
-      // Subsequent route changes
-      gtag('event', 'page_view', {
-        page_path,
-        page_location,
-        page_title,
-      });
-    } catch {}
+    } catch (error) {
+      console.warn('GA4 pageview tracking error:', error);
+    }
   }, [pathname, searchParams]);
 
   return null;

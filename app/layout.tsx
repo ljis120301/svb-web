@@ -9,6 +9,7 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { siteFont, brandFont } from "@/lib/fonts";
 import { RootBannerSlot } from "@/components/site/RootBannerSlot";
+import { Toaster } from "sonner";
 // Removed PostHog provider/pageview
 
 export const metadata: Metadata = {
@@ -364,7 +365,7 @@ export default function RootLayout({
         {/* Google tag (gtag.js) */}
         <Script
           id="ga4-src"
-          src="https://www.googletagmanager.com/gtag/js?id=G-LVPSHQM46D"
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID || 'G-LVPSHQM46D'}`}
           strategy="afterInteractive"
         />
         <Script id="ga4-inline" strategy="afterInteractive">
@@ -372,8 +373,11 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            // Disable automatic page_view to prevent duplicates in SPA
-            gtag('config', 'G-LVPSHQM46D', { send_page_view: false });
+            gtag('config', '${process.env.NEXT_PUBLIC_GA_ID || 'G-LVPSHQM46D'}', {
+              page_title: document.title,
+              page_location: window.location.href,
+              send_page_view: true
+            });
           `}
         </Script>
         <Suspense fallback={null}>
@@ -383,6 +387,7 @@ export default function RootLayout({
         <Header />
         <main className="min-h-[calc(100vh-4rem)]">{children}</main>
         <Footer />
+        <Toaster />
         </ThemeProvider>
       </body>
     </html>

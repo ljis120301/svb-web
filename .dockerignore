@@ -55,7 +55,8 @@ Dockerfile
 
 # Prisma
 prisma/migrations/
-*.db
+# Keep dev.db so it gets copied into the image
+# *.db
 *.db-journal
 
 # Temporary files
