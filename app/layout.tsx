@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     "broadband provider",
     "wifi provider",
     "wi-fi provider",
-    
+
     // General Internet Services
     "internet service",
     "internet plans",
@@ -52,14 +52,14 @@ export const metadata: Metadata = {
     "fixed wireless",
     "broadband internet",
     "cable internet",
-    
+
     // Local Geographic Terms
     "Yuma internet",
     "Yuma AZ internet",
     "Arizona internet",
     "California internet",
     "Roll AZ internet",
-    "Wellton AZ internet", 
+    "Wellton AZ internet",
     "Tacna AZ internet",
     "Holtville CA internet",
     "Brawley CA internet",
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     "rural internet California",
     "desert internet",
     "southwestern internet",
-    
+
     // Common Misspellings & Variations
     "internet providor",
     "internet provider",
@@ -87,7 +87,7 @@ export const metadata: Metadata = {
     "fibre internet",
     "hiigh speed internet",
     "high-speed internet",
-    
+
     // Older Demographics & Simple Terms
     "internet for seniors",
     "simple internet",
@@ -105,7 +105,7 @@ export const metadata: Metadata = {
     "cheap internet",
     "budget internet",
     "low cost internet",
-    
+
     // Service & Support Keywords
     "local internet support",
     "internet installation",
@@ -118,7 +118,7 @@ export const metadata: Metadata = {
     "trusted internet provider",
     "family owned internet",
     "local owned internet",
-    
+
     // Common Search Phrases
     "internet near me",
     "internet in my area",
@@ -132,7 +132,7 @@ export const metadata: Metadata = {
     "switch internet providers",
     "cancel cable internet",
     "better internet service",
-    
+
     // Technology Terms (Simple)
     "DSL alternative",
     "cable alternative",
@@ -237,139 +237,139 @@ export default function RootLayout({
         {/* Pre-hydration theme-color to prevent initial black flash in browser UI */}
         <meta name="theme-color" content="#FF8B1F" />
         <ThemeProvider>
-        <ThemeColorMeta />
-        <Script id="org-jsonld" type="application/ld+json" strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "LocalBusiness",
-              name: "Sun Valley Broadband",
-              alternateName: "SVB",
-              url: "https://sunvalleybroadband.com/",
-              image: "https://sunvalleybroadband.com/web-images/logos/Transparent-Logo-4-1-2.webp",
-              logo: "https://sunvalleybroadband.com/web-images/logos/Transparent-Logo-4-1-2.webp",
-              telephone: "+1-928-343-0300",
-              email: "support@sunvalleybroadband.com",
-              sameAs: [
-                "https://www.facebook.com/SunValleyBroadband",
-                "https://www.instagram.com/sun_valley_broadband/",
-                "https://twitter.com/SVB_Yuma",
-              ],
-              subjectOf: [
-                {
-                  "@type": "WebPage",
-                  url: "https://www.facebook.com/SunValleyBroadband",
-                  name: "Sun Valley Broadband on Facebook"
-                },
-                {
-                  "@type": "WebPage", 
-                  url: "https://www.instagram.com/sun_valley_broadband/",
-                  name: "Sun Valley Broadband on Instagram"
-                },
-                {
-                  "@type": "WebPage",
-                  url: "https://twitter.com/SVB_Yuma", 
-                  name: "Sun Valley Broadband on Twitter"
-                }
-              ],
-              hasMap: "https://www.google.com/maps/dir//2481+E+Palo+Verde+St,+Yuma,+AZ+85365",
-              priceRange: "$$",
-              address: {
-                "@type": "PostalAddress",
-                streetAddress: "2481 E Palo Verde St",
-                addressLocality: "Yuma",
-                addressRegion: "AZ",
-                postalCode: "85365",
-                addressCountry: "US"
-              },
-              geo: {
-                "@type": "GeoCoordinates",
-                latitude: 32.6927,
-                longitude: -114.6277
-              },
-              areaServed: [
-                { "@type": "City", name: "Yuma", addressRegion: "AZ" },
-                { "@type": "City", name: "Roll", addressRegion: "AZ" },
-                { "@type": "City", name: "Wellton", addressRegion: "AZ" },
-                { "@type": "City", name: "Tacna", addressRegion: "AZ" },
-                { "@type": "City", name: "Holtville", addressRegion: "CA" },
-                { "@type": "City", name: "Brawley", addressRegion: "CA" },
-                { "@type": "City", name: "Westmorland", addressRegion: "CA" },
-                { "@type": "City", name: "El Centro", addressRegion: "CA" },
-                { "@type": "AdministrativeArea", name: "Yuma County", addressRegion: "AZ" },
-                { "@type": "AdministrativeArea", name: "Imperial County", addressRegion: "CA" }
-              ],
-              openingHoursSpecification: [
-                { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday"], opens: "08:00", closes: "16:00" },
-                { "@type": "OpeningHoursSpecification", dayOfWeek: ["Saturday","Sunday"], opens: "00:00", closes: "00:00" }
-              ],
-              contactPoint: [{
-                "@type": "ContactPoint",
-                contactType: "customer service",
+          <ThemeColorMeta />
+          <Script id="org-jsonld" type="application/ld+json" strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "LocalBusiness",
+                name: "Sun Valley Broadband",
+                alternateName: "SVB",
+                url: "https://sunvalleybroadband.com/",
+                image: "https://sunvalleybroadband.com/web-images/logos/Transparent-Logo-4-1-2.webp",
+                logo: "https://sunvalleybroadband.com/web-images/logos/Transparent-Logo-4-1-2.webp",
                 telephone: "+1-928-343-0300",
                 email: "support@sunvalleybroadband.com",
-                areaServed: ["US-AZ", "US-CA"],
-                availableLanguage: ["English"]
-              }],
-              
-            }),
-          }}
-        />
-        <Script id="website-jsonld" type="application/ld+json" strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              name: "Sun Valley Broadband",
-              url: "https://sunvalleybroadband.com/",
-              potentialAction: {
-                "@type": "SearchAction",
-                target: "https://sunvalleybroadband.com/?q={search_term_string}",
-                "query-input": "required name=search_term_string"
-              },
-              inLanguage: "en-US"
-            })
-          }}
-        />
-        <Script id="organization-jsonld" type="application/ld+json" strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "Sun Valley Broadband",
-              url: "https://sunvalleybroadband.com/",
-              logo: "https://sunvalleybroadband.com/web-images/logos/Transparent-Logo-4-1-2.webp",
-              sameAs: [
-                "https://www.facebook.com/SunValleyBroadband",
-                "https://www.instagram.com/sun_valley_broadband/", 
-                "https://twitter.com/SVB_Yuma"
-              ],
-              contactPoint: {
-                "@type": "ContactPoint",
-                telephone: "+1-928-343-0300",
-                contactType: "customer service",
-                areaServed: ["US-AZ", "US-CA"],
-                availableLanguage: ["English"]
-              },
-              address: {
-                "@type": "PostalAddress",
-                streetAddress: "2481 E Palo Verde St",
-                addressLocality: "Yuma",
-                addressRegion: "AZ",
-                postalCode: "85365",
-                addressCountry: "US"
-              }
-            })
-          }}
-        />
-        {/* Google tag (gtag.js) */}
-        <Script
-          id="ga4-src"
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID || 'G-LVPSHQM46D'}`}
-          strategy="afterInteractive"
-        />
-        <Script id="ga4-inline" strategy="afterInteractive">
-          {`
+                sameAs: [
+                  "https://www.facebook.com/SunValleyBroadband",
+                  "https://www.instagram.com/sun_valley_broadband/",
+                  "https://twitter.com/SVB_Yuma",
+                ],
+                subjectOf: [
+                  {
+                    "@type": "WebPage",
+                    url: "https://www.facebook.com/SunValleyBroadband",
+                    name: "Sun Valley Broadband on Facebook"
+                  },
+                  {
+                    "@type": "WebPage",
+                    url: "https://www.instagram.com/sun_valley_broadband/",
+                    name: "Sun Valley Broadband on Instagram"
+                  },
+                  {
+                    "@type": "WebPage",
+                    url: "https://twitter.com/SVB_Yuma",
+                    name: "Sun Valley Broadband on Twitter"
+                  }
+                ],
+                hasMap: "https://www.google.com/maps/dir//2481+E+Palo+Verde+St,+Yuma,+AZ+85365",
+                priceRange: "$$",
+                address: {
+                  "@type": "PostalAddress",
+                  streetAddress: "2481 E Palo Verde St",
+                  addressLocality: "Yuma",
+                  addressRegion: "AZ",
+                  postalCode: "85365",
+                  addressCountry: "US"
+                },
+                geo: {
+                  "@type": "GeoCoordinates",
+                  latitude: 32.6927,
+                  longitude: -114.6277
+                },
+                areaServed: [
+                  { "@type": "City", name: "Yuma", addressRegion: "AZ" },
+                  { "@type": "City", name: "Roll", addressRegion: "AZ" },
+                  { "@type": "City", name: "Wellton", addressRegion: "AZ" },
+                  { "@type": "City", name: "Tacna", addressRegion: "AZ" },
+                  { "@type": "City", name: "Holtville", addressRegion: "CA" },
+                  { "@type": "City", name: "Brawley", addressRegion: "CA" },
+                  { "@type": "City", name: "Westmorland", addressRegion: "CA" },
+                  { "@type": "City", name: "El Centro", addressRegion: "CA" },
+                  { "@type": "AdministrativeArea", name: "Yuma County", addressRegion: "AZ" },
+                  { "@type": "AdministrativeArea", name: "Imperial County", addressRegion: "CA" }
+                ],
+                openingHoursSpecification: [
+                  { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "08:00", closes: "16:00" },
+                  { "@type": "OpeningHoursSpecification", dayOfWeek: ["Saturday", "Sunday"], opens: "00:00", closes: "00:00" }
+                ],
+                contactPoint: [{
+                  "@type": "ContactPoint",
+                  contactType: "customer service",
+                  telephone: "+1-928-343-0300",
+                  email: "support@sunvalleybroadband.com",
+                  areaServed: ["US-AZ", "US-CA"],
+                  availableLanguage: ["English"]
+                }],
+
+              }),
+            }}
+          />
+          <Script id="website-jsonld" type="application/ld+json" strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                name: "Sun Valley Broadband",
+                url: "https://sunvalleybroadband.com/",
+                potentialAction: {
+                  "@type": "SearchAction",
+                  target: "https://sunvalleybroadband.com/?q={search_term_string}",
+                  "query-input": "required name=search_term_string"
+                },
+                inLanguage: "en-US"
+              })
+            }}
+          />
+          <Script id="organization-jsonld" type="application/ld+json" strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                name: "Sun Valley Broadband",
+                url: "https://sunvalleybroadband.com/",
+                logo: "https://sunvalleybroadband.com/web-images/logos/Transparent-Logo-4-1-2.webp",
+                sameAs: [
+                  "https://www.facebook.com/SunValleyBroadband",
+                  "https://www.instagram.com/sun_valley_broadband/",
+                  "https://twitter.com/SVB_Yuma"
+                ],
+                contactPoint: {
+                  "@type": "ContactPoint",
+                  telephone: "+1-928-343-0300",
+                  contactType: "customer service",
+                  areaServed: ["US-AZ", "US-CA"],
+                  availableLanguage: ["English"]
+                },
+                address: {
+                  "@type": "PostalAddress",
+                  streetAddress: "2481 E Palo Verde St",
+                  addressLocality: "Yuma",
+                  addressRegion: "AZ",
+                  postalCode: "85365",
+                  addressCountry: "US"
+                }
+              })
+            }}
+          />
+          {/* Google tag (gtag.js) */}
+          <Script
+            id="ga4-src"
+            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID || 'G-LVPSHQM46D'}`}
+            strategy="afterInteractive"
+          />
+          <Script id="ga4-inline" strategy="afterInteractive">
+            {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
@@ -379,15 +379,21 @@ export default function RootLayout({
               send_page_view: true
             });
           `}
-        </Script>
-        <Suspense fallback={null}>
-          <GA4Pageview />
-        </Suspense>
-        <RootBannerSlot />
-        <Header />
-        <main className="min-h-[calc(100vh-4rem)]">{children}</main>
-        <Footer />
-        <Toaster />
+          </Script>
+          {/* Rybbit Analytics (self-hosted) */}
+          <Script
+            src="/api/script.js"
+            data-site-id="6b0d26df0625"
+            strategy="afterInteractive"
+          />
+          <Suspense fallback={null}>
+            <GA4Pageview />
+          </Suspense>
+          <RootBannerSlot />
+          <Header />
+          <main className="min-h-[calc(100vh-4rem)]">{children}</main>
+          <Footer />
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

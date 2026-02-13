@@ -14,7 +14,21 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // Removed PostHog rewrites and trailing slash exceptions
+  // Rybbit analytics rewrites (ad-blocker bypass)
+  async rewrites() {
+    const rybbitHost =
+      process.env.NEXT_PUBLIC_RYBBIT_HOST || "https://tracking.whoisjason.me";
+    return [
+      {
+        source: "/api/script.js",
+        destination: `${rybbitHost}/api/script.js`,
+      },
+      {
+        source: "/api/track",
+        destination: `${rybbitHost}/api/track`,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
