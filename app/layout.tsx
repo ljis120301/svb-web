@@ -10,6 +10,7 @@ import { Footer } from "@/components/site/Footer";
 import { siteFont, brandFont } from "@/lib/fonts";
 import { RootBannerSlot } from "@/components/site/RootBannerSlot";
 import { Toaster } from "sonner";
+import RybbitAnalytics from "@/components/analytics/RybbitAnalytics";
 // Removed PostHog provider/pageview
 
 export const metadata: Metadata = {
@@ -380,15 +381,14 @@ export default function RootLayout({
             });
           `}
           </Script>
-          {/* Rybbit Analytics (self-hosted) */}
-          <Script
-            src="/api/script.js"
-            data-site-id="6b0d26df0625"
-            strategy="afterInteractive"
-          />
+          {/* Rybbit Analytics — loaded directly to preserve real visitor IPs */}
           <Suspense fallback={null}>
+            <RybbitAnalytics />
             <GA4Pageview />
           </Suspense>
+          {/* Preconnect to tracking server */}
+          <link rel="preconnect" href="https://tracking.whoisjason.me" crossOrigin="anonymous" />
+          <link rel="dns-prefetch" href="https://tracking.whoisjason.me" />
           <RootBannerSlot />
           <Header />
           <main className="min-h-[calc(100vh-4rem)]">{children}</main>
